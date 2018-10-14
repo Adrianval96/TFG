@@ -36,9 +36,9 @@ for i in range (1, 100001):
 		next_state, reward, done, info = env.step(action)
 		
 		old_value = q_table[state, action]
-		next_max = np.max(q_table[next_state])
+		next_max = np.max(q_table[next_state]) # Recompensa maxima del proximo estado
 		
-		new_value = (1 - alpha) * old_value + alpha * (reward + gamma * next_max)
+		new_value = (1 - alpha) * old_value + alpha * (reward + gamma * next_max) # Función de aprendizaje
 		q_table[state, action] = new_value
 		
 		if reward == -10:

@@ -20,17 +20,18 @@ for i in range (1, 1001):
     action = env.action_space.sample()
     state, reward, done, info = env.step(action)
 
-    if done and reward == 0:
-        incompletes += 1
-
-    if done and reward == 1:
-        frames.append({
-    		'frame': env.render(mode='ansi'),
-    		'state': state,
-    		'action': action,
-    		'reward': reward
-    		}
-    	)
+    if done:
+        env.reset()
+        if reward == 0:
+            incompletes += 1
+        else:
+            frames.append({
+        		'frame': env.render(mode='ansi'),
+        		'state': state,
+        		'action': action,
+        		'reward': reward
+        		}
+        	)
 
     epochs += 1
 

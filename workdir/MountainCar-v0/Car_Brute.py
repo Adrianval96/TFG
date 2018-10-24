@@ -7,7 +7,7 @@ from IPython.display import clear_output
 from time import sleep
 import gym, random, numpy as np
 
-#Hiperparámetros
+#Hiperparametros
 
 alpha = 0.1 # Tasa de aprendizaje
 gamma = 0.6 # Factor de descuento
@@ -24,7 +24,7 @@ env.reset()
 # Creo que esto no funciona porque este entorno no tiene unos estados explicitos
 #q_table = np.zeros([env.observation_space, env.action_space])
 
-#print(env.P) # {action: [(probability, nextstate, reward, done)]}, por alguna razón no funciona
+#print(env.P) # {action: [(probability, nextstate, reward, done)]}, por alguna razon no funciona
 
 print("Action Space {}".format(env.action_space))
 print("State Space {}".format(env.observation_space))
@@ -52,7 +52,7 @@ while not done:
 
     epochs += 1
 
-    
+
 def print_frames(frames):
 	for i, frame in enumerate(frames):
 		clear_output(wait=True)

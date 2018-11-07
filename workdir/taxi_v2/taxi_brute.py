@@ -44,7 +44,7 @@ def print_frames(frames):
 		print(f"Timestep: {i + 1}")
 		print(f"State: {frame['state']}")
 		print(f"Reward: {frame['reward']}")
-		sleep(.25)
+		sleep(.1)
 
 print_frames(frames)
 

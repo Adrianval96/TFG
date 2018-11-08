@@ -1,6 +1,6 @@
 # importing dependency libraries
 from __future__ import print_function
-import Gym
+import gym as Gym
 import numpy as np
 import time
 
@@ -25,7 +25,7 @@ print()
 
 #Epsilon-Greedy approach for Exploration and Exploitation of the state-action spaces
 def epsilon_greedy(Q,s,na):
-    epsilon = 0.3
+    epsilon = 0.1
     p = np.random.uniform(low=0,high=1)
     #print(p)
     if p > epsilon:
@@ -63,6 +63,7 @@ for i in range(eps):
         s = s_ 
         if (t == True) :
             break
+    print(f"Episode: {i}")
 
 print("Q-table")
 print(Q)

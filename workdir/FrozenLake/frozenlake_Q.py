@@ -3,6 +3,7 @@ from __future__ import print_function
 import gym as Gym
 import numpy as np
 import time
+import tqdm
 
 #Load the environment
 
@@ -39,17 +40,17 @@ def epsilon_greedy(Q,s,na):
 Q = np.zeros([env.observation_space.n,env.action_space.n])
 
 #set hyperparameters
-lr = 0.5 #learning rate
-y = 0.9 #discount factor lambda
+alpha = 0.1 #learning rate
+y = 0.6 #discount factor lambda
 eps = 100000 #total episodes being 100000
 
-
-for i in range(eps):
+for i in tqdm.tqdm(range(eps)):
+#for i in range(eps):
     s = env.reset()
     t = False
     while(True):
         a = epsilon_greedy(Q,s,env.action_space.n)
-        s_,r,t,_ = env.step(a)
+        s_,r,t,_ = env.step(a) #next state, reward, done, info
         if (r==0): 
             if t==True:
                 r = -5 #to give negative rewards when holes turn up
@@ -59,7 +60,8 @@ for i in range(eps):
         if (r==1):
                 r = 100
                 Q[s_] = np.ones(env.action_space.n)*r #in terminal state Q value equals the reward
-        Q[s,a] = Q[s,a] + lr * (r + y*np.max(Q[s_,a]) - Q[s,a])
+        Q[s,a] = (1-alpha) * Q[s,a] + alpha * (r + y * np.max(Q[s_]))
+        #Q[s,a] = Q[s,a] + alpha * (r + y*np.max(Q[s_,a]) - Q[s,a])
         s = s_ 
         if (t == True) :
             break
@@ -77,8 +79,9 @@ s = env.reset()
 env.render()
 while(True):
     a = np.argmax(Q[s])
-    s_,r,t,_ = env.step(a)
+    s_,r,t,info = env.step(a)
     print("===============")
+    print(f"Action: {a}, info: {info}")
     env.render()
     s = s_
     if(t==True) :

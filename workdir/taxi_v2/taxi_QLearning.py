@@ -9,7 +9,7 @@ import gym, random, numpy as np
 #Hiperparámetros
 
 alpha = 0.1 # Tasa de aprendizaje
-gamma = 0.6 # Factor de descuento
+lmb = 0.6 # Factor de descuento
 epsilon = 0.1 # Factor de exploracion
 
 # Contenedores de datos
@@ -38,7 +38,7 @@ for i in range (1, 100001):
 		old_value = q_table[state, action]
 		next_max = np.max(q_table[next_state]) # Recompensa maxima del proximo estado
 		
-		new_value = (1 - alpha) * old_value + alpha * (reward + gamma * next_max) # Función de aprendizaje
+		new_value = (1 - alpha) * old_value + alpha * (reward + lmb * next_max) # Función de aprendizaje
 		q_table[state, action] = new_value
 		
 		if reward == -10:
@@ -77,6 +77,9 @@ def test_performance():
 			
 		total_penalties += penalties
 		total_epochs += epochs
+		
+	print("Q-table")
+	print(q_table)
 		
 	print(f"Results after {episodes} episodes:")
 	print(f"Average timesteps per episode: {total_epochs / episodes}")

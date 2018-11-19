@@ -65,6 +65,7 @@ for i in tqdm.tqdm(range(eps)):
         s = s_ 
         if (t == True) :
             break
+    print(f"Episode: {i}")
 
 print("Q-table")
 print(Q)

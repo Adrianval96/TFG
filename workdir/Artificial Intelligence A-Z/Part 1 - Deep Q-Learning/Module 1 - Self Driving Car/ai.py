@@ -22,11 +22,19 @@ class Network(nn.Module): #nn.Module == Inheritance
         self.nb_action = nb_action
 		# nn.Linear(input_neurons, output_neurons, bias = True)
         self.fc1 = nn.Linear(input_size, 30) #Connection of outer layer with 1st hidden layer 
-        self.fc2 = nn.Linear(30, nb_action) #Connection of 1st hidden layer to outer layer
+        #self.fc2 = nn.Linear(30, nb_action) #Connection of 1st hidden layer to outer layer
+        
+        # 2 hidden layers
+        self.fc2 = nn.Linear(30, 30) # From 1st to 2nd hidden layer
+        self.fc3 = nn.Linear(30, nb_action) # 2nd to outer layer
     
     def forward(self, state): # Returns Q values for every possible state 
-        x = F.relu(self.fc1(state)) # Rectifier function 
-        q_values = self.fc2(x) # Values of output neurons
+        x = F.relu(self.fc1(state)) # Rectifier function    
+        #q_values = self.fc2(x) # Values of output neurons
+        
+        x2 = self.fc2(x) # Values of 2nd layer
+        q_values = self.fc3(x2) #Values of output neurons
+        
         return q_values
 
 # Implementing Experience Replay
@@ -57,7 +65,7 @@ class Dqn():
         self.reward_window = []
         self.model = Network(input_size, nb_action) # Creates the object of the network class
         self.memory = ReplayMemory(100000) # Object of memory with capacity = 100000
-        self.optimizer = optim.Adam(self.model.parameters(), lr = 0.001) # Creates object from torch.optim as optimizer with the parameters from the model and learning rate = 0.001
+        self.optimizer = optim.Adam(self.model.parameters(), lr = 0.01) # Creates object from torch.optim as optimizer with the parameters from the model and learning rate = 0.001
         self.last_state = torch.Tensor(input_size).unsqueeze(0) # Creates a batch to input in the NN with the variables of the state and a fake dimension in position 0 corresponding to the batch
         self.last_action = 0 # {0,1,2}
         self.last_reward = 0 # [-1,+1]

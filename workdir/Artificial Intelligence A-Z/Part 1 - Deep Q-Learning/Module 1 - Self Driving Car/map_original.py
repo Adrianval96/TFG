@@ -103,8 +103,9 @@ class Game(Widget):
     ball1 = ObjectProperty(None)
     ball2 = ObjectProperty(None)
     ball3 = ObjectProperty(None)
-    global timer 
-    timer = time.time()
+    
+    # Añadidas a posteriori
+    flag1, flag2 = False, False
 
     def serve_car(self):
         self.car.center = self.center
@@ -120,11 +121,15 @@ class Game(Widget):
         global goal_y
         global longueur
         global largeur
+        
+        global flag1, flag2
+        global timer
 
         longueur = self.width
         largeur = self.height
         if first_update:
             init()
+            timer = time.time()
 
         xx = goal_x - self.car.x
         yy = goal_y - self.car.y
@@ -138,21 +143,25 @@ class Game(Widget):
         self.ball1.pos = self.car.sensor1
         self.ball2.pos = self.car.sensor2
         self.ball3.pos = self.car.sensor3
-		###
+        
+        ###
         curr_t = time.time() - timer
 		###
+
         if sand[int(self.car.x),int(self.car.y)] > 0:
             self.car.velocity = Vector(1, 0).rotate(self.car.angle)
-            last_reward = -5
-			#last_reward = -1.8
-			#last_reward = -1
+            #last_reward = -1
+            #last_reward = -2
+            last_reward = -3
         else: # otherwise
             self.car.velocity = Vector(6, 0).rotate(self.car.angle)
-            last_reward = -0.20
-			#last_reward = -0.2
+            #last_reward = -0.1
+            #last_reward = -0.2
+            last_reward = -0.3
             if distance < last_distance:
-                last_reward = 0.15
+                #last_reward = 0.05
                 #last_reward = 0.1
+                last_reward = 0.2
 
         if self.car.x < 10:
             self.car.x = 10
@@ -166,19 +175,29 @@ class Game(Widget):
         if self.car.y > self.height - 10:
             self.car.y = self.height - 10
             last_reward = -1
+            
+        # Penalizaciones de tiempo
+        if curr_t > 15 and not flag1: 
+            last_reward = -15
+            flag1 = True
+			#last_reward -= 10 ## demasiada penalizacion
+            print("Applying timer handicap 15s")
+        if curr_t > 30 and not flag2:
+            last_reward = -30
+            flag2 = True
+            #last_reward -= 20 
+            print("Applying timer handicap 30s")
+		###
 
         if distance < 100:
             goal_x = self.width-goal_x
             goal_y = self.height-goal_y
-			
-		# Penalizaciones de tiempo
-        if curr_t > 15: 
-            last_reward -= 15
-			#last_reward -= 10 ## demasiada penalizacion
-            if curr_t > 30:
-                last_reward -= 30
-				#last_reward -= 20 
-		###
+            
+            last_reward = 5
+            flag1, flag2 = False, False
+            
+            print(f"He tardado {curr_t} segundos en alcanzar el extremo")
+            timer = time.time()
         last_distance = distance
 
 # Adding the painting tools

@@ -1,0 +1,66 @@
+22 de noviembre 2018
+
+1. Probamos map.py sin cambios y construimos self_drive_1. El coche aprende a ir por el camino pero encuentra un camino bueno saltandose el camino y yendo por abajo. Se corrige poniendo muro.
+2. Cambiamos recompensas en map.py (marcado en el codigo)
+
+2a prueba: self_drive_2. Creamos temporizador
+El agente sigue saliendose del camino si es mas rapido. Se soluciona aumentando handicap de tocar arena
+El aprendizaje se va a la mierda  y se mete entre en medio de la arena
+Probamos a aumentar handicap de tocar la arena
+Consecuencias:
+- No se sale tanto pero cuando se sale le cuesta volver al camino
+- Sigue teniendo problemas cuando se aleja del destino
+- Parece que la penalización no es suficiente.
+
+Eliminamos penalizacion de alejarse
+Aumentamos penalizacion de pasar por arena
+
+learn4:
+
+Descubrimos por que el aprendizaje va tan mal, la recompensas negativas son mucho mayores a las positivas
+Subiremos recompensa de acercarse a destino, y eliminamos la de alejarse.
+
+Probamos a construir un road similar
+
+Al ejecutar se observa que el agente empieza a girar, porque gana demasiado al acercarse y nada al alejarse
+Volveremos a poner recompensa negativa y bajaremos un poco la positiva
+[-0.20, 0.15]
+La negativa es mayor porque si no hace exploit de quedarse dando vueltas
+
+Conclusion: La hemos liado con las recompensas. map_original funciona mucho mejor y devuelve 
+un aprendizaje que ronda 0 mientras con nuestras recompensas se va a la mierda. Hay que revisarlo.
+De todas formas, el original sigue saltandose demasiado la arena para pasar. Conforme pasa un par de
+minutos, el aprendizaje ronda -0.1
+
+## Segundo intento:
+
+Añadimos una 2a capa oculta a la red neuronal en ai.py (lineas 28-29)
+Aumentar learning rate en self.optimizer (ln 65) de lr=0.01 -> lr=0.1
+
+Sigue habiendo problemas con que pasa la arena cuando quiere.
+Subimos penalizacion de -1 a -2.
+
+En la siguiente ejecucion, no pasa por la penalizacion de ir hacia atras. Cambiamos esto.
+Si bajamos penalizacion de ir hacia atras, da muchas vueltas innecesarias. Hay que buscar otra manera.
+
+Ahora pisa menos la arena pero sigue pasando en algunas ocasiones cuando esta muy cerca de la meta
+(Hasta aqui learn5)
+
+Añadimos timer again para probar porque se va un poco a la mierda. A los 10 y a los 20 secs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

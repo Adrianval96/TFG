@@ -1,3 +1,6 @@
 [submodule "gym-doom"]
 	path = gym-doom
 	url = https://github.com/Adrianval96/gym-doom
+[submodule "workdir/Doom/ViZDoom"]
+	path = workdir/Doom/ViZDoom
+	url = https://github.com/mwydmuch/ViZDoom

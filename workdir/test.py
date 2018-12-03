@@ -1,5 +1,5 @@
 import gym
-env=gym.make('FrozenLake8x8-v0')
+env=gym.make('DoomCorridor-v0')
 state = env.reset()
 print(state)
 print(env.observation_space.n)

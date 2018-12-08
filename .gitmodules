@@ -4,3 +4,6 @@
 [submodule "workdir/Doom/ViZDoom"]
 	path = workdir/Doom/ViZDoom
 	url = https://github.com/mwydmuch/ViZDoom
+[submodule "workdir/gym"]
+	path = workdir/gym
+	url = https://github.com/openai/gym

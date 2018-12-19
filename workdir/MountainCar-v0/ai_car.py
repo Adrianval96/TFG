@@ -1,4 +1,3 @@
-# AI for FrozenLake
 # Inspired in code from AI from A-Z
 
 # Importing the libraries
@@ -12,8 +11,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.autograd as autograd
 from torch.autograd import Variable
-
-from fl_mapLoader import Game
 
 # Creating the architecture of the Neural Network
 
@@ -58,7 +55,7 @@ class Dqn():
         self.memory = ReplayMemory(100000) # Object of memory with capacity = 100000
         self.optimizer = optim.Adam(self.model.parameters(), lr = 0.01) # Creates object from torch.optim as optimizer with the parameters from the model and learning rate = 0.001
         self.last_state = torch.Tensor(input_size).unsqueeze(0) # Creates a batch to input in the NN with the variables of the state and a fake dimension in position 0 corresponding to the batch
-        self.last_action = 0 # {0,1,2,3}
+        self.last_action = 0 # {0,1}
         self.last_reward = 0 # [-1,0,+1]
 
     # This probably needs to be changed so it selects an action from the possible pool

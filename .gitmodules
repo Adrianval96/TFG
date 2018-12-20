@@ -7,3 +7,6 @@
 [submodule "workdir/gym"]
 	path = workdir/gym
 	url = https://github.com/openai/gym
+[submodule "workdir/ia-course"]
+	path = workdir/ia-course
+	url = https://github.com/Adrianval96/ia-course

@@ -10,3 +10,6 @@
 [submodule "workdir/ia-course"]
 	path = workdir/ia-course
 	url = https://github.com/Adrianval96/ia-course
+[submodule "workdir/RubiksCubeAI"]
+	path = workdir/RubiksCubeAI
+	url = https://github.com/Adrianval96/RubiksCubeAI/

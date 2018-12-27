@@ -12,8 +12,8 @@ import numpy as np
 from datetime import datetime
 from argparse import ArgumentParser
 
-#import environments.toyText as ToyText
-#import environments.utils as env_utils ### Probablemente no haga falta copiar esto ya que el input es texto
+import environments.toyText as toyText
+import environments.utils as env_utils ### Probablemente no haga falta copiar esto ya que el input es texto
 
 import torch
 import torch.nn as nn
@@ -180,6 +180,123 @@ class DeepQLearner(object):
         td_error.mean().backward()
         self.Q_optimizer.step()
 
+        def save(self, env_name):
+            file_name = self.params['save_dir']+"DQL_"+env_name+".ptm"
+            agent_state = {"Q": self.Q.state_dict(),
+                           "best_mean_reward": self.best_mean_reward,
+                           "best_reward": self.best_reward}
+            torch.save(agent_state, file_name)
+            print("Estado del agente guardado en : ", file_name)
+
+
+        def load(self, env_name):
+            file_name = self.params['load_dir']+"DQL_"+env_name+".ptm"
+            agent_state = torch.load(file_name, map_location = lambda storage, loc: storage)
+            self.Q.load_state_dict(agent_state["Q"])
+            self.Q.to(device)
+            self.best_mean_reward = agent_state["best_mean_reward"]
+            self.best_reward = agent_state["best_reward"]
+            print("Cargado del modelo Q desde", file_name,
+                  "que hasta el momento tiene una mejor recompensa media de: ",self.best_mean_reward,
+                  " y una recompensa máxima de: ", self.best_reward)
+
+
 
 ## TODO:: crear evento __main__ para lanzar métodos en el orden correcto
 ## inicializando la NN y creando bucle de aprendizaje
+
+if __name__ == "__main__":
+    env_conf = manager.get_environment_params()
+    env_conf[env_name] = args.env
+
+    if args.test:
+        env_conf["episodic_life"] = False
+    reward_type = "LIFE" if env_conf["episodic_life"] else "GAME"
+
+    custom_region_available = False
+    for key, value in env_conf["useful_region"].items():
+        if key in args.env:
+            env_conf["useful_region"] = value
+            custom_region_available = True
+            break
+    if custom_region_available is not True:
+        env_conf["useful_region"] = env_conf["useful_region"]["Default"]
+    print("Configuración a utilizar:", env_conf)
+
+    toy_env = False
+    for game in ToyText.get_games_list():
+        if game.replace("_", "") in args.env.lower():
+            toy_env = True
+
+    if toy_env:
+        environment = ToyText.make_env(args.env, env_conf)
+    else:
+        environment = env_utils.ResizeReshapeFrames(gym.make(args.env))
+
+    obs_shape = environment.observation_space.shape
+    action_shape = environment.action_space.n
+    agent_params = manager.get_agent_params()
+    agent_params["test"] = args.test
+    agent_params["clip_reward"] = env_conf["clip_reward"]
+    agent = DeepQLearner(obs_shape, action_shape, agent_params)
+
+    episode_rewards = list()
+    previous_checkpoint_mean_ep_rew = agent.best_mean_reward
+    num_improved_episodes_before_checkpoint = 0
+    if agent_params['load_trained_model']:
+        try:
+            agent.load(env_conf['env_name'])
+            previous_checkpoint_mean_ep_rew = agent.best_mean_reward
+        except FileNotFoundError:
+            print("ERROR: no existe ningún modelo entrenado para este entorno. Empezamos desde cero")
+
+
+    episode = 0
+    while global_step_num < agent_params['max_training_steps']:
+        obs = environment.reset()
+        total_reward = 0.0
+        done = False
+        step = 0
+        while not done:
+            if env_conf['render'] or args.render:
+                environment.render()
+
+            action = agent.get_action(obs)
+            next_obs, reward, done, info = environment.step(action)
+            agent.memory.store(Experience(obs, action, reward, next_obs, done))
+
+            obs = next_obs
+            total_reward += reward
+            step += 1
+            global_step_num += 1
+
+            if done is True:
+                episode += 1
+                episode_rewards.append(total_reward)
+
+                if total_reward > agent.best_reward:
+                    agent.best_reward = total_reward
+
+                if np.mean(episode_rewards) > previous_checkpoint_mean_ep_rew:
+                    num_improved_episodes_before_checkpoint += 1
+
+                if num_improved_episodes_before_checkpoint >= agent_params['save_freq']:
+                    previous_checkpoint_mean_ep_rew = np.mean(episode_rewards)
+                    agent.best_mean_reward = np.mean(episode_rewards)
+                    agent.save(env_conf['env_name'])
+                    num_improved_episodes_before_checkpoint = 0
+
+                print("\n Episodio #{} finalizado con {} iteraciones. Con {} estados: recompensa = {}, recompensa media = {:.2f}, mejor recompensa = {}".
+                      format(episode, step+1, reward_type, total_reward, np.mean(episode_rewards), agent.best_reward))
+
+                writer.add_scalar("main/ep_reward", total_reward, global_step_num)
+                writer.add_scalar("main/mean_ep_reward", np.mean(episode_rewards), global_step_num)
+                writer.add_scalar("main/max_ep_reward", agent.best_reward, global_step_num)
+
+                if agent.memory.get_size() >= 2*agent_params['replay_start_size'] and not args.test:
+                    agent.replay_experience()
+
+                break
+
+    environment.close()
+    writer.close()

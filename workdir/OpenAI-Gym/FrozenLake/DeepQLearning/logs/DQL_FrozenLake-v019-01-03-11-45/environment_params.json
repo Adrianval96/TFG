@@ -1,0 +1,19 @@
+{
+    "clip_reward":true,
+    "episodic_life":true,
+    "normalize_observation":false,
+    "num_frames_to_stack":1,
+    "render":false,
+    "skip_rate":1,
+    "type":"ToyText",
+    "useful_region":{
+        "Blackjack":{},
+        "Default":{},
+        "FrozenLake8x8":{},
+        "GuessingGame":{},
+        "HotterColder":{},
+        "NChain":{},
+        "Roulette":{},
+        "Taxi":{}
+    }
+}

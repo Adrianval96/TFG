@@ -13,3 +13,6 @@
 [submodule "workdir/RubiksCubeAI"]
 	path = workdir/RubiksCubeAI
 	url = https://github.com/Adrianval96/RubiksCubeAI/
+[submodule "workdir/Submodules/ray"]
+	path = workdir/Submodules/ray
+	url = https://github.com/ray-project/ray

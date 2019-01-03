@@ -12,7 +12,7 @@ import numpy as np
 from datetime import datetime
 from argparse import ArgumentParser
 
-import environments.toyText as toyText
+import environments.toyText as ToyText
 import environments.utils as env_utils ### Probablemente no haga falta copiar esto ya que el input es texto
 
 import torch
@@ -42,6 +42,13 @@ args.add_argument("--params-file", help = "Path del fichero JSON de parámetros.
                   default="parameters.json", metavar = "PFILE")
 args.add_argument("--env", help = "Entorno de ID de ToyText disponible en OpenAI Gym. El valor por defecto será FrozenLake-v0",
                   default = "FrozenLake-v0", metavar="ENV")
+args.add_argument("--gpu-id", help = "ID de la GPU a utilizar, por defecto 0", default = 0, type = int, metavar = "GPU_ID")
+args.add_argument("--test", help = "Modo de testing para jugar sin aprender. Por defecto está desactivado",
+                  action = "store_true", default = False)
+args.add_argument("--render", help = "Renderiza el entorno en pantalla. Desactivado por defecto", action="store_true", default=False)
+args.add_argument("--record", help = "Almacena videos y estados de la performance del agente", action="store_true", default=False)
+args.add_argument("--output-dir", help = "Directorio para almacenar los outputs. Por defecto = ./trained_models/results",
+                  default = "./trained_models/results")
 args = args.parse_args()
 
 manager = ParamsManager(args.params_file)
@@ -207,7 +214,7 @@ class DeepQLearner(object):
 
 if __name__ == "__main__":
     env_conf = manager.get_environment_params()
-    env_conf[env_name] = args.env
+    env_conf["env_name"] = args.env
 
     if args.test:
         env_conf["episodic_life"] = False

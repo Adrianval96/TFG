@@ -16,3 +16,6 @@
 [submodule "workdir/Submodules/ray"]
 	path = workdir/Submodules/ray
 	url = https://github.com/ray-project/ray
+[submodule "workdir/Submodules/tutorial"]
+	path = workdir/Submodules/tutorial
+	url = https://github.com/ray-project/tutorial

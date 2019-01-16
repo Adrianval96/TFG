@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.1.7)  11 JAN 2019 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.1.7)  16 JAN 2019 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -683,13 +683,13 @@ LaTeX Info: Redefining \% on input line 7.
 ]
 Cap\'{\i }tulo 1.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1102) has occurred while \output is active []
 
  [1
 
 ]
-LaTeX Info: Redefining \. on input line 123.
-LaTeX Info: Redefining \% on input line 123.
+LaTeX Info: Redefining \. on input line 132.
+LaTeX Info: Redefining \% on input line 132.
 
 [2]
 Cap\'{\i }tulo 2.
@@ -706,7 +706,7 @@ Cap\'{\i }tulo 4.
 [7] [8
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 176.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 185.
 
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -720,9 +720,9 @@ Ap\'{e}ndice A.
 
 ]
 Ap\'{e}ndice B.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 250.
 [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 250.
  (./plantillatfg.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -735,15 +735,22 @@ LaTeX Info: Redefining \% on input line 27.
 LaTeX Info: Redefining \. on input line 29.
 LaTeX Info: Redefining \% on input line 29.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
-Package rerunfilecheck Info: File `plantillatfg.out' has not changed.
-(rerunfilecheck)             Checksum: 68B05E5D0739ED04C2D5456156EAEDAA;1089.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 241.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 250.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 250.
+
+
+Package rerunfilecheck Warning: File `plantillatfg.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `plantillatfg.out':
+(rerunfilecheck)             Before: 68B05E5D0739ED04C2D5456156EAEDAA;1089
+(rerunfilecheck)             After:  C6CB4349D252D0E30C852E672A858F2E;1150.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
  ) 
 Here is how much of TeX's memory you used:
- 11039 strings out of 492639
- 161137 string characters out of 6135498
+ 11040 strings out of 492639
+ 161148 string characters out of 6135498
  366133 words of memory out of 5000000
  14691 multiletter control sequences out of 15000+600000
  42825 words of font info for 80 fonts, out of 8000000 for 9000
@@ -758,10 +765,10 @@ onts/type1/public/cm-super/sfsx2488.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/tex
 mf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on plantillatfg.pdf (21 pages, 218483 bytes).
+Output written on plantillatfg.pdf (21 pages, 219926 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
  152 words of extra memory for PDF output out of 10000 (max. 10000000)
 

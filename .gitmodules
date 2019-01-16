@@ -19,3 +19,6 @@
 [submodule "workdir/Submodules/tutorial"]
 	path = workdir/Submodules/tutorial
 	url = https://github.com/ray-project/tutorial
+[submodule "workdir/Submodules/atari"]
+	path = workdir/Submodules/atari
+	url = https://github.com/gsurma/atari

@@ -1,0 +1,1877 @@
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-05_16-15-02_28227/logs.
+Waiting for redis server at 127.0.0.1:45985 to respond...
+Waiting for redis server at 127.0.0.1:48757 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=4974d8300356747620b9615237462ad22fac05659980053f
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/4 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/default/A3C_Breakout-v0_0_2019-02-05_16-15-02xub50dq0 -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING
+
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:15:06,937	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 0 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:15:06.937774: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:15:06.945058: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:15:06.945089: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:15:06.945096: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:15:06.945133: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:15:06.945153: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:15:06.945159: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:15:11,404	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:15:11.405504: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:15:11.412470: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:15:11.412534: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:15:11.412541: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:15:11.412573: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:15:11.412592: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:15:11.412597: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:15:11,434	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:15:11.434743: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:15:11.445165: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:15:11.445209: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:15:11.445219: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:15:11.445263: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:15:11.445291: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:15:11.445300: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-16
+  done: false
+  episode_len_mean: 213.6
+  episode_reward_max: 2.0
+  episode_reward_mean: 0.8
+  episode_reward_min: 0.0
+  episodes_this_iter: 5
+  episodes_total: 5
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.403
+    dispatch_time_ms: 10.204
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 40.000003814697266
+      policy_entropy: 0.0001914688473334536
+      policy_loss: -1.927601942952606e-06
+      var_gnorm: 9.666808128356934
+      vf_explained_var: -1.0
+      vf_loss: 67.89717864990234
+    num_steps_sampled: 1000
+    num_steps_trained: 1000
+    wait_time_ms: 24.482
+  iterations_since_restore: 1
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 8.825190782546997
+  time_this_iter_s: 8.825190782546997
+  time_total_s: 8.825190782546997
+  timestamp: 1549379716
+  timesteps_since_restore: 1000
+  timesteps_this_iter: 1000
+  timesteps_total: 1000
+  training_iteration: 1
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 3.9/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 8 s, 1 iter, 1000 ts, 0.8 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-24
+  done: false
+  episode_len_mean: 260.90909090909093
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.4545454545454546
+  episode_reward_min: 0.0
+  episodes_this_iter: 6
+  episodes_total: 11
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.483
+    dispatch_time_ms: 9.795
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 40.000003814697266
+      policy_entropy: 0.23882445693016052
+      policy_loss: 0.00038422143552452326
+      var_gnorm: 9.728743553161621
+      vf_explained_var: -1.0
+      vf_loss: 0.4800693094730377
+    num_steps_sampled: 3000
+    num_steps_trained: 3000
+    wait_time_ms: 16.369
+  iterations_since_restore: 2
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 16.824593782424927
+  time_this_iter_s: 7.99940299987793
+  time_total_s: 16.824593782424927
+  timestamp: 1549379724
+  timesteps_since_restore: 3000
+  timesteps_this_iter: 2000
+  timesteps_total: 3000
+  training_iteration: 2
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 16 s, 2 iter, 3000 ts, 1.45 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-30
+  done: false
+  episode_len_mean: 286.05555555555554
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.8888888888888888
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 18
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.047
+    dispatch_time_ms: 9.466
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 10.256999969482422
+      policy_entropy: 12.4832763671875
+      policy_loss: -1.5975772142410278
+      var_gnorm: 9.797588348388672
+      vf_explained_var: 0.7586950063705444
+      vf_loss: 0.04492149129509926
+    num_steps_sampled: 5000
+    num_steps_trained: 5000
+    wait_time_ms: 17.551
+  iterations_since_restore: 3
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 23.08085012435913
+  time_this_iter_s: 6.256256341934204
+  time_total_s: 23.08085012435913
+  timestamp: 1549379730
+  timesteps_since_restore: 5000
+  timesteps_this_iter: 2000
+  timesteps_total: 5000
+  training_iteration: 3
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 23 s, 3 iter, 5000 ts, 1.89 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-36
+  done: false
+  episode_len_mean: 259.48275862068965
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.4482758620689655
+  episode_reward_min: 0.0
+  episodes_this_iter: 11
+  episodes_total: 29
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.016
+    dispatch_time_ms: 8.15
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 5.403656959533691
+      policy_entropy: 11.770872116088867
+      policy_loss: -0.4953993260860443
+      var_gnorm: 9.867071151733398
+      vf_explained_var: -1.0
+      vf_loss: 0.038598380982875824
+    num_steps_sampled: 7000
+    num_steps_trained: 7000
+    wait_time_ms: 18.659
+  iterations_since_restore: 4
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 29.316853523254395
+  time_this_iter_s: 6.236003398895264
+  time_total_s: 29.316853523254395
+  timestamp: 1549379736
+  timesteps_since_restore: 7000
+  timesteps_this_iter: 2000
+  timesteps_total: 7000
+  training_iteration: 4
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 29 s, 4 iter, 7000 ts, 1.45 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-42
+  done: false
+  episode_len_mean: 253.51282051282053
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.4102564102564104
+  episode_reward_min: 0.0
+  episodes_this_iter: 10
+  episodes_total: 39
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.204
+    dispatch_time_ms: 7.427
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 3.4816856384277344
+      policy_entropy: 10.887215614318848
+      policy_loss: -0.6296517848968506
+      var_gnorm: 9.889060974121094
+      vf_explained_var: -0.027605175971984863
+      vf_loss: 0.03673793002963066
+    num_steps_sampled: 9000
+    num_steps_trained: 9000
+    wait_time_ms: 19.582
+  iterations_since_restore: 5
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 35.552348613739014
+  time_this_iter_s: 6.235495090484619
+  time_total_s: 35.552348613739014
+  timestamp: 1549379742
+  timesteps_since_restore: 9000
+  timesteps_this_iter: 2000
+  timesteps_total: 9000
+  training_iteration: 5
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 35 s, 5 iter, 9000 ts, 1.41 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-49
+  done: false
+  episode_len_mean: 249.9387755102041
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.3877551020408163
+  episode_reward_min: 0.0
+  episodes_this_iter: 10
+  episodes_total: 49
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.802
+    dispatch_time_ms: 8.062
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.750728130340576
+      policy_entropy: 10.088536262512207
+      policy_loss: 0.1142018586397171
+      var_gnorm: 9.914987564086914
+      vf_explained_var: -1.0
+      vf_loss: 0.02588549070060253
+    num_steps_sampled: 11000
+    num_steps_trained: 11000
+    wait_time_ms: 18.902
+  iterations_since_restore: 6
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 41.76053309440613
+  time_this_iter_s: 6.208184480667114
+  time_total_s: 41.76053309440613
+  timestamp: 1549379749
+  timesteps_since_restore: 11000
+  timesteps_this_iter: 2000
+  timesteps_total: 11000
+  training_iteration: 6
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 41 s, 6 iter, 11000 ts, 1.39 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-15-55
+  done: false
+  episode_len_mean: 249.1864406779661
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.3728813559322033
+  episode_reward_min: 0.0
+  episodes_this_iter: 10
+  episodes_total: 59
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.04
+    dispatch_time_ms: 8.389
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 3.02221417427063
+      policy_entropy: 12.799098014831543
+      policy_loss: -0.57196044921875
+      var_gnorm: 9.959122657775879
+      vf_explained_var: -1.0
+      vf_loss: 0.006822793744504452
+    num_steps_sampled: 13000
+    num_steps_trained: 13000
+    wait_time_ms: 18.471
+  iterations_since_restore: 7
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 47.98822617530823
+  time_this_iter_s: 6.2276930809021
+  time_total_s: 47.98822617530823
+  timestamp: 1549379755
+  timesteps_since_restore: 13000
+  timesteps_this_iter: 2000
+  timesteps_total: 13000
+  training_iteration: 7
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 47 s, 7 iter, 13000 ts, 1.37 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-01
+  done: false
+  episode_len_mean: 247.08823529411765
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.338235294117647
+  episode_reward_min: 0.0
+  episodes_this_iter: 9
+  episodes_total: 68
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.095
+    dispatch_time_ms: 6.994
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 2.1140365600585938
+      policy_entropy: 13.237144470214844
+      policy_loss: 0.187180295586586
+      var_gnorm: 10.02297592163086
+      vf_explained_var: -1.0
+      vf_loss: 0.003889787942171097
+    num_steps_sampled: 15000
+    num_steps_trained: 15000
+    wait_time_ms: 18.908
+  iterations_since_restore: 8
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 54.39285898208618
+  time_this_iter_s: 6.404632806777954
+  time_total_s: 54.39285898208618
+  timestamp: 1549379761
+  timesteps_since_restore: 15000
+  timesteps_this_iter: 2000
+  timesteps_total: 15000
+  training_iteration: 8
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 54 s, 8 iter, 15000 ts, 1.34 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-08
+  done: false
+  episode_len_mean: 243.62820512820514
+  episode_reward_max: 4.0
+  episode_reward_mean: 1.2820512820512822
+  episode_reward_min: 0.0
+  episodes_this_iter: 10
+  episodes_total: 78
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.25
+    dispatch_time_ms: 7.886
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 3.047828435897827
+      policy_entropy: 13.314483642578125
+      policy_loss: 0.791623592376709
+      var_gnorm: 10.070659637451172
+      vf_explained_var: -0.6143461465835571
+      vf_loss: 0.01403695810586214
+    num_steps_sampled: 17000
+    num_steps_trained: 17000
+    wait_time_ms: 18.654
+  iterations_since_restore: 9
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 60.59771013259888
+  time_this_iter_s: 6.204851150512695
+  time_total_s: 60.59771013259888
+  timestamp: 1549379768
+  timesteps_since_restore: 17000
+  timesteps_this_iter: 2000
+  timesteps_total: 17000
+  training_iteration: 9
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 60 s, 9 iter, 17000 ts, 1.28 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-14
+  done: false
+  episode_len_mean: 248.48837209302326
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.3488372093023255
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 86
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.9
+    dispatch_time_ms: 8.123
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 11.152576446533203
+      policy_entropy: 13.053363800048828
+      policy_loss: -1.6307419538497925
+      var_gnorm: 10.129734992980957
+      vf_explained_var: -1.0
+      vf_loss: 0.38277125358581543
+    num_steps_sampled: 19000
+    num_steps_trained: 19000
+    wait_time_ms: 18.035
+  iterations_since_restore: 10
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 66.80886006355286
+  time_this_iter_s: 6.2111499309539795
+  time_total_s: 66.80886006355286
+  timestamp: 1549379774
+  timesteps_since_restore: 19000
+  timesteps_this_iter: 2000
+  timesteps_total: 19000
+  training_iteration: 10
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 66 s, 10 iter, 19000 ts, 1.35 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-20
+  done: false
+  episode_len_mean: 251.18085106382978
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.3936170212765957
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 94
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.941
+    dispatch_time_ms: 7.541
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 7.958551406860352
+      policy_entropy: 13.401174545288086
+      policy_loss: -1.6655112504959106
+      var_gnorm: 10.175965309143066
+      vf_explained_var: -1.0
+      vf_loss: 0.08360778540372849
+    num_steps_sampled: 21000
+    num_steps_trained: 21000
+    wait_time_ms: 19.996
+  iterations_since_restore: 11
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 73.03607273101807
+  time_this_iter_s: 6.22721266746521
+  time_total_s: 73.03607273101807
+  timestamp: 1549379780
+  timesteps_since_restore: 21000
+  timesteps_this_iter: 2000
+  timesteps_total: 21000
+  training_iteration: 11
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 73 s, 11 iter, 21000 ts, 1.39 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-26
+  done: false
+  episode_len_mean: 255.84
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.45
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 101
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.328
+    dispatch_time_ms: 10.755
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.1164484024047852
+      policy_entropy: 13.41537857055664
+      policy_loss: -0.45423832535743713
+      var_gnorm: 10.215786933898926
+      vf_explained_var: -1.0
+      vf_loss: 0.003798543941229582
+    num_steps_sampled: 23000
+    num_steps_trained: 23000
+    wait_time_ms: 19.5
+  iterations_since_restore: 12
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 79.36559057235718
+  time_this_iter_s: 6.329517841339111
+  time_total_s: 79.36559057235718
+  timestamp: 1549379786
+  timesteps_since_restore: 23000
+  timesteps_this_iter: 2000
+  timesteps_total: 23000
+  training_iteration: 12
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 79 s, 12 iter, 23000 ts, 1.45 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-33
+  done: false
+  episode_len_mean: 257.95
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.47
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 109
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.998
+    dispatch_time_ms: 8.146
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 2.4130730628967285
+      policy_entropy: 13.524396896362305
+      policy_loss: -0.3128981590270996
+      var_gnorm: 10.26143741607666
+      vf_explained_var: -1.0
+      vf_loss: 0.033768877387046814
+    num_steps_sampled: 25000
+    num_steps_trained: 25000
+    wait_time_ms: 18.263
+  iterations_since_restore: 13
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 85.62287068367004
+  time_this_iter_s: 6.257280111312866
+  time_total_s: 85.62287068367004
+  timestamp: 1549379793
+  timesteps_since_restore: 25000
+  timesteps_this_iter: 2000
+  timesteps_total: 25000
+  training_iteration: 13
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 85 s, 13 iter, 25000 ts, 1.47 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-39
+  done: false
+  episode_len_mean: 252.35
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.42
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 117
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.284
+    dispatch_time_ms: 7.38
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.091962814331055
+      policy_entropy: 13.229595184326172
+      policy_loss: 0.49257537722587585
+      var_gnorm: 10.330392837524414
+      vf_explained_var: -1.0
+      vf_loss: 0.013578287325799465
+    num_steps_sampled: 27000
+    num_steps_trained: 27000
+    wait_time_ms: 18.098
+  iterations_since_restore: 14
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 91.77267003059387
+  time_this_iter_s: 6.149799346923828
+  time_total_s: 91.77267003059387
+  timestamp: 1549379799
+  timesteps_since_restore: 27000
+  timesteps_this_iter: 2000
+  timesteps_total: 27000
+  training_iteration: 14
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 91 s, 14 iter, 27000 ts, 1.42 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-45
+  done: false
+  episode_len_mean: 256.54
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.5
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 124
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.283
+    dispatch_time_ms: 8.484
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 14.773300170898438
+      policy_entropy: 11.451122283935547
+      policy_loss: -1.5532679557800293
+      var_gnorm: 10.363895416259766
+      vf_explained_var: -1.0
+      vf_loss: 0.18308819830417633
+    num_steps_sampled: 29000
+    num_steps_trained: 29000
+    wait_time_ms: 17.996
+  iterations_since_restore: 15
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 97.96073198318481
+  time_this_iter_s: 6.188061952590942
+  time_total_s: 97.96073198318481
+  timestamp: 1549379805
+  timesteps_since_restore: 29000
+  timesteps_this_iter: 2000
+  timesteps_total: 29000
+  training_iteration: 15
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.5/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 97 s, 15 iter, 29000 ts, 1.5 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-51
+  done: false
+  episode_len_mean: 260.75
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.57
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 132
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.979
+    dispatch_time_ms: 10.007
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.925276756286621
+      policy_entropy: 12.90890121459961
+      policy_loss: -0.1870768815279007
+      var_gnorm: 10.379693984985352
+      vf_explained_var: -1.0
+      vf_loss: 0.060208383947610855
+    num_steps_sampled: 31000
+    num_steps_trained: 31000
+    wait_time_ms: 19.613
+  iterations_since_restore: 16
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 104.23203349113464
+  time_this_iter_s: 6.271301507949829
+  time_total_s: 104.23203349113464
+  timestamp: 1549379811
+  timesteps_since_restore: 31000
+  timesteps_this_iter: 2000
+  timesteps_total: 31000
+  training_iteration: 16
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 104 s, 16 iter, 31000 ts, 1.57 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-16-58
+  done: false
+  episode_len_mean: 269.04
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.7
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 140
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.809
+    dispatch_time_ms: 8.131
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 15.019972801208496
+      policy_entropy: 13.455794334411621
+      policy_loss: 2.3602349758148193
+      var_gnorm: 10.411676406860352
+      vf_explained_var: 0.14474141597747803
+      vf_loss: 0.5655990242958069
+    num_steps_sampled: 33000
+    num_steps_trained: 33000
+    wait_time_ms: 18.89
+  iterations_since_restore: 17
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 110.627450466156
+  time_this_iter_s: 6.395416975021362
+  time_total_s: 110.627450466156
+  timestamp: 1549379818
+  timesteps_since_restore: 33000
+  timesteps_this_iter: 2000
+  timesteps_total: 33000
+  training_iteration: 17
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 110 s, 17 iter, 33000 ts, 1.7 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-04
+  done: false
+  episode_len_mean: 270.77
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.72
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 147
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.596
+    dispatch_time_ms: 7.487
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.0767669677734375
+      policy_entropy: 13.796210289001465
+      policy_loss: 0.41808775067329407
+      var_gnorm: 10.446915626525879
+      vf_explained_var: -1.0
+      vf_loss: 0.009386572055518627
+    num_steps_sampled: 35000
+    num_steps_trained: 35000
+    wait_time_ms: 18.001
+  iterations_since_restore: 18
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 116.87159132957458
+  time_this_iter_s: 6.244140863418579
+  time_total_s: 116.87159132957458
+  timestamp: 1549379824
+  timesteps_since_restore: 35000
+  timesteps_this_iter: 2000
+  timesteps_total: 35000
+  training_iteration: 18
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 116 s, 18 iter, 35000 ts, 1.72 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-10
+  done: false
+  episode_len_mean: 277.61
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.83
+  episode_reward_min: 0.0
+  episodes_this_iter: 6
+  episodes_total: 153
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.811
+    dispatch_time_ms: 8.255
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 6.878802299499512
+      policy_entropy: 11.8614501953125
+      policy_loss: -1.0941332578659058
+      var_gnorm: 10.478891372680664
+      vf_explained_var: 0.6505130529403687
+      vf_loss: 0.28647342324256897
+    num_steps_sampled: 37000
+    num_steps_trained: 37000
+    wait_time_ms: 19.041
+  iterations_since_restore: 19
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 123.1133987903595
+  time_this_iter_s: 6.241807460784912
+  time_total_s: 123.1133987903595
+  timestamp: 1549379830
+  timesteps_since_restore: 37000
+  timesteps_this_iter: 2000
+  timesteps_total: 37000
+  training_iteration: 19
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 123 s, 19 iter, 37000 ts, 1.83 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-16
+  done: false
+  episode_len_mean: 282.62
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.9
+  episode_reward_min: 0.0
+  episodes_this_iter: 9
+  episodes_total: 162
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.002
+    dispatch_time_ms: 7.894
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 8.7639799118042
+      policy_entropy: 13.617446899414062
+      policy_loss: -2.505035400390625
+      var_gnorm: 10.519399642944336
+      vf_explained_var: -1.0
+      vf_loss: 0.30000200867652893
+    num_steps_sampled: 39000
+    num_steps_trained: 39000
+    wait_time_ms: 19.26
+  iterations_since_restore: 20
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 129.32080054283142
+  time_this_iter_s: 6.207401752471924
+  time_total_s: 129.32080054283142
+  timestamp: 1549379836
+  timesteps_since_restore: 39000
+  timesteps_this_iter: 2000
+  timesteps_total: 39000
+  training_iteration: 20
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 129 s, 20 iter, 39000 ts, 1.9 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-23
+  done: false
+  episode_len_mean: 285.22
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.94
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 169
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.916
+    dispatch_time_ms: 7.778
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.884393215179443
+      policy_entropy: 12.293280601501465
+      policy_loss: 0.5101195573806763
+      var_gnorm: 10.555148124694824
+      vf_explained_var: -1.0
+      vf_loss: 0.0645376592874527
+    num_steps_sampled: 41000
+    num_steps_trained: 41000
+    wait_time_ms: 18.726
+  iterations_since_restore: 21
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 135.55148911476135
+  time_this_iter_s: 6.230688571929932
+  time_total_s: 135.55148911476135
+  timestamp: 1549379843
+  timesteps_since_restore: 41000
+  timesteps_this_iter: 2000
+  timesteps_total: 41000
+  training_iteration: 21
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 135 s, 21 iter, 41000 ts, 1.94 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-29
+  done: false
+  episode_len_mean: 288.35
+  episode_reward_max: 5.0
+  episode_reward_mean: 1.99
+  episode_reward_min: 0.0
+  episodes_this_iter: 9
+  episodes_total: 178
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.682
+    dispatch_time_ms: 8.156
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 0.7943588495254517
+      policy_entropy: 13.736602783203125
+      policy_loss: -0.1034075990319252
+      var_gnorm: 10.571463584899902
+      vf_explained_var: -1.0
+      vf_loss: 0.005122459027916193
+    num_steps_sampled: 43000
+    num_steps_trained: 43000
+    wait_time_ms: 18.508
+  iterations_since_restore: 22
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 141.95659494400024
+  time_this_iter_s: 6.405105829238892
+  time_total_s: 141.95659494400024
+  timestamp: 1549379849
+  timesteps_since_restore: 43000
+  timesteps_this_iter: 2000
+  timesteps_total: 43000
+  training_iteration: 22
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 141 s, 22 iter, 43000 ts, 1.99 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-35
+  done: false
+  episode_len_mean: 288.71
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.01
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 186
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.097
+    dispatch_time_ms: 8.101
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.033941745758057
+      policy_entropy: 12.588088989257812
+      policy_loss: 0.05128303915262222
+      var_gnorm: 10.591278076171875
+      vf_explained_var: -1.0
+      vf_loss: 0.06702156364917755
+    num_steps_sampled: 45000
+    num_steps_trained: 45000
+    wait_time_ms: 18.184
+  iterations_since_restore: 23
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 148.17349243164062
+  time_this_iter_s: 6.216897487640381
+  time_total_s: 148.17349243164062
+  timestamp: 1549379855
+  timesteps_since_restore: 45000
+  timesteps_this_iter: 2000
+  timesteps_total: 45000
+  training_iteration: 23
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 148 s, 23 iter, 45000 ts, 2.01 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-41
+  done: false
+  episode_len_mean: 290.78
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.04
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 193
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.896
+    dispatch_time_ms: 7.292
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 15.016132354736328
+      policy_entropy: 11.243078231811523
+      policy_loss: 5.831789970397949
+      var_gnorm: 10.62065601348877
+      vf_explained_var: -0.6125098466873169
+      vf_loss: 1.970422387123108
+    num_steps_sampled: 47000
+    num_steps_trained: 47000
+    wait_time_ms: 18.97
+  iterations_since_restore: 24
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 154.39412641525269
+  time_this_iter_s: 6.2206339836120605
+  time_total_s: 154.39412641525269
+  timestamp: 1549379861
+  timesteps_since_restore: 47000
+  timesteps_this_iter: 2000
+  timesteps_total: 47000
+  training_iteration: 24
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 154 s, 24 iter, 47000 ts, 2.04 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-48
+  done: false
+  episode_len_mean: 289.27
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.04
+  episode_reward_min: 0.0
+  episodes_this_iter: 6
+  episodes_total: 199
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.486
+    dispatch_time_ms: 8.953
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.6571229696273804
+      policy_entropy: 13.644562721252441
+      policy_loss: -0.588276207447052
+      var_gnorm: 10.644783973693848
+      vf_explained_var: -1.0
+      vf_loss: 0.02601109817624092
+    num_steps_sampled: 49000
+    num_steps_trained: 49000
+    wait_time_ms: 19.624
+  iterations_since_restore: 25
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 160.57219910621643
+  time_this_iter_s: 6.178072690963745
+  time_total_s: 160.57219910621643
+  timestamp: 1549379868
+  timesteps_since_restore: 49000
+  timesteps_this_iter: 2000
+  timesteps_total: 49000
+  training_iteration: 25
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 160 s, 25 iter, 49000 ts, 2.04 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-17-54
+  done: false
+  episode_len_mean: 294.16
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.13
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 207
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.343
+    dispatch_time_ms: 8.146
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 8.43464183807373
+      policy_entropy: 13.495405197143555
+      policy_loss: -1.8506858348846436
+      var_gnorm: 10.683089256286621
+      vf_explained_var: -1.0
+      vf_loss: 0.08710049092769623
+    num_steps_sampled: 51000
+    num_steps_trained: 51000
+    wait_time_ms: 17.465
+  iterations_since_restore: 26
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 166.72057151794434
+  time_this_iter_s: 6.148372411727905
+  time_total_s: 166.72057151794434
+  timestamp: 1549379874
+  timesteps_since_restore: 51000
+  timesteps_this_iter: 2000
+  timesteps_total: 51000
+  training_iteration: 26
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 166 s, 26 iter, 51000 ts, 2.13 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-00
+  done: false
+  episode_len_mean: 292.5
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.08
+  episode_reward_min: 0.0
+  episodes_this_iter: 9
+  episodes_total: 216
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.856
+    dispatch_time_ms: 6.698
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 24.071725845336914
+      policy_entropy: 12.714469909667969
+      policy_loss: 2.648139238357544
+      var_gnorm: 10.725626945495605
+      vf_explained_var: 0.446000874042511
+      vf_loss: 0.8022446632385254
+    num_steps_sampled: 53000
+    num_steps_trained: 53000
+    wait_time_ms: 20.521
+  iterations_since_restore: 27
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 173.0302677154541
+  time_this_iter_s: 6.309696197509766
+  time_total_s: 173.0302677154541
+  timestamp: 1549379880
+  timesteps_since_restore: 53000
+  timesteps_this_iter: 2000
+  timesteps_total: 53000
+  training_iteration: 27
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 173 s, 27 iter, 53000 ts, 2.08 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-06
+  done: false
+  episode_len_mean: 295.75
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.12
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 223
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.335
+    dispatch_time_ms: 7.96
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 6.370528697967529
+      policy_entropy: 13.451681137084961
+      policy_loss: 2.019946813583374
+      var_gnorm: 10.762248039245605
+      vf_explained_var: -1.0
+      vf_loss: 0.11101424694061279
+    num_steps_sampled: 55000
+    num_steps_trained: 55000
+    wait_time_ms: 18.208
+  iterations_since_restore: 28
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 179.15906977653503
+  time_this_iter_s: 6.128802061080933
+  time_total_s: 179.15906977653503
+  timestamp: 1549379886
+  timesteps_since_restore: 55000
+  timesteps_this_iter: 2000
+  timesteps_total: 55000
+  training_iteration: 28
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 179 s, 28 iter, 55000 ts, 2.12 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-12
+  done: false
+  episode_len_mean: 296.02
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.12
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 231
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.061
+    dispatch_time_ms: 8.474
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.9005489349365234
+      policy_entropy: 12.428869247436523
+      policy_loss: -0.5725376009941101
+      var_gnorm: 10.80565071105957
+      vf_explained_var: -1.0
+      vf_loss: 0.013762081041932106
+    num_steps_sampled: 57000
+    num_steps_trained: 57000
+    wait_time_ms: 17.526
+  iterations_since_restore: 29
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 185.32964444160461
+  time_this_iter_s: 6.17057466506958
+  time_total_s: 185.32964444160461
+  timestamp: 1549379892
+  timesteps_since_restore: 57000
+  timesteps_this_iter: 2000
+  timesteps_total: 57000
+  training_iteration: 29
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 185 s, 29 iter, 57000 ts, 2.12 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-19
+  done: false
+  episode_len_mean: 292.61
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.04
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 239
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.068
+    dispatch_time_ms: 8.064
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 21.864246368408203
+      policy_entropy: 12.698193550109863
+      policy_loss: 3.3600568771362305
+      var_gnorm: 10.83791732788086
+      vf_explained_var: -1.0
+      vf_loss: 0.5250324010848999
+    num_steps_sampled: 59000
+    num_steps_trained: 59000
+    wait_time_ms: 18.655
+  iterations_since_restore: 30
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 191.59114170074463
+  time_this_iter_s: 6.261497259140015
+  time_total_s: 191.59114170074463
+  timestamp: 1549379899
+  timesteps_since_restore: 59000
+  timesteps_this_iter: 2000
+  timesteps_total: 59000
+  training_iteration: 30
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 191 s, 30 iter, 59000 ts, 2.04 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-25
+  done: false
+  episode_len_mean: 296.13
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.09
+  episode_reward_min: 0.0
+  episodes_this_iter: 6
+  episodes_total: 245
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.002
+    dispatch_time_ms: 7.477
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 7.805148601531982
+      policy_entropy: 13.332584381103516
+      policy_loss: -0.7200533151626587
+      var_gnorm: 10.88393497467041
+      vf_explained_var: -1.0
+      vf_loss: 0.09227750450372696
+    num_steps_sampled: 61000
+    num_steps_trained: 61000
+    wait_time_ms: 20.36
+  iterations_since_restore: 31
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 197.7990746498108
+  time_this_iter_s: 6.207932949066162
+  time_total_s: 197.7990746498108
+  timestamp: 1549379905
+  timesteps_since_restore: 61000
+  timesteps_this_iter: 2000
+  timesteps_total: 61000
+  training_iteration: 31
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 197 s, 31 iter, 61000 ts, 2.09 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-31
+  done: false
+  episode_len_mean: 295.05
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.07
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 252
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.845
+    dispatch_time_ms: 8.405
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 2.363051652908325
+      policy_entropy: 13.674263000488281
+      policy_loss: -0.5436121821403503
+      var_gnorm: 10.92503547668457
+      vf_explained_var: -1.0
+      vf_loss: 0.00812860019505024
+    num_steps_sampled: 63000
+    num_steps_trained: 63000
+    wait_time_ms: 18.837
+  iterations_since_restore: 32
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 204.2024040222168
+  time_this_iter_s: 6.403329372406006
+  time_total_s: 204.2024040222168
+  timestamp: 1549379911
+  timesteps_since_restore: 63000
+  timesteps_this_iter: 2000
+  timesteps_total: 63000
+  training_iteration: 32
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 204 s, 32 iter, 63000 ts, 2.07 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-37
+  done: false
+  episode_len_mean: 294.22
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.06
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 260
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.198
+    dispatch_time_ms: 7.41
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 3.189178705215454
+      policy_entropy: 11.03653335571289
+      policy_loss: 0.49009162187576294
+      var_gnorm: 10.954148292541504
+      vf_explained_var: -1.0
+      vf_loss: 0.03402838855981827
+    num_steps_sampled: 65000
+    num_steps_trained: 65000
+    wait_time_ms: 19.051
+  iterations_since_restore: 33
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 210.41935682296753
+  time_this_iter_s: 6.216952800750732
+  time_total_s: 210.41935682296753
+  timestamp: 1549379917
+  timesteps_since_restore: 65000
+  timesteps_this_iter: 2000
+  timesteps_total: 65000
+  training_iteration: 33
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 210 s, 33 iter, 65000 ts, 2.06 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-44
+  done: false
+  episode_len_mean: 295.0
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.07
+  episode_reward_min: 0.0
+  episodes_this_iter: 6
+  episodes_total: 266
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.789
+    dispatch_time_ms: 7.912
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 3.665294885635376
+      policy_entropy: 13.66514778137207
+      policy_loss: 0.6203790307044983
+      var_gnorm: 10.975326538085938
+      vf_explained_var: -1.0
+      vf_loss: 0.030493753030896187
+    num_steps_sampled: 67000
+    num_steps_trained: 67000
+    wait_time_ms: 18.985
+  iterations_since_restore: 34
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 216.66680335998535
+  time_this_iter_s: 6.247446537017822
+  time_total_s: 216.66680335998535
+  timestamp: 1549379924
+  timesteps_since_restore: 67000
+  timesteps_this_iter: 2000
+  timesteps_total: 67000
+  training_iteration: 34
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 216 s, 34 iter, 67000 ts, 2.07 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-50
+  done: false
+  episode_len_mean: 297.75
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.11
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 274
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.934
+    dispatch_time_ms: 8.606
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 10.593775749206543
+      policy_entropy: 10.342962265014648
+      policy_loss: 1.7424485683441162
+      var_gnorm: 10.982335090637207
+      vf_explained_var: -1.0
+      vf_loss: 0.173239603638649
+    num_steps_sampled: 69000
+    num_steps_trained: 69000
+    wait_time_ms: 17.852
+  iterations_since_restore: 35
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 222.893705368042
+  time_this_iter_s: 6.226902008056641
+  time_total_s: 222.893705368042
+  timestamp: 1549379930
+  timesteps_since_restore: 69000
+  timesteps_this_iter: 2000
+  timesteps_total: 69000
+  training_iteration: 35
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 222 s, 35 iter, 69000 ts, 2.11 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-18-56
+  done: false
+  episode_len_mean: 298.43
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.12
+  episode_reward_min: 0.0
+  episodes_this_iter: 8
+  episodes_total: 282
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 5.398
+    dispatch_time_ms: 9.662
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.6062023639678955
+      policy_entropy: 13.266530990600586
+      policy_loss: -0.16882823407649994
+      var_gnorm: 11.014791488647461
+      vf_explained_var: -1.0
+      vf_loss: 0.008226783946156502
+    num_steps_sampled: 71000
+    num_steps_trained: 71000
+    wait_time_ms: 18.594
+  iterations_since_restore: 36
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 229.23709988594055
+  time_this_iter_s: 6.34339451789856
+  time_total_s: 229.23709988594055
+  timestamp: 1549379936
+  timesteps_since_restore: 71000
+  timesteps_this_iter: 2000
+  timesteps_total: 71000
+  training_iteration: 36
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 229 s, 36 iter, 71000 ts, 2.12 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-19-03
+  done: false
+  episode_len_mean: 299.53
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.15
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 289
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 3.987
+    dispatch_time_ms: 7.315
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 4.887179851531982
+      policy_entropy: 10.349294662475586
+      policy_loss: -0.5451287031173706
+      var_gnorm: 11.03513240814209
+      vf_explained_var: 0.9653298258781433
+      vf_loss: 0.03614359721541405
+    num_steps_sampled: 73000
+    num_steps_trained: 73000
+    wait_time_ms: 19.059
+  iterations_since_restore: 37
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 235.5261116027832
+  time_this_iter_s: 6.289011716842651
+  time_total_s: 235.5261116027832
+  timestamp: 1549379943
+  timesteps_since_restore: 73000
+  timesteps_this_iter: 2000
+  timesteps_total: 73000
+  training_iteration: 37
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 235 s, 37 iter, 73000 ts, 2.15 rew
+
+Result for A3C_Breakout-v0_0:
+  custom_metrics: {}
+  date: 2019-02-05_16-19-09
+  done: false
+  episode_len_mean: 301.25
+  episode_reward_max: 5.0
+  episode_reward_mean: 2.17
+  episode_reward_min: 0.0
+  episodes_this_iter: 7
+  episodes_total: 296
+  experiment_id: 96dafced33074d82b67741b57d84eab8
+  hostname: gtigpu
+  info:
+    apply_time_ms: 4.275
+    dispatch_time_ms: 8.332
+    learner:
+      cur_lr: 9.999999747378752e-05
+      grad_gnorm: 1.467620611190796
+      policy_entropy: 13.73098373413086
+      policy_loss: 0.32791584730148315
+      var_gnorm: 11.056096076965332
+      vf_explained_var: -1.0
+      vf_loss: 0.007662669755518436
+    num_steps_sampled: 75000
+    num_steps_trained: 75000
+    wait_time_ms: 20.611
+  iterations_since_restore: 38
+  node_ip: 10.10.10.8
+  num_metric_batches_dropped: 0
+  pid: 28250
+  policy_reward_mean: {}
+  time_since_restore: 241.74008059501648
+  time_this_iter_s: 6.213968992233276
+  time_total_s: 241.74008059501648
+  timestamp: 1549379949
+  timesteps_since_restore: 75000
+  timesteps_this_iter: 2000
+  timesteps_total: 75000
+  training_iteration: 38
+  
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 3/4 CPUs, 0/1 GPUs
+Memory usage on this node: 7.6/16.7 GB
+Result logdir: /home/adrian/ray_results/default
+RUNNING trials:
+ - A3C_Breakout-v0_0:	RUNNING [pid=28250], 241 s, 38 iter, 75000 ts, 2.17 rew
+

@@ -1,0 +1,40 @@
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_18-55-12_20555/logs.
+Waiting for redis server at 127.0.0.1:22870 to respond...
+Waiting for redis server at 127.0.0.1:60402 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=59fc9630bc97c2fc6c090d99abbc78b83d8d254f5405c943
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 4.3/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_18-55-17dlh5ihws -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 4.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+RUNNING trials:
+ - PPO_Breakout-v0_0:	RUNNING
+
+2019-02-04 18:55:22,975	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 18:55:23.157294: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:23.227828: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 18:55:23.228281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.48GiB
+2019-02-04 18:55:23.228301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 18:55:23.461252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 18:55:23.461289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 18:55:23.461299: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 18:55:23.461531: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11104 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 18:55:24,369	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']

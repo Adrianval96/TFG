@@ -1,6 +1,6 @@
 import sys
 import argparse
-import tqdm
+#import tqdm
 from time import sleep
 
 import ray
@@ -26,12 +26,10 @@ def __main__():
     if not ray.is_initialized():
         ray.init()
         
-    #run_tune_algo()
-    run_PPO()   
+    run_tune_algo(args.algo, args.env, args.stop, args.gpus, args.w)
+    #run_PPO()   
         
     
-    
-
 def run_tune_algo():
     tune.run_experiments({
         "my_experiment": {
@@ -41,8 +39,23 @@ def run_tune_algo():
             "config": {
                 "num_gpus": args.gpus,
                 "num_workers": args.w,
-                #"lr": tune.grid_search([0.01, 0.001, 0.0001]),
-                "lr": 0.01,
+                "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+                #"lr": 0.01,
+            },
+        },
+    })
+    
+def run_tune_algo(algo, env, stop, gpus, w):
+    tune.run_experiments({
+        "my_experiment": {
+            "run": algo,
+            "env": env,
+            "stop": stop,
+            "config": {
+                "num_gpus": gpus,
+                "num_workers": w,
+                "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+                #"lr": 0.01,
             },
         },
     })
@@ -75,6 +88,11 @@ def run_A3C():
         },
     },
 })
+    
+#Metodo para cuando meta algun parametro en plan testear todos los algoritmos
+#La idea es ejecutar cada algoritmo en serie, o bien en paralelo cada uno con un worker, con el resto de parametros establecidos.
+def algo_testing():
+    
     
 if __name__ == "__main__":
     __main__()

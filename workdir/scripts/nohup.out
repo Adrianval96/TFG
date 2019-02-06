@@ -1,0 +1,1562 @@
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_18-55-12_20555/logs.
+Waiting for redis server at 127.0.0.1:22870 to respond...
+Waiting for redis server at 127.0.0.1:60402 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=59fc9630bc97c2fc6c090d99abbc78b83d8d254f5405c943
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 4.3/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_18-55-17dlh5ihws -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 4.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+RUNNING trials:
+ - PPO_Breakout-v0_0:	RUNNING
+
+2019-02-04 18:55:22,975	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 18:55:23.157294: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:23.227828: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 18:55:23.228281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.48GiB
+2019-02-04 18:55:23.228301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 18:55:23.461252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 18:55:23.461289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 18:55:23.461299: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 18:55:23.461531: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11104 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 18:55:24,369	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 18:55:32,409	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 18:55:32.410428: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:32.420082: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 18:55:32.420124: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 18:55:32.420132: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 18:55:32.420184: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 18:55:32.420216: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 18:55:32.420223: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 18:55:32,580	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 18:55:32.580882: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:32.601881: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 18:55:32.601953: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 18:55:32.601960: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 18:55:32.602020: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 18:55:32.602053: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 18:55:32.602059: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 18:55:33,185	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 18:55:33.186338: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:33.194602: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 18:55:33.194644: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 18:55:33.194650: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 18:55:33.194692: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 18:55:33.194715: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 18:55:33.194721: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 18:55:33,270	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 18:55:33.270904: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 18:55:33.301865: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 18:55:33.301934: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 18:55:33.301941: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 18:55:33.301998: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 18:55:33.302038: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 18:55:33.302045: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_18-55-17dlh5ihws
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.8/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_18-55-17dlh5ihws/error_2019-02-04_18-56-05.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.8/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_18-55-17dlh5ihws/error_2019-02-04_18-56-05.txt
+
+Namespace(algo='PPO', env='Breakout-v0', gpus=1, stop='{"time_total_s":43200, "episode_reward_mean":140}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 43, in run_tune_algo
+    "lr": 0.01,
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [PPO_Breakout-v0_0])
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_18-58-25_21210/logs.
+Waiting for redis server at 127.0.0.1:11803 to respond...
+Waiting for redis server at 127.0.0.1:19926 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=69951efe131b5ceced6fc0fbefc408ac267a4131f9559970
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 4.5/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_FlappyBird-v0_0_2019-02-04_18-58-31o062qgi9 -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 5.0/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+RUNNING trials:
+ - PPO_FlappyBird-v0_0:	RUNNING
+
+2019-02-04 18:58:36,434	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 261, in _process_events
+    result = self.trial_executor.fetch_result(trial)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/ray_trial_executor.py", line 211, in fetch_result
+    result = ray.get(trial_future[0])
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/worker.py", line 2386, in get
+    raise value
+ray.worker.RayTaskError: [36mray_PPOAgent:train()[39m (pid=21236, host=gtigpu)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py", line 143, in spec
+    return self.env_specs[id]
+KeyError: 'FlappyBird-v0'
+
+During handling of the above exception, another exception occurred:
+
+[36mray_PPOAgent:train()[39m (pid=21236, host=gtigpu)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/agent.py", line 244, in __init__
+    Trainable.__init__(self, config, logger_creator)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trainable.py", line 87, in __init__
+    self._setup(copy.deepcopy(self.config))
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/agent.py", line 312, in _setup
+    self._init()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/ppo/ppo.py", line 75, in _init
+    self.env_creator, self._policy_graph)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/agent.py", line 413, in make_local_evaluator
+    config["local_evaluator_tf_session_args"]
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/agent.py", line 533, in _make_evaluator
+    output_creator=output_creator)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/evaluation/policy_evaluator.py", line 217, in __init__
+    self.env = env_creator(env_context)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/agents/agent.py", line 296, in <lambda>
+    self.env_creator = lambda env_config: gym.make(env)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py", line 167, in make
+    return registry.make(id)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py", line 118, in make
+    spec = self.spec(id)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py", line 153, in spec
+    raise error.UnregisteredEnv('No registered env with id: {}'.format(id))
+gym.error.UnregisteredEnv: No registered env with id: FlappyBird-v0
+
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_FlappyBird-v0_0_2019-02-04_18-58-31o062qgi9
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.2/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_FlappyBird-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_FlappyBird-v0_0_2019-02-04_18-58-31o062qgi9/error_2019-02-04_18-58-36.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.2/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_FlappyBird-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_FlappyBird-v0_0_2019-02-04_18-58-31o062qgi9/error_2019-02-04_18-58-36.txt
+
+Namespace(algo='PPO', env='FlappyBird-v0', gpus=1, stop='{"time_total_s":7200, "episode_reward_mean":260}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 43, in run_tune_algo
+    "lr": 0.01,
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [PPO_FlappyBird-v0_0])
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_19-01-20_21537/logs.
+Waiting for redis server at 127.0.0.1:25319 to respond...
+Waiting for redis server at 127.0.0.1:60392 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8888/notebooks/ray_ui.ipynb?token=5075459cc608e53d4134f3b13251cf57b9f96f60477c2861
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.1/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-01-24na0mku_4 -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 1.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+RUNNING trials:
+ - PPO_Breakout-v0_0:	RUNNING
+
+2019-02-04 19:01:28,086	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 19:01:28.241959: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:01:28.344250: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 19:01:28.344629: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-04 19:01:28.344644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 19:01:28.533498: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 19:01:28.533534: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 19:01:28.533540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 19:01:28.533698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 19:01:29,273	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:01:34,801	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:01:34.802195: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:01:34.811858: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:01:34.811904: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:01:34.811913: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:01:34.811962: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:01:34.811991: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:01:34.812000: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:01:35,069	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:01:35.069715: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:01:35.077691: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:01:35.077742: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:01:35.077749: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:01:35.077801: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:01:35.077841: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:01:35.077850: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:01:35,268	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:01:35.268705: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:01:35.276518: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:01:35.276562: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:01:35.276569: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:01:35.276614: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:01:35.276637: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:01:35.276643: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:01:35,512	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:01:35.513139: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:01:35.521122: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:01:35.521169: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:01:35.521176: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:01:35.521227: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:01:35.521249: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:01:35.521256: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-01-24na0mku_4
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-01-24na0mku_4/error_2019-02-04_19-02-00.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-01-24na0mku_4/error_2019-02-04_19-02-00.txt
+
+Namespace(algo='PPO', env='Breakout-v0', gpus=1, stop='{"time_total_s":43200, "episode_reward_mean":140}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 43, in run_tune_algo
+    "lr": 0.01,
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [PPO_Breakout-v0_0])
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_19-42-53_21960/logs.
+Waiting for redis server at 127.0.0.1:46985 to respond...
+Waiting for redis server at 127.0.0.1:26063 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8888/notebooks/ray_ui.ipynb?token=171622852ad2917f10e1fe06f822ff53e2e3dea0083de7ee
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.1/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-42-56xtw7dajs -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 1.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+RUNNING trials:
+ - PPO_Breakout-v0_0:	RUNNING
+
+2019-02-04 19:43:00,583	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 19:43:00.740144: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:43:00.841513: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 19:43:00.841906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-04 19:43:00.841921: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 19:43:01.030864: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 19:43:01.030900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 19:43:01.030905: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 19:43:01.031061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 19:43:01,786	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:43:07,089	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:43:07.090273: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:43:07.099662: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:43:07.099714: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:43:07.099723: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:43:07.099773: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:43:07.099800: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:43:07.099817: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:43:07,265	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:43:07.265904: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:43:07.286353: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:43:07.286416: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:43:07.286426: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:43:07.286501: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:43:07.286534: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:43:07.286540: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:43:07,602	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:43:07.602933: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:43:07.612030: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:43:07.612087: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:43:07.612095: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:43:07.612157: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:43:07.612185: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:43:07.612193: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:43:07,957	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:43:07.958398: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:43:07.967271: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:43:07.967330: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:43:07.967339: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:43:07.967399: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:43:07.967429: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:43:07.967445: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-42-56xtw7dajs
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-42-56xtw7dajs/error_2019-02-04_19-43-34.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_2019-02-04_19-42-56xtw7dajs/error_2019-02-04_19-43-34.txt
+
+Namespace(algo='PPO', env='Breakout-v0', gpus=1, stop='{"time_total_s":43200, "episode_reward_mean":140}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 43, in run_tune_algo
+    "lr": 0.01,
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [PPO_Breakout-v0_0])
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-04_19-45-01_22344/logs.
+Waiting for redis server at 127.0.0.1:43977 to respond...
+Waiting for redis server at 127.0.0.1:18345 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8888/notebooks/ray_ui.ipynb?token=d3ae0e932cdb1b14b7bc6c5bc7de3c81d4633067b6d283a1
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.1/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 1.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+PENDING trials:
+ - PPO_Breakout-v0_1_lr=0.001:	PENDING
+ - PPO_Breakout-v0_2_lr=0.0001:	PENDING
+RUNNING trials:
+ - PPO_Breakout-v0_0_lr=0.01:	RUNNING
+
+2019-02-04 19:45:08,938	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 19:45:09.093614: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:09.198674: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 19:45:09.201666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-04 19:45:09.201682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 19:45:09.391749: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 19:45:09.391790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 19:45:09.391796: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 19:45:09.391957: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 19:45:10,139	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:15,457	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:15.457679: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:15.464076: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:15.464114: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:15.464120: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:15.464162: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:15.464182: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:15.464187: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:15,496	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:15.497489: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:15.507302: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:15.507354: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:15.507365: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:15.507415: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:15.507444: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:15.507454: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:16,078	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:16.079327: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:16.088910: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:16.088960: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:16.088972: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:16.089018: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:16.089048: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:16.089058: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:16,253	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:16.253749: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:16.263193: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:16.263242: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:16.263251: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:16.263304: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:16.263332: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:16.263341: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh/error_2019-02-04_19-45-41.txt
+PENDING trials:
+ - PPO_Breakout-v0_1_lr=0.001:	PENDING
+ - PPO_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_1_lr=0.001_2019-02-04_19-45-41tjssdxyr -> 
+2019-02-04 19:45:41,911	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 19:45:42.215193: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:42.408519: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 19:45:42.409045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 10.34GiB
+2019-02-04 19:45:42.409087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 19:45:42.681206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 19:45:42.681243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 19:45:42.681250: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 19:45:42.681411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10000 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 19:45:43,428	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:43,625	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:43.625669: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:43.633708: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:43.633754: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:43.633761: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:43.633808: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:43.633836: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:43.633844: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:43,744	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:43.750215: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:43.760549: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:43.760605: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:43.760617: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:43.760673: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:43.760704: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:43.760714: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:50,684	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:50.685249: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:50.721896: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:50.721964: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:50.721972: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:50.722034: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:50.722060: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:50.722067: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:45:52,393	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:45:52.393749: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:45:52.402125: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:45:52.402169: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:45:52.402176: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:45:52.402228: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:45:52.402251: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:45:52.402257: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_1_lr=0.001_2019-02-04_19-45-41tjssdxyr
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 6.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh/error_2019-02-04_19-45-41.txt
+ - PPO_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_1_lr=0.001_2019-02-04_19-45-41tjssdxyr/error_2019-02-04_19-46-12.txt
+PENDING trials:
+ - PPO_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_2_lr=0.0001_2019-02-04_19-46-126if3fklp -> 
+2019-02-04 19:46:12,999	WARNING ppo.py:137 -- By default, observations will be normalized with MeanStdFilter
+2019-02-04 19:46:13.295765: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:46:13.488269: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-04 19:46:13.488816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 10.34GiB
+2019-02-04 19:46:13.488857: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-04 19:46:13.748834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-04 19:46:13.748871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-04 19:46:13.748876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-04 19:46:13.749047: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10000 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2019-02-04 19:46:14,496	INFO multi_gpu_optimizer.py:74 -- LocalMultiGPUOptimizer devices ['/gpu:0']
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:46:14,693	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:46:14.693694: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:46:14.701304: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:46:14.701358: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:46:14.701365: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:46:14.701408: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:46:14.701430: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:46:14.701436: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:46:14,750	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:46:14.750885: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:46:14,772	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:46:14.772723: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:46:14.779463: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:46:14.779516: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:46:14.779527: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:46:14.779593: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:46:14.779624: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:46:14.779633: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-04 19:46:14.792873: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:46:14.792919: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:46:14.792925: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:46:14.792968: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:46:14.792989: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:46:14.792995: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-04 19:46:19,381	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-04 19:46:19.381765: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-04 19:46:19.389599: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-04 19:46:19.389637: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-04 19:46:19.389643: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-04 19:46:19.389682: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-04 19:46:19.389703: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-04 19:46:19.389709: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_2_lr=0.0001_2019-02-04_19-46-126if3fklp
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 7.0/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh/error_2019-02-04_19-45-41.txt
+ - PPO_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_1_lr=0.001_2019-02-04_19-45-41tjssdxyr/error_2019-02-04_19-46-12.txt
+ - PPO_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_2_lr=0.0001_2019-02-04_19-46-126if3fklp/error_2019-02-04_19-46-40.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 7.0/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - PPO_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_0_lr=0.01_2019-02-04_19-45-05fpgh6rwh/error_2019-02-04_19-45-41.txt
+ - PPO_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_1_lr=0.001_2019-02-04_19-45-41tjssdxyr/error_2019-02-04_19-46-12.txt
+ - PPO_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/PPO_Breakout-v0_2_lr=0.0001_2019-02-04_19-46-126if3fklp/error_2019-02-04_19-46-40.txt
+
+Namespace(algo='PPO', env='Breakout-v0', gpus=1, stop='{"time_total_s":14400, "episode_reward_mean":140}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 42, in run_tune_algo
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [PPO_Breakout-v0_0_lr=0.01, PPO_Breakout-v0_1_lr=0.001, PPO_Breakout-v0_2_lr=0.0001])
+usage: rllib train [-h] [--run RUN] [--stop STOP] [--config CONFIG]
+                   [--resources-per-trial RESOURCES_PER_TRIAL] [--num-samples NUM_SAMPLES]
+                   [--local-dir LOCAL_DIR] [--upload-dir UPLOAD_DIR]
+                   [--trial-name-creator TRIAL_NAME_CREATOR] [--sync-function SYNC_FUNCTION]
+                   [--custom-loggers CUSTOM_LOGGERS] [--checkpoint-freq CHECKPOINT_FREQ]
+                   [--checkpoint-at-end] [--max-failures MAX_FAILURES] [--scheduler SCHEDULER]
+                   [--scheduler-config SCHEDULER_CONFIG] [--restore RESTORE] [--redis-address REDIS_ADDRESS]
+                   [--ray-num-cpus RAY_NUM_CPUS] [--ray-num-gpus RAY_NUM_GPUS]
+                   [--ray-num-local-schedulers RAY_NUM_LOCAL_SCHEDULERS]
+                   [--ray-redis-max-memory RAY_REDIS_MAX_MEMORY]
+                   [--ray-object-store-memory RAY_OBJECT_STORE_MEMORY] [--experiment-name EXPERIMENT_NAME]
+                   [--env ENV] [--queue-trials] [-f CONFIG_FILE]
+
+Train a reinforcement learning agent.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --run RUN             The algorithm or model to train. This may refer to the name of a built-on algorithm
+                        (e.g. RLLib's DQN or PPO), or a user-defined trainable function or class registered
+                        in the tune registry.
+  --stop STOP           The stopping criteria, specified in JSON. The keys may be any field returned by
+                        'train()' e.g. '{"time_total_s": 600, "training_iteration": 100000}' to stop after
+                        600 seconds or 100k iterations, whichever is reached first.
+  --config CONFIG       Algorithm-specific configuration (e.g. env, hyperparams), specified in JSON.
+  --resources-per-trial RESOURCES_PER_TRIAL
+                        Override the machine resources to allocate per trial, e.g. '{"cpu": 64, "gpu": 8}'.
+                        Note that GPUs will not be assigned unless you specify them here. For RLlib, you
+                        probably want to leave this alone and use RLlib configs to control parallelism.
+  --num-samples NUM_SAMPLES
+                        Number of times to repeat each trial.
+  --local-dir LOCAL_DIR
+                        Local dir to save training results to. Defaults to '/home/adrian/ray_results'.
+  --upload-dir UPLOAD_DIR
+                        Optional URI to sync training results to (e.g. s3://bucket).
+  --trial-name-creator TRIAL_NAME_CREATOR
+                        Optional creator function for the trial string, used in generating a trial
+                        directory.
+  --sync-function SYNC_FUNCTION
+                        Function for syncing the local_dir to upload_dir. If string, then it must be a
+                        string template for syncer to run and needs to include replacement fields
+                        '{local_dir}' and '{remote_dir}'.
+  --custom-loggers CUSTOM_LOGGERS
+                        List of custom logger creators to be used with each Trial.
+  --checkpoint-freq CHECKPOINT_FREQ
+                        How many training iterations between checkpoints. A value of 0 (default) disables
+                        checkpointing.
+  --checkpoint-at-end   Whether to checkpoint at the end of the experiment. Default is False.
+  --max-failures MAX_FAILURES
+                        Try to recover a trial from its last checkpoint at least this many times. Only
+                        applies if checkpointing is enabled.
+  --scheduler SCHEDULER
+                        FIFO (default), MedianStopping, AsyncHyperBand, HyperBand, or HyperOpt.
+  --scheduler-config SCHEDULER_CONFIG
+                        Config options to pass to the scheduler.
+  --restore RESTORE     If specified, restore from this checkpoint.
+  --redis-address REDIS_ADDRESS
+                        Connect to an existing Ray cluster at this address instead of starting a new one.
+  --ray-num-cpus RAY_NUM_CPUS
+                        --num-cpus to use if starting a new cluster.
+  --ray-num-gpus RAY_NUM_GPUS
+                        --num-gpus to use if starting a new cluster.
+  --ray-num-local-schedulers RAY_NUM_LOCAL_SCHEDULERS
+                        Emulate multiple cluster nodes for debugging.
+  --ray-redis-max-memory RAY_REDIS_MAX_MEMORY
+                        --redis-max-memory to use if starting a new cluster.
+  --ray-object-store-memory RAY_OBJECT_STORE_MEMORY
+                        --object-store-memory to use if starting a new cluster.
+  --experiment-name EXPERIMENT_NAME
+                        Name of the subdirectory under `local_dir` to put results in.
+  --env ENV             The gym environment to use.
+  --queue-trials        Whether to queue trials when the cluster does not currently have enough resources to
+                        launch one. This should be set to True when running on an autoscaling cluster to
+                        enable automatic scale-up.
+  -f CONFIG_FILE, --config-file CONFIG_FILE
+                        If specified, use config options from this file. Note that this overrides any trial-
+                        specific options set via flags above.
+
+Training example via RLlib CLI:
+    rllib train --run DQN --env CartPole-v0
+
+Grid search example via RLlib CLI:
+    rllib train -f tuned_examples/cartpole-grid-search-example.yaml
+
+Grid search example via executable:
+    ./train.py -f tuned_examples/cartpole-grid-search-example.yaml
+
+Note that -f overrides all other trial-specific command-line options.
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-05_15-54-41_25934/logs.
+Waiting for redis server at 127.0.0.1:20959 to respond...
+Waiting for redis server at 127.0.0.1:64669 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=158c9f209bb7cfbe60057a70b80c9d4904a6aa4d4deb27ff
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6 -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 2.3/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+PENDING trials:
+ - A3C_Breakout-v0_1_lr=0.001:	PENDING
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+RUNNING trials:
+ - A3C_Breakout-v0_0_lr=0.01:	RUNNING
+
+2019-02-05 15:54:49.505566: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:54:49.612468: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 15:54:49.612879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-05 15:54:49.612893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 15:54:49.802973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 15:54:49.803009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 15:54:49.803015: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 15:54:49.803170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:54:55,224	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:54:55.225709: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:54:55.240468: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:54:55.240617: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:54:55.240643: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:54:55.240792: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:54:55.240853: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:54:55.240865: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:54:55,514	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:54:55.514917: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:54:55.522607: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:54:55.522651: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:54:55.522658: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:54:55.522707: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:54:55.522729: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:54:55.522735: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:54:55,703	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:54:55.704235: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:54:55.716573: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:54:55.716631: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:54:55.716643: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:54:55.716706: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:54:55.716738: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:54:55.716748: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:54:55,792	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:54:55.792704: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:54:55.800580: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:54:55.800619: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:54:55.800626: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:54:55.800666: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:54:55.800687: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:54:55.800693: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6/error_2019-02-05_15-55-00.txt
+PENDING trials:
+ - A3C_Breakout-v0_1_lr=0.001:	PENDING
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_15-55-00iqwbbtfw -> 
+2019-02-05 15:55:04.110436: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:04.191323: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 15:55:04.191702: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-05 15:55:04.191717: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 15:55:04.380785: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 15:55:04.380821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 15:55:04.380827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 15:55:04.380985: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:05,120	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:05.121142: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:05,136	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:05.136799: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:05.153325: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:05.153374: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:05.153383: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:05.153444: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:05.153480: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:05.153488: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-05 15:55:05.153906: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:05.153943: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:05.153950: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:05.154013: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:05.154035: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:05.154041: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:24,249	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:24.250475: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:24.276322: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:24.276370: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:24.276379: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:24.276440: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:24.276466: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:24.276474: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:24,420	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:24.421477: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:24.455559: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:24.455630: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:24.455641: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:24.455709: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:24.455739: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:24.455746: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_15-55-00iqwbbtfw
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.1/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6/error_2019-02-05_15-55-00.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_15-55-00iqwbbtfw/error_2019-02-05_15-55-25.txt
+PENDING trials:
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_15-55-25ljgq_7_h -> 
+2019-02-05 15:55:25.526244: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:25.739797: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 15:55:25.740381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.25GiB
+2019-02-05 15:55:25.740431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 15:55:25.990836: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 15:55:25.990873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 15:55:25.990879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 15:55:25.991040: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:26,660	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:26.660963: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:26,671	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:26.671907: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:26,676	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:26.676625: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:26.685852: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:26.685884: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:26.685891: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:26.685936: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:26.685958: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:26.685965: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 15:55:26,696	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 15:55:26.696741: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 15:55:26.745153: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:26.745207: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:26.745216: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:26.745279: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:26.745310: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:26.745319: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-05 15:55:26.755631: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:26.755684: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 15:55:26.755698: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:26.755705: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:26.755719: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 15:55:26.755725: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 15:55:26.755762: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:26.755778: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 15:55:26.755790: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:26.755796: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-05 15:55:26.755801: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 15:55:26.755807: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_15-55-25ljgq_7_h
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.9/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6/error_2019-02-05_15-55-00.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_15-55-00iqwbbtfw/error_2019-02-05_15-55-25.txt
+ - A3C_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_15-55-25ljgq_7_h/error_2019-02-05_15-55-33.txt
+
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.9/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_15-54-450ulnotm6/error_2019-02-05_15-55-00.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_15-55-00iqwbbtfw/error_2019-02-05_15-55-25.txt
+ - A3C_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_15-55-25ljgq_7_h/error_2019-02-05_15-55-33.txt
+
+Namespace(algo='A3C', env='Breakout-v0', gpus=1, stop='{"time_total_s":43200}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 42, in run_tune_algo
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [A3C_Breakout-v0_0_lr=0.01, A3C_Breakout-v0_1_lr=0.001, A3C_Breakout-v0_2_lr=0.0001])
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-05_16-02-18_26910/logs.
+Waiting for redis server at 127.0.0.1:44683 to respond...
+Waiting for redis server at 127.0.0.1:40219 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=a11891e2addf9a8b301abbb2a370b074bac975e96e6e601e
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+
+usage: custom_learning.py [-h] [--run RUN] [--stop STOP] [--config CONFIG]
+                          [--resources-per-trial RESOURCES_PER_TRIAL] [--num-samples NUM_SAMPLES]
+                          [--local-dir LOCAL_DIR] [--upload-dir UPLOAD_DIR]
+                          [--trial-name-creator TRIAL_NAME_CREATOR] [--sync-function SYNC_FUNCTION]
+                          [--custom-loggers CUSTOM_LOGGERS] [--checkpoint-freq CHECKPOINT_FREQ]
+                          [--checkpoint-at-end] [--max-failures MAX_FAILURES] [--scheduler SCHEDULER]
+                          [--scheduler-config SCHEDULER_CONFIG] [--restore RESTORE]
+custom_learning.py: error: argument --stop: invalid loads value: "{'time_total_s':43200}"
+Namespace(algo='A3C', env='Breakout-v0', gpus=1, stop="{'time_total_s':43200}", w=4)
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2294, in _get_value
+    result = type_func(arg_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1766, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1972, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1912, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1824, in take_action
+    argument_values = self._get_values(action, argument_strings)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2265, in _get_values
+    value = self._get_value(action, arg_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2307, in _get_value
+    raise ArgumentError(action, msg % args)
+argparse.ArgumentError: argument --stop: invalid loads value: "{'time_total_s':43200}"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 197, in create_trial_from_spec
+    args = parser.parse_args(to_argv(spec))
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1734, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1773, in parse_known_args
+    self.error(str(err))
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2393, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2380, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 42, in run_tune_algo
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 108, in run_experiments
+    runner.step()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 114, in step
+    next_trial = self._get_next_trial()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 254, in _get_next_trial
+    self._update_trial_queue(blocking=wait_for_trial)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 364, in _update_trial_queue
+    trials = self._search_alg.next_trials()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 50, in next_trials
+    trials = list(self._trial_generator)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 78, in _generate_trials
+    experiment_tag=experiment_tag)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 199, in create_trial_from_spec
+    raise TuneError("Error parsing args, see above message", spec)
+ray.tune.error.TuneError: ('Error parsing args, see above message', {'run': 'A3C', 'stop': "{'time_total_s':43200}", 'config': {'num_gpus': 1, 'num_workers': 4, 'lr': 0.01, 'env': 'Breakout-v0'}, 'resources_per_trial': None, 'num_samples': 1, 'local_dir': '/home/adrian/ray_results', 'upload_dir': '', 'trial_name_creator': None, 'custom_loggers': None, 'sync_function': '', 'checkpoint_freq': 0, 'checkpoint_at_end': False, 'max_failures': 3, 'restore': None})
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-05_16-03-14_26958/logs.
+Waiting for redis server at 127.0.0.1:50368 to respond...
+Waiting for redis server at 127.0.0.1:56324 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=2f6836fa756b85abea13a9dbd05f67ec700847c234631fb9
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+
+usage: custom_learning.py [-h] [--run RUN] [--stop STOP] [--config CONFIG]
+                          [--resources-per-trial RESOURCES_PER_TRIAL] [--num-samples NUM_SAMPLES]
+                          [--local-dir LOCAL_DIR] [--upload-dir UPLOAD_DIR]
+                          [--trial-name-creator TRIAL_NAME_CREATOR] [--sync-function SYNC_FUNCTION]
+                          [--custom-loggers CUSTOM_LOGGERS] [--checkpoint-freq CHECKPOINT_FREQ]
+                          [--checkpoint-at-end] [--max-failures MAX_FAILURES] [--scheduler SCHEDULER]
+                          [--scheduler-config SCHEDULER_CONFIG] [--restore RESTORE]
+custom_learning.py: error: argument --stop: invalid loads value: "{'time_total_s':43200}"
+Namespace(algo='A3C', env='Breakout-v0', gpus=1, stop="{'time_total_s':43200}", w=4)
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2294, in _get_value
+    result = type_func(arg_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1766, in parse_known_args
+    namespace, args = self._parse_known_args(args, namespace)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1972, in _parse_known_args
+    start_index = consume_optional(start_index)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1912, in consume_optional
+    take_action(action, args, option_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1824, in take_action
+    argument_values = self._get_values(action, argument_strings)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2265, in _get_values
+    value = self._get_value(action, arg_string)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2307, in _get_value
+    raise ArgumentError(action, msg % args)
+argparse.ArgumentError: argument --stop: invalid loads value: "{'time_total_s':43200}"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 197, in create_trial_from_spec
+    args = parser.parse_args(to_argv(spec))
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1734, in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 1773, in parse_known_args
+    self.error(str(err))
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2393, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/argparse.py", line 2380, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 42, in run_tune_algo
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 108, in run_experiments
+    runner.step()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 114, in step
+    next_trial = self._get_next_trial()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 254, in _get_next_trial
+    self._update_trial_queue(blocking=wait_for_trial)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 364, in _update_trial_queue
+    trials = self._search_alg.next_trials()
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 50, in next_trials
+    trials = list(self._trial_generator)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 78, in _generate_trials
+    experiment_tag=experiment_tag)
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 199, in create_trial_from_spec
+    raise TuneError("Error parsing args, see above message", spec)
+ray.tune.error.TuneError: ('Error parsing args, see above message', {'run': 'A3C', 'stop': "{'time_total_s':43200}", 'config': {'num_gpus': 1, 'num_workers': 4, 'lr': 0.01, 'env': 'Breakout-v0'}, 'resources_per_trial': None, 'num_samples': 1, 'local_dir': '/home/adrian/ray_results', 'upload_dir': '', 'trial_name_creator': None, 'custom_loggers': None, 'sync_function': '', 'checkpoint_freq': 0, 'checkpoint_at_end': False, 'max_failures': 3, 'restore': None})
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-05_16-03-21_27004/logs.
+Waiting for redis server at 127.0.0.1:33055 to respond...
+Waiting for redis server at 127.0.0.1:43170 to respond...
+Starting the Plasma object store with 6.680934809 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8890/notebooks/ray_ui.ipynb?token=ee992a8c14d22a71eb9a0c8f28884bef5a98c9289a04fa11
+======================================================================
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 1.9/16.7 GB
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif -> 
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 5/8 CPUs, 1/1 GPUs
+Memory usage on this node: 2.3/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+PENDING trials:
+ - A3C_Breakout-v0_1_lr=0.001:	PENDING
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+RUNNING trials:
+ - A3C_Breakout-v0_0_lr=0.01:	RUNNING
+
+2019-02-05 16:03:29.377620: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:29.476770: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 16:03:29.477465: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-05 16:03:29.477480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 16:03:29.665981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 16:03:29.666016: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 16:03:29.666021: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 16:03:29.666181: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:35,173	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:35.173677: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:35.183064: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:35.183100: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:35.183107: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:35.183147: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:35.183170: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:35.183176: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:35,212	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:35.213111: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:35.220847: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:35.220888: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:35.220894: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:35.220935: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:35.220956: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:35.220962: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:35,316	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:35.316611: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:35.352412: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:35.352451: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:35.352458: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:35.352494: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:35.352515: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:35.352521: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:35,546	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:35.547031: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:35.556899: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:35.556949: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:35.556960: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:35.557018: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:35.557049: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:35.557059: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 5.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif/error_2019-02-05_16-03-40.txt
+PENDING trials:
+ - A3C_Breakout-v0_1_lr=0.001:	PENDING
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_16-03-40ruuntkoz -> 
+2019-02-05 16:03:43.993642: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:44.072268: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 16:03:44.072655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.74GiB
+2019-02-05 16:03:44.072669: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 16:03:44.263487: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 16:03:44.263524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 16:03:44.263529: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 16:03:44.263686: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:45,014	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:45.015466: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:45.025450: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:45.025502: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:45.025511: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:45.025573: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:45.025603: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:45.025611: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:03:45,043	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:03:45.043914: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:03:45.055103: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:03:45.055157: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:03:45.055167: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:03:45.055227: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:03:45.055258: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:03:45.055267: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:01,767	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:01.767890: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:04:01.790524: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:01.790578: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:01.790588: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:01.790648: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:01.790677: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:01.790685: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:02,061	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:02.062419: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:04:02.070664: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:02.070725: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:02.070732: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:02.070793: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:02.070819: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:02.070826: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_16-03-40ruuntkoz
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/numpy/core/fromnumeric.py:2920: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/numpy/core/_methods.py:85: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 7.7/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif/error_2019-02-05_16-03-40.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_16-03-40ruuntkoz/error_2019-02-05_16-04-02.txt
+PENDING trials:
+ - A3C_Breakout-v0_2_lr=0.0001:	PENDING
+
+Created LogSyncer for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_16-04-02xu_xk6as -> 
+2019-02-05 16:04:02.908547: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:04:03.073482: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-02-05 16:04:03.074066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:01:00.0
+totalMemory: 11.91GiB freeMemory: 11.25GiB
+2019-02-05 16:04:03.074097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-02-05 16:04:03.355928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-02-05 16:04:03.355969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-02-05 16:04:03.355976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-02-05 16:04:03.356153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11363 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:01:00.0, compute capability: 6.1)
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:04,008	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 2 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:04.013971: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:04,028	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 4 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:04.029649: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:04:04.036788: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:04.037169: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:04.037181: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:04.037240: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:04.037265: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:04.037271: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:04,039	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 3 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:04.039557: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+2019-02-05 16:04:04,072	INFO policy_evaluator.py:262 -- Creating policy evaluation worker 1 on CPU (please ignore any CUDA init errors)
+2019-02-05 16:04:04.072740: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-02-05 16:04:04.076928: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:04.076981: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:04.076989: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:04.077049: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:04.077074: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:04.077080: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-05 16:04:04.077242: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:04.077277: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:04.077283: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:04.077339: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:04.077361: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:04.077367: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+2019-02-05 16:04:04.113864: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-02-05 16:04:04.113918: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: gtigpu
+2019-02-05 16:04:04.113925: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: gtigpu
+2019-02-05 16:04:04.113978: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.54.0
+2019-02-05 16:04:04.114004: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.54.0
+2019-02-05 16:04:04.114010: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.54.0
+Error processing event.
+Traceback (most recent call last):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 264, in _process_events
+    if trial.should_stop(result):
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 216, in should_stop
+    for criteria, stop_value in self.stopping_criterion.items():
+AttributeError: 'str' object has no attribute 'items'
+/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+Worker ip unknown, skipping log sync for /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_16-04-02xu_xk6as
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif/error_2019-02-05_16-03-40.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_16-03-40ruuntkoz/error_2019-02-05_16-04-02.txt
+ - A3C_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_16-04-02xu_xk6as/error_2019-02-05_16-04-10.txt
+
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/8 CPUs, 0/1 GPUs
+Memory usage on this node: 8.5/16.7 GB
+Result logdir: /home/adrian/ray_results/my_experiment
+ERROR trials:
+ - A3C_Breakout-v0_0_lr=0.01:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_0_lr=0.01_2019-02-05_16-03-25vf54mhif/error_2019-02-05_16-03-40.txt
+ - A3C_Breakout-v0_1_lr=0.001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_1_lr=0.001_2019-02-05_16-03-40ruuntkoz/error_2019-02-05_16-04-02.txt
+ - A3C_Breakout-v0_2_lr=0.0001:	ERROR, 1 failures: /home/adrian/ray_results/my_experiment/A3C_Breakout-v0_2_lr=0.0001_2019-02-05_16-04-02xu_xk6as/error_2019-02-05_16-04-10.txt
+
+Namespace(algo='A3C', env='Breakout-v0', gpus=1, stop='{"time_total_s":43200}', w=4)
+Traceback (most recent call last):
+  File "custom_learning.py", line 78, in <module>
+    __main__()
+  File "custom_learning.py", line 29, in __main__
+    run_tune_algo()
+  File "custom_learning.py", line 42, in run_tune_algo
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/adrian/.anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 124, in run_experiments
+    raise TuneError("Trials did not complete", errored_trials)
+ray.tune.error.TuneError: ('Trials did not complete', [A3C_Breakout-v0_0_lr=0.01, A3C_Breakout-v0_1_lr=0.001, A3C_Breakout-v0_2_lr=0.0001])
+usage: rllib [-h] {train,rollout} ...
+rllib: error: unrecognized arguments: --algo A3C

@@ -11,7 +11,7 @@ parser=argparse.ArgumentParser(
     description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
 parser.add_argument("--algo", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C")
 parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.")
-parser.add_argument("--stop", help = "Stop condition in which the execution will stop. Some samples of arguments to input: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = '{"time_total_s": 3600}')
+parser.add_argument("--stop", help = "Stop condition in which the execution will stop. Some samples of arguments to input: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 3600})
 parser.add_argument("--gpus", type=int, help = "Number of GPU units to be used during the training.", default=0)
 parser.add_argument("--w", type=int, help = "Number of workers to be initialised during training. Each one will use one CPU core.", default = 1)
 args = parser.parse_args()
@@ -26,39 +26,51 @@ def __main__():
     if not ray.is_initialized():
         ray.init()
         
+    print(args)
+        
     run_tune_algo(args.algo, args.env, args.stop, args.gpus, args.w)
     #run_PPO()   
         
     
-def run_tune_algo():
-    tune.run_experiments({
-        "my_experiment": {
-            "run": args.algo,
-            "env": args.env,
-            "stop": args.stop,
-            "config": {
-                "num_gpus": args.gpus,
-                "num_workers": args.w,
-                "lr": tune.grid_search([0.01, 0.001, 0.0001]),
-                #"lr": 0.01,
-            },
+#Ya no se utiliza
+def run_tune_algo_old():
+    var = {"my_experiment": {
+        "run": args.algo,
+        "env": args.env,
+        "stop": args.stop,
+        "config": {
+            "num_gpus": args.gpus,
+            "num_workers": args.w,
+            "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+            #"lr": 0.01,
         },
-    })
+    },
+          }
+    print(var)
+    #tune.run_experiments(var) 
+    
+def run_single_algo(algo, env, stop, gpus, w):
+    #TODO
+    
+    pass
     
 def run_tune_algo(algo, env, stop, gpus, w):
-    tune.run_experiments({
-        "my_experiment": {
-            "run": algo,
-            "env": env,
-            "stop": stop,
-            "config": {
-                "num_gpus": gpus,
-                "num_workers": w,
-                "lr": tune.grid_search([0.01, 0.001, 0.0001]),
-                #"lr": 0.01,
-            },
+    var = {"my_experiment": {
+        "run": algo,
+        "env": env,
+        #"stop": stop,
+        "stop": {"training_iteration": 600000},
+        "config": {
+            "num_gpus": gpus,
+            "num_workers": w,
+            "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+            #"lr": 0.01,
         },
-    })
+    },
+          }
+    print(var)
+    tune.run_experiments(var) 
+    
     
     
 def run_PPO():
@@ -92,6 +104,8 @@ def run_A3C():
 #Metodo para cuando meta algun parametro en plan testear todos los algoritmos
 #La idea es ejecutar cada algoritmo en serie, o bien en paralelo cada uno con un worker, con el resto de parametros establecidos.
 def algo_testing():
+    pass
+    
     
     
 if __name__ == "__main__":

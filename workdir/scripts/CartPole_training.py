@@ -16,6 +16,7 @@ def __main__():
         ray.init()
         
     #run_tune_algo()  
+    run_A3C()
 
     def run_PPO():
         tune.run_experiments({

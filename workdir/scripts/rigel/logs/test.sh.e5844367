@@ -1,0 +1,2 @@
+/var/spool/sge/hpc045/job_scripts/5844367: line 10: cd: /home/advagi/TFG_OpenAI/workdir/rigel/executables/python_scripts: No such file or directory
+/home/advagi/anaconda3/envs/openai/bin/python: can't open file 'test.py': [Errno 2] No such file or directory

@@ -1,0 +1,86 @@
+WARNING: Not monitoring node memory since `psutil` is not installed. Install this with `pip install psutil` (or ray[debug]) to enable debugging of memory-related crashes.
+Couldn't import TensorFlow - disabling TensorBoard logging.
+WARNING: Not updating worker name since `setproctitle` is not installed. Install this with `pip install setproctitle` (or ray[debug]) to enable monitoring of worker processes.
+Process STDOUT and STDERR is being redirected to /tmp/ray/session_2019-02-18_17-23-42_15326/logs.
+Waiting for redis server at 127.0.0.1:33577 to respond...
+Failed to connect to the redis server, retrying.
+Waiting for redis server at 127.0.0.1:33577 to respond...
+Waiting for redis server at 127.0.0.1:22535 to respond...
+Starting Redis shard with 10.0 GB max memory.
+Warning: Capping object memory store to 20.0GB. To increase this further, specify `object_store_memory` when calling ray.init() or ray start.
+Starting the Plasma object store with 20.0 GB memory using /dev/shm.
+
+======================================================================
+View the web UI at http://localhost:8888/notebooks/ray_ui.ipynb?token=743ab23548c3d4f87b39f735457188f9d78db557f2d4208d
+======================================================================
+
+2019-02-18 17:23:45,040	INFO tune.py:138 -- Did not find checkpoint file in /home/advagi/ray_results/my_experiment.
+2019-02-18 17:23:45,041	INFO tune.py:144 -- Starting a new experiment.
+Traceback (most recent call last):
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/imp.py", line 242, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/imp.py", line 342, in load_dynamic
+    return _load(spec)
+ImportError: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.17' not found (required by /home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 13, in <module>
+    "lr": tune.grid_search([0.01, 0.001, 0.0001]),
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 169, in run_experiments
+    runner.step()
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 224, in step
+    next_trial = self._get_next_trial()
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 371, in _get_next_trial
+    self._update_trial_queue(blocking=wait_for_trial)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 482, in _update_trial_queue
+    trials = self._search_alg.next_trials()
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 50, in next_trials
+    trials = list(self._trial_generator)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 78, in _generate_trials
+    experiment_tag=experiment_tag)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 192, in create_trial_from_spec
+    **trial_kwargs)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 174, in __init__
+    Trial._registration_check(trainable_name)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 215, in _registration_check
+    from ray import rllib  # noqa: F401
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/__init__.py", line 11, in <module>
+    from ray.rllib.evaluation.policy_graph import PolicyGraph
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/evaluation/__init__.py", line 2, in <module>
+    from ray.rllib.evaluation.policy_evaluator import PolicyEvaluator
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/rllib/evaluation/policy_evaluator.py", line 8, in <module>
+    import tensorflow as tf
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/__init__.py", line 24, in <module>
+    from tensorflow.python import pywrap_tensorflow  # pylint: disable=unused-import
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/__init__.py", line 49, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 74, in <module>
+    raise ImportError(msg)
+ImportError: Traceback (most recent call last):
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/imp.py", line 242, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/imp.py", line 342, in load_dynamic
+    return _load(spec)
+ImportError: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.17' not found (required by /home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+
+
+Failed to load the native TensorFlow runtime.
+
+See https://www.tensorflow.org/install/errors
+
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help.

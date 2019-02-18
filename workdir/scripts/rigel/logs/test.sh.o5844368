@@ -1,0 +1,33 @@
++------- PROLOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ...........: 5844368
+| Started at .......: Mon Feb 18 17:23:27 CET 2019
+| Execution host ...: hpc031.cc.upv.es
+| Cluster queue ....: general
+| Script ...........: /var/spool/sge/hpc031/job_scripts/5844368
+| > 
+| > 
+| > 
+| > #$ -cwd
+| > #$ -l h_vmem=4g
+| > #$ -l h_rt=00:30:00
+| > 
+| > source /home/advagi/anaconda3/envs/openai/bin/activate
+| > 
+| > cd /home/advagi/TFG_OpenAI/workdir/scripts/rigel/python_scripts
+|
++------- PROLOGUE SCRIPT -----------------------------------------------
+== Status ==
+Using FIFO scheduling algorithm.
+Resources requested: 0/32 CPUs, 0/0 GPUs
+Unknown memory usage. Please run `pip install psutil` (or ray[debug]) to resolve)
+
++------- EPILOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ..............: 5844368
+| Stopped at ..........: Mon Feb 18 17:23:47 CET 2019
+| Resources used ......: cpu=00:00:03, mem=11.17587 GB s, io=0.01094 GB, vmem=3.725G, maxvmem=3.725G
+| Peak memory value ...: 3.725G
+| Total time used .....: 0:00:20
+|
++------- EPILOGUE SCRIPT -----------------------------------------------

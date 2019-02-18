@@ -7,5 +7,5 @@
 
 source /home/advagi/anaconda3/envs/openai/bin/activate
 
-cd /home/advagi/TFG_OpenAI/workdir/rigel/executables/python_scripts
+cd /home/advagi/TFG_OpenAI/workdir/scripts/rigel/python_scripts
 /home/advagi/anaconda3/envs/openai/bin/python test.py

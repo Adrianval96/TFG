@@ -1,0 +1,77 @@
++------- PROLOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ...........: 5844383
+| Started at .......: Mon Feb 18 18:02:07 CET 2019
+| Execution host ...: hpc013.cc.upv.es
+| Cluster queue ....: general
+| Script ...........: /var/spool/sge/hpc013/job_scripts/5844383
+| > #$ -cwd
+| > #$ -l h_vmem=4g
+| > 
+| > source activate openai
+| > conda list
+| > 
+| > /home/advagi/anaconda3/envs/openai/bin/python tf.py
+|
++------- PROLOGUE SCRIPT -----------------------------------------------
+# packages in environment at /home/advagi/anaconda3/envs/openai:
+#
+absl-py                   0.7.0                     <pip>
+astor                     0.7.1                     <pip>
+atomicwrites              1.2.1                     <pip>
+attrs                     18.2.0                    <pip>
+ca-certificates           2018.12.5                     0  
+certifi                   2018.11.29               py36_0  
+chardet                   3.0.4                     <pip>
+Click                     7.0                       <pip>
+colorama                  0.4.1                     <pip>
+filelock                  3.0.10                    <pip>
+flatbuffers               1.10                      <pip>
+funcsigs                  1.0.2                     <pip>
+future                    0.17.1                    <pip>
+gast                      0.2.2                     <pip>
+grpcio                    1.18.0                    <pip>
+gym                       0.10.9                    <pip>
+h5py                      2.9.0                     <pip>
+idna                      2.8                       <pip>
+Keras-Applications        1.0.7                     <pip>
+Keras-Preprocessing       1.0.8                     <pip>
+libgcc-ng                 8.2.0                hdf63c60_1  
+Markdown                  3.0.1                     <pip>
+more-itertools            5.0.0                     <pip>
+numpy                     1.16.0                    <pip>
+openssl                   1.0.2p               h14c3975_0  
+pip                       18.1                     py36_0  
+pluggy                    0.8.1                     <pip>
+protobuf                  3.6.1                     <pip>
+py                        1.7.0                     <pip>
+pyglet                    1.3.2                     <pip>
+pytest                    4.1.1                     <pip>
+python                    3.6.0                         0  
+PyYAML                    3.13                      <pip>
+ray                       0.6.2                     <pip>
+readline                  6.2                           2  
+redis                     3.1.0                     <pip>
+requests                  2.21.0                    <pip>
+scipy                     1.2.0                     <pip>
+setuptools                40.6.3                   py36_0  
+six                       1.12.0                    <pip>
+sqlite                    3.13.0                        0  
+tensorboard               1.12.2                    <pip>
+tensorflow-gpu            1.12.0                    <pip>
+termcolor                 1.1.0                     <pip>
+tk                        8.5.18                        0  
+urllib3                   1.24.1                    <pip>
+Werkzeug                  0.14.1                    <pip>
+wheel                     0.32.3                   py36_0  
+xz                        5.2.4                h14c3975_4  
+zlib                      1.2.11               h7b6447c_3  
++------- EPILOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ..............: 5844383
+| Stopped at ..........: Mon Feb 18 18:02:13 CET 2019
+| Resources used ......: cpu=00:00:00, mem=0.00000 GB s, io=0.00000 GB, vmem=N/A, maxvmem=N/A
+| Peak memory value ...: N/A
+| Total time used .....: 0:00:06
+|
++------- EPILOGUE SCRIPT -----------------------------------------------

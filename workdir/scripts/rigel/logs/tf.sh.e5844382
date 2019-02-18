@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "tf.py", line 3, in <module>
+    print(tf.__version__)
+AttributeError: module 'tensorflow' has no attribute '__version__'

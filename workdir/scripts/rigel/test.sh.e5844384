@@ -1,0 +1,19 @@
+WARNING: Not monitoring node memory since `psutil` is not installed. Install this with `pip install psutil` (or ray[debug]) to enable debugging of memory-related crashes.
+Traceback (most recent call last):
+  File "test.py", line 2, in <module>
+    import ray.tune as tune
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/__init__.py", line 8, in <module>
+    from ray.tune.tune import run_experiments
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 12, in <module>
+    from ray.tune.suggest import BasicVariantGenerator
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/__init__.py", line 2, in <module>
+    from ray.tune.suggest.basic_variant import BasicVariantGenerator
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 9, in <module>
+    from ray.tune.config_parser import make_parser, create_trial_from_spec
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 14, in <module>
+    from ray.tune.trial import Trial, json_to_resources
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 22, in <module>
+    from ray.tune.logger import pretty_print, UnifiedLogger
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/logger.py", line 22, in <module>
+    use_tf150_api = (distutils.version.LooseVersion(tf.VERSION) >=
+AttributeError: module 'tensorflow' has no attribute 'VERSION'

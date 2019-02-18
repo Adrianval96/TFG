@@ -1,0 +1,24 @@
++------- PROLOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ...........: 5844379
+| Started at .......: Mon Feb 18 17:57:09 CET 2019
+| Execution host ...: hpc003.cc.upv.es
+| Cluster queue ....: general
+| Script ...........: /var/spool/sge/hpc003/job_scripts/5844379
+| > #$ -cwd
+| > #$ -l h_vmem=4g
+| > 
+| > source /home/advagi/anaconda3/envs/openai/bin/activate
+| > 
+| > python tf.py
+|
++------- PROLOGUE SCRIPT -----------------------------------------------
++------- EPILOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ..............: 5844379
+| Stopped at ..........: Mon Feb 18 17:57:12 CET 2019
+| Resources used ......: cpu=00:00:00, mem=0.00000 GB s, io=0.00000 GB, vmem=N/A, maxvmem=N/A
+| Peak memory value ...: N/A
+| Total time used .....: 0:00:03
+|
++------- EPILOGUE SCRIPT -----------------------------------------------

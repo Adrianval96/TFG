@@ -153,10 +153,13 @@ Para complementar nuestra base de conocimientos, nos basaremos en artículos de 
 \section{Introducción al Q-Learning}
 
 %% Se puede ahondar MUCHO MÁS en este campo de la neurociencia
-El aprendizaje por refuerzo es un principio altamente utilizado en la actualidad en la investigación del campo de la Inteligencia Artificial. Este enfoque se inspira en el campo de la psicología de comportamiento y pone el énfasis en cómo un agente independiente será capaz de tomar las acciones pertinentes basándose en un sistema de recompensas a partir de las acciones que toma. \par 
+El aprendizaje por refuerzo es un principio altamente utilizado en la actualidad en la investigación del campo de la Inteligencia Artificial. Este enfoque se inspira en el campo de la psicología de comportamiento y pone el énfasis en cómo un agente independiente será capaz de tomar las acciones pertinentes basándose en un sistema de recompensas que le son suministradas en función de las acciones que toma en cada momento. En este sentido, se intenta emular la capacidad de los seres vivos de hacer predicciones basándose en la información que se percibe del entorno. Estas predicciones \cite{neural_rl} proporcionan a los animales tiempo para preparar reacciones de comportamiento, que en un futuro pueden mejorar las opciones de las que éste disponga en el futuro. De esta manera, se habla de "recompensa" como un concepto que describe un valor positivo que una criatura le atribuye a un objeto, patrón de comportamiento o estado físico interno. Éstas recompensas se manifiestan en una gran variedad de animales a través de un neurotransmisor llamado dopamina. En estos sistemas, la dopamina se produce como respuesta a una recompensa inesperada que, si se produce de manera repetida a lo largo del tiempo, puede condicionar el comportamiento del organismo. Frecuentemente, se relaciona la dopamina con funciones vitales tan importantes como la motivación, la regulación de la memoria o en la toma de decisiones. Sirve, por lo tanto, como un método de refuerzo positivo, en situaciones en las que estas respuestas constituyan un patrón de comportamiento recurrente que se mantenga a lo largo del tiempo. \par  %Esto ultimo es una cita (casi) LITERAL del articulo
 
-Debido a la capacidad creciente de los ordenadores de realizar computaciones cada vez más complejas en cantidades de tiempo exponencialmente menores, así como la facilidad de acceso a la información que han permitido factores como internet o, en igual medida, el abaratamiento creciente de sistemas de almacenamiento con respecto a décadas anteriores, se plantea el problema de que disponemos de un acceso a la información demasiado grande para ser tratado por métodos tradicionales. 
 
+
+%Debido a la capacidad creciente de los ordenadores de realizar computaciones cada vez más complejas en cantidades de tiempo exponencialmente menores, así como la facilidad de acceso a la información que han permitido factores como internet o, en igual medida, el abaratamiento creciente de sistemas de almacenamiento con respecto a décadas anteriores, se plantea el problema de que disponemos de un acceso a la información demasiado grande para ser tratado por métodos tradicionales. 
+
+%Esto puede ir mucho mejor en otro sitio
 En los últimos años, se ha podido observar un crecimiento notable en el uso de sistemas de inteligencia artificial en empresas de internet hasta el punto en el que se han convertido en un requisito casi indispensable para ser capaz de ofrecer un servicio específico; por ejemplo, los sistemas de recomendación en servicios de plataformas de Streaming o la publicidad personalizada que muchas páginas de compras por internet ofrecen basándose en las compras o búsquedas realizadas anteriormente. Estos sistemas se basan en el entrenamiento de redes neuronales que permiten crear una relación entre las selecciones anteriores y productos afines. En las próximas secciones haremos un repaso de las técnicas más conocidas de aprendizaje por refuerzo, así como repasar ciertos conceptos esenciales para una comprensión correcta de lo presentado.
 
 \subsection{Los elementos del Aprendizaje por refuerzo}
@@ -195,15 +198,12 @@ El \textit{modelo del entorno} será el que contenga toda la información refere
 
 \subsubsection{La ecuación de Bellman}
 
+Richard Bellman fue un investigador estadounidense que formuló lo que también se conoce como la \textbf{ecuación de la programación dinámica}, que describe una condición necesaria para la optimalidad en la resolución de problemas Markovianos. Esta ecuación constituye un elemento esencial para la comprensión de los algoritmos de aprendizaje por refuerzo, y aplica muchos de los conceptos introducidos en secciones anteriores.
 
+%%% AQUI HAY QUE PONER MUCHA MATEMÁTICA Y EXTENDERSE COMO UN CABRÓN
+% https://joshgreaves.com/reinforcement-learning/understanding-rl-the-bellman-equations/
+%%% SACARLA DE AQUI SI ESO
 
-Para terminar la sección, en la figura X se muestra un sencillo ejemplo de entorno de aprendizaje por refuerzo. En este ejemplo, el robot ganará la partida en el momento que se encuentre en la casilla superior derecha, y morirá en el caso de pisar la casilla en llamas. Además, para cada movimiento que el agente realice, hay una probabilidad de 0.1 de que el agente se mueva a uno de los lados
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.2]{rlexample}
-	\caption{Ejemplo de entorno de aprendizaje por refuerzo}
-\end{figure}
 
 \subsection{Cadenas de Markov}
 
@@ -219,6 +219,17 @@ El objetivo de nuestro agente será en todo momento conseguir maximizar la recom
 %// aqui ira algo más
 
 %Uno de los principales problemas de éste tipo de sistemas consiste en la imposibilidad de los agentes de extrapolar el conocimiento recibido a 
+
+\subsection{Un pequeño ejemplo ilustrativo}
+
+Para terminar la sección, en la figura X se muestra un sencillo ejemplo de entorno de aprendizaje por refuerzo. En este ejemplo, el robot ganará la partida en el momento que se encuentre en la casilla superior derecha, y morirá en el caso de pisar la casilla en llamas. Además, para cada movimiento que el agente realice, hay una probabilidad de 0.1 de que el agente se mueva a uno de los lados
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{rlexample}
+	\caption{Ejemplo de entorno de aprendizaje por refuerzo}
+\end{figure}
+
 
 \subsection{Redes neuronales}
 
@@ -282,11 +293,24 @@ Esta solución no viene sin problemas, ya que este algoritmo de priorización ac
 
 \section{Historia de la evolución tecnológica}
 
+\section{Algoritmos existentes en la actualidad}
+
 \section{Aplicación en videojuegos}
 
+Por norma general, los videojuegos constituyen un marco idóneo para la investigación en los campos del aprendizaje por refuerzo por diversas razones. En primer lugar, suelen ser productos inicialmente diseñados para ser controlados por jugadores humanos, por lo que pueden constituir un buen marco de referencia para la valoración del aprendizaje que un agente lleva a cabo. Además, estos sistemas proveen un entorno con unas reglas ya marcadas, en los que la información que se provee al jugador suele ser suficiente para valorar si se están tomando o no las decisiones correctas, bien a través de una puntuación atribuida a la partida, la duración de la misma o la consecución de una serie de objetivos previamente definidos. Por último, el reducido número de acciones que el jugador puede realizar (dimensionalidad) permite crear correlaciones mucho más exactas entre los pares acción recompensa, y facilita enormemente la tarea de aprendizaje.
+
+En este documento, nos centraremos en la aplicación de los algoritmos previamente definidos a videojuegos de la videoconsola Atari 2600, comercializada en 1977 y con un extenso catálogo consistente en famosos juegos arcade como Pacman, Pong, Pinball o Space Invaders. Estos juegos fueron inicialmente diseñados para resultar desafiantes y difíciles de dominar por jugadores humanos, pero dado su baja dimensionalidad, constituyen entornos de estudio muy interesantes. 
+
+En estudios recientes \cite{dqn}, se demostró la capacidad de una variante del algoritmo DQN de superar exponencialmente el rendimiento de un jugador humano sobre los mismos entornos. En este estudio se hizo uso de una red convolucional que aplicaba los principio de la diferencia temporal para determinar factores como la trayectoria de los objetos o la diferencia de puntuación, atribuyendo así una correlación entre las acciones llevadas a cabo por el agente y su rendimiento a corto plazo. Adicionalmente, en estas implementaciones se hizo uso de un mecanismo de \textit{experience replay} que aseguró que el agente fuera capaz de usar las experiencias del pasado para mejorar su rendimiento, y una función que actualizara los valores de acción (\textit{Q-values}) de manera periódica en lugar de instantánea para reducir las correlaciones entre acciones específicas y su resultado inmediato. La combinación de estas dos técnicas resultó en una mejora de hasta un 2800\% sobre el rendimiento máximo de un jugador humano en el entorno de Video Pinball. 
+
+ 
+%% Falta mucha mierda aun por meter aqui
 
 
-\section{Algoritmos existentes en la actualidad}
+
+
+
+
 
 
 
@@ -369,6 +393,8 @@ Esta solución no viene sin problemas, ya que este algoritmo de priorización ac
 	Varios autores
 	\newblock Human-level control through deep reinforcement learning
 	\newblock \textit{Nature}, vol 518, 26 de febrero de 2015
+	
+
 
 \end{thebibliography}
 \cleardoublepage

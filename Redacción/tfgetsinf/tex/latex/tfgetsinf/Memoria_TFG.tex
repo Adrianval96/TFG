@@ -233,7 +233,7 @@ Para terminar la sección, en la figura X se muestra un sencillo ejemplo de ento
 
 \subsection{Redes neuronales}
 
-El concepto de red neuronal nace de la idea de conseguir un comportamiento autónomo similar al de un ser humano. De esta manera, las redes neuronales intentan replicar el razonamiento humano creando una relación entre lo que el agente observa y las acciones que ha de realizar. Dependiendo del problema a abarcar, estas redes se pueden ver reformuladas para ajustarse a una serie de requerimientos especiales. Por ejemplo, las redes neuronales convolucionales hacen uso de una serie de capas previas que extraen características de las imágenes para ser posteriormente introducidas en una estructura de red neuronal clásica y realizar así la tarea de clasificación.
+El concepto de red neuronal nace de la idea de conseguir un comportamiento autónomo similar al de un ser humano. Las redes neuronales intentan replicar el razonamiento humano creando una relación entre lo que el agente observa y las acciones que ha de realizar. Dependiendo del problema a abarcar, estas redes se pueden ver reformuladas para ajustarse a una serie de requerimientos especiales, por ejemplo, las redes neuronales convolucionales hacen uso de una serie de capas previas que extraen características de las imágenes para ser posteriormente introducidas en una estructura de red neuronal clásica y realizar así la tarea de clasificación.
 
 Una red neuronal se compone esencialmente de tres componentes interconectados: Una capa de entrada, una o varias capas ocultas, y una capa de salida.
 
@@ -301,7 +301,11 @@ Por norma general, los videojuegos constituyen un marco idóneo para la investig
 
 En este documento, nos centraremos en la aplicación de los algoritmos previamente definidos a videojuegos de la videoconsola Atari 2600, comercializada en 1977 y con un extenso catálogo consistente en famosos juegos arcade como Pacman, Pong, Pinball o Space Invaders. Estos juegos fueron inicialmente diseñados para resultar desafiantes y difíciles de dominar por jugadores humanos, pero dado su baja dimensionalidad, constituyen entornos de estudio muy interesantes. 
 
-En estudios recientes \cite{dqn}, se demostró la capacidad de una variante del algoritmo DQN de superar exponencialmente el rendimiento de un jugador humano sobre los mismos entornos. En este estudio se hizo uso de una red convolucional que aplicaba los principio de la diferencia temporal para determinar factores como la trayectoria de los objetos o la diferencia de puntuación, atribuyendo así una correlación entre las acciones llevadas a cabo por el agente y su rendimiento a corto plazo. Adicionalmente, en estas implementaciones se hizo uso de un mecanismo de \textit{experience replay} que aseguró que el agente fuera capaz de usar las experiencias del pasado para mejorar su rendimiento, y una función que actualizara los valores de acción (\textit{Q-values}) de manera periódica en lugar de instantánea para reducir las correlaciones entre acciones específicas y su resultado inmediato. La combinación de estas dos técnicas resultó en una mejora de hasta un 2800\% sobre el rendimiento máximo de un jugador humano en el entorno de Video Pinball. 
+En estudios recientes \cite{dqn}, se demostró la capacidad de una variante del algoritmo DQN de superar exponencialmente el rendimiento de un jugador humano sobre los mismos entornos. En este estudio se hizo uso de una red convolucional que aplicaba los principio de la diferencia temporal para determinar factores como la trayectoria de los objetos o la diferencia de puntuación, atribuyendo así una correlación entre las acciones llevadas a cabo por el agente y su rendimiento a corto plazo. Adicionalmente, en estas implementaciones se hizo uso de un mecanismo de \textit{experience replay} que aseguró que el agente fuera capaz de usar las experiencias del pasado para mejorar su rendimiento, y una función que actualizara  múltiples valores de acción (\textit{Q-values}) de manera periódica en lugar de realizar una actualización individual en cada instante de tiempo, con la intención de reducir las correlaciones entre acciones específicas y su resultado inmediato. 
+
+Para trabajar con estos entornos y basándonos en la implementación realizada por el equipo de DeepMind \cite{atari_dqn}, tomaremos las imágenes del videojuego con una dimensión de 210x160 píxeles con una paleta de 128 colores y aplicaremos un preprocesado que reduce la dimensionalidad hasta una región de 84x84 que abarca el entorno del juego. En la aplicación de su algoritmo, en cada instante de tiempo se toman los últimos cuatro \textit{frames} para este proceso, y se introducen como elementos de entrada a la red convolucional. La dimensionalidad del problema puede variar entre 4 y 18 en función del juego que se seleccione. 
+
+La combinación de estas mejoras resultó en un rendimiento hasta un 2800\% superior con respecto al rendimiento máximo de un jugador humano en el entorno de Video Pinball. 
 
  
 %% Falta mucha mierda aun por meter aqui
@@ -394,6 +398,10 @@ En estudios recientes \cite{dqn}, se demostró la capacidad de una variante del 
 	\newblock Human-level control through deep reinforcement learning
 	\newblock \textit{Nature}, vol 518, 26 de febrero de 2015
 	
+\bibitem{atari_dqn}
+	Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, Martin Riedmiller
+	\newblock Playing Atari with Deep Reinforcement Learning, diciembre de 2013.
+	\newblock DeepMind Technologies
 
 
 \end{thebibliography}

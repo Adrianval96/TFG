@@ -7,27 +7,10 @@ import ray
 import ray.tune as tune
 
 
-parser=argparse.ArgumentParser(
-    description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
-parser.add_argument("--algo", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C")
-parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.")
-parser.add_argument("--stop", help = "Stop condition in which the execution will stop. Some samples of arguments to input: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 3600})
-parser.add_argument("--gpus", type=int, help = "Number of GPU units to be used during the training.", default=0)
-parser.add_argument("--w", type=int, help = "Number of workers to be initialised during training. Each one will use one CPU core.", default = 1)
-args = parser.parse_args()
-print(args)
-
-
-def __main__():
+def __init__():
     
     #if len(args) != 5:
-    #    raise ValueError("You must input the correct number of arguments. Use --help for more info.")
-
-    if not ray.is_initialized():
-        ray.init()
-        
-    print(args)
-        
+    #    raise ValueError("You must input the correct number of arguments. Use --help for more info.")   
     run_tune_algo(args.algo, args.env, args.stop, args.gpus, args.w)
     #run_PPO()   
         
@@ -59,7 +42,7 @@ def run_tune_algo(algo, env, stop, gpus, w):
         "run": algo,
         "env": env,
         #"stop": stop,
-        "stop": {"training_iteration": 600000},
+        "stop": {"training_iteration": 600000, "time_total_s": 10800},
         "config": {
             "num_gpus": gpus,
             "num_workers": w,
@@ -109,4 +92,19 @@ def algo_testing():
     
     
 if __name__ == "__main__":
-    __main__()
+    __init__()
+    
+    
+    parser=argparse.ArgumentParser(
+        description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
+    parser.add_argument("--algo", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C")
+    parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.")
+    parser.add_argument("--stop", help = "Stop condition in which the execution will stop. Some samples of arguments to input: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 3600})
+    parser.add_argument("--gpus", type=int, help = "Number of GPU units to be used during the training.", default=0)
+    parser.add_argument("--w", type=int, help = "Number of workers to be initialised during training. Each one will use one CPU core.", default = 1)
+    args = parser.parse_args()
+    print(args)
+    
+    
+    if not ray.is_initialized():
+        ray.init(object_store_memory=int(8e9))

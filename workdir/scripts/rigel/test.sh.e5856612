@@ -1,0 +1,35 @@
+Could not find conda environment: tfg
+You can list all discoverable environments with `conda info --envs`.
+
+Traceback (most recent call last):
+  File "test.py", line 2, in <module>
+    import ray.tune as tune
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/__init__.py", line 6, in <module>
+    from ray.tune.tune import run_experiments
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/tune.py", line 12, in <module>
+    from ray.tune.suggest import BasicVariantGenerator
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/__init__.py", line 2, in <module>
+    from ray.tune.suggest.basic_variant import BasicVariantGenerator
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/suggest/basic_variant.py", line 10, in <module>
+    from ray.tune.config_parser import make_parser, create_trial_from_spec
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/config_parser.py", line 14, in <module>
+    from ray.tune.trial import Trial, json_to_resources
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/trial.py", line 22, in <module>
+    from ray.tune.logger import pretty_print, UnifiedLogger
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/ray/tune/logger.py", line 21, in <module>
+    import tensorflow as tf
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/__init__.py", line 24, in <module>
+    from tensorflow.python import *  # pylint: disable=redefined-builtin
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/__init__.py", line 63, in <module>
+    from tensorflow.python.framework.framework_lib import *  # pylint: disable=redefined-builtin
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/framework/framework_lib.py", line 102, in <module>
+    from tensorflow.python.framework.importer import import_graph_def
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/framework/importer.py", line 32, in <module>
+    from tensorflow.python.framework import function
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 37, in <module>
+    from tensorflow.python.ops import resource_variable_ops
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py", line 35, in <module>
+    from tensorflow.python.ops import variables
+  File "/home/advagi/anaconda3/envs/openai/lib/python3.6/site-packages/tensorflow/python/ops/variables.py", line 40, in <module>
+    class Variable(checkpointable.CheckpointableBase):
+AttributeError: module 'tensorflow.python.training.checkpointable' has no attribute 'CheckpointableBase'

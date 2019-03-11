@@ -1,0 +1,28 @@
++------- PROLOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ...........: 5856611
+| Started at .......: Mon Mar 11 16:42:46 CET 2019
+| Execution host ...: hpc181.cc.upv.es
+| Cluster queue ....: dell
+| Script ...........: /var/spool/sge/hpc181/job_scripts/5856611
+| > 
+| > 
+| > 
+| > #$ -cwd
+| > #$ -l h_vmem=4g
+| > #$ -l h_rt=00:30:00
+| > 
+| > source activate tfg 
+| > 
+| > cd /home/advagi/TFG_OpenAI/workdir/scripts/rigel/python_scripts
+|
++------- PROLOGUE SCRIPT -----------------------------------------------
++------- EPILOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ..............: 5856611
+| Stopped at ..........: Mon Mar 11 16:42:48 CET 2019
+| Resources used ......: cpu=00:00:00, mem=0.00000 GB s, io=0.00000 GB, vmem=N/A, maxvmem=N/A
+| Peak memory value ...: N/A
+| Total time used .....: 0:00:02
+|
++------- EPILOGUE SCRIPT -----------------------------------------------

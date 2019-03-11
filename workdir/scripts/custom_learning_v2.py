@@ -19,7 +19,7 @@ import sys
 import argparse
 import random
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
 import gym
 from gym.spaces import Box, Discrete, Dict
 

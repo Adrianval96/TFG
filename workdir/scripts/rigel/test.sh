@@ -9,4 +9,4 @@ source activate tfg
 
 cd /home/advagi/TFG_OpenAI/workdir/scripts/rigel/python_scripts
 
-/home/advagi/anaconda3/envs/openai/bin/python test.py
+/home/advagi/anaconda3/envs/openai/bin/python basics.py

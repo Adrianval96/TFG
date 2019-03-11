@@ -1,0 +1,29 @@
++------- PROLOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ...........: 5856612
+| Started at .......: Mon Mar 11 16:43:47 CET 2019
+| Execution host ...: hpc181.cc.upv.es
+| Cluster queue ....: dell
+| Script ...........: /var/spool/sge/hpc181/job_scripts/5856612
+| > 
+| > 
+| > 
+| > #$ -cwd
+| > #$ -l h_vmem=4g
+| > #$ -l h_rt=00:30:00
+| > 
+| > source activate tfg 
+| > 
+| > cd /home/advagi/TFG_OpenAI/workdir/scripts/rigel/python_scripts
+|
++------- PROLOGUE SCRIPT -----------------------------------------------
+WARNING: Not monitoring node memory since `psutil` is not installed. Install this with `pip install psutil` (or ray[debug]) to enable debugging of memory-related crashes.
++------- EPILOGUE SCRIPT -----------------------------------------------
+|
+| Job ID ..............: 5856612
+| Stopped at ..........: Mon Mar 11 16:44:04 CET 2019
+| Resources used ......: cpu=00:00:00, mem=0.00000 GB s, io=0.00000 GB, vmem=N/A, maxvmem=N/A
+| Peak memory value ...: N/A
+| Total time used .....: 0:00:17
+|
++------- EPILOGUE SCRIPT -----------------------------------------------

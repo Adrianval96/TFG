@@ -17,6 +17,7 @@ from __future__ import print_function
 
 import sys
 import argparse
+import math
 import random
 import numpy as np
 #import tensorflow as tf
@@ -32,17 +33,19 @@ from ray.tune import run_experiments
 parser=argparse.ArgumentParser(
     description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
 parser.add_argument("--run", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C", default = "DQN" )
-parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.", default="CartPole-v0")
+parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.", default="Breakout-v0")
 parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 7200})
+parser.add_argument("--mem", help = "Maximum memory to be used, supposedly by a single agent process. Default: 4e9 (4 Gigabytes)", default=4e9)
 parser.add_argument("--gpus", type=int, help = "GPUS to use. Default:1", default=1)
 parser.add_argument("--w", type=int, help = "Number of workers", default = 1)
+parser.add_argument("--all", type=bool, help = "If set to True it will execute all algorithms that we have as input, therefore the training time will be the stop condition times the number of algorithms that we execute.", default = False)
 
 def run_all_algos():
     
-    algos = ["A3C", "A2C", "DQN", "IMPALA", "PPO"]
+    algos = ["IMPALA", "A3C", "A2C", "DQN", "PPO"]
     
     for algo in algos:
-        run_experiments({"single_run": {
+        run_experiments({"custom_experiments_v2": {
             "run": algo,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 7200}, #Default: 2 horas (7200 s)
@@ -61,7 +64,7 @@ def run_all_algos():
 def run_single_algo():
     
     run_experiments({
-        "test_run": {
+        "custom_experiments_v2": {
             "run": args.run,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 10800},
@@ -81,8 +84,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
     
-    ray.init(object_store_memory=int(8e9))
+    ray.init(object_store_memory=int(args.mem))
 
-    run_single_algo()
+    if args.all:
+        run_all_algos()
+    else:
+        run_single_algo()
 
     #__init__()

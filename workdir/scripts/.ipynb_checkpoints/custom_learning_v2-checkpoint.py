@@ -15,6 +15,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import json 
+
 import sys
 import argparse
 import math
@@ -34,18 +36,20 @@ parser=argparse.ArgumentParser(
     description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
 parser.add_argument("--run", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C", default = "DQN" )
 parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.", default="Breakout-v0")
-parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 7200})
-parser.add_argument("--mem", help = "Maximum memory to be used, supposedly by a single agent process. Default: 4e9 (4 Gigabytes)", default=4e9)
+parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 14400})
+parser.add_argument("--mem", help = "Maximum memory to be used, supposedly by a single agent process. Default: 2e9 (4 Gigabytes)", default=2e9)
 parser.add_argument("--gpus", type=int, help = "GPUS to use. Default:1", default=1)
 parser.add_argument("--w", type=int, help = "Number of workers", default = 1)
+parser.add_argument("--folder", type=str, help = "Folder in which results will be stored. By default, they will end up in folder custom_experiments_v2.", default = "custom_experiments_v2")
 parser.add_argument("--all", type=bool, help = "If set to True it will execute all algorithms that we have as input, therefore the training time will be the stop condition times the number of algorithms that we execute.", default = False)
+
 
 def run_all_algos():
     
     algos = ["IMPALA", "A3C", "A2C", "DQN", "PPO"]
     
     for algo in algos:
-        run_experiments({"custom_experiments_v2": {
+        run_experiments({args.folder: {
             "run": algo,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 7200}, #Default: 2 horas (7200 s)
@@ -64,15 +68,15 @@ def run_all_algos():
 def run_single_algo():
     
     run_experiments({
-        "custom_experiments_v2": {
+        args.folder: {
             "run": args.run,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 10800},
             "config": dict({
                 "num_gpus": args.gpus,
                 "num_workers": args.w,
-                "sample_batch_size": 50,
-                "train_batch_size": 500,
+                #"sample_batch_size": 50,
+                #"train_batch_size": 500,
                 #"lr_schedule": [0, 0.0005],
 
             }),
@@ -85,6 +89,10 @@ if __name__ == "__main__":
     print(args)
     
     ray.init(object_store_memory=int(args.mem))
+    
+    # Fichero de configuración de cada uno de los algoritmos
+    #with open('config.json') as config_file:
+    #    data = json.load(config_file)
 
     if args.all:
         run_all_algos()

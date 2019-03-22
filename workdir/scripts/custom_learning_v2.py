@@ -32,17 +32,21 @@ from ray.rllib.models.misc import normc_initializer
 from ray.tune import run_experiments
 #from ray.tune.registry import register_env
 
+from config import get_config
+
+
 parser=argparse.ArgumentParser(
     description='''This script will execute a learning algorithms of our choice in a Ray environment, with the hyperparameters that we input.''')
 parser.add_argument("--run", type=str, help = "The algorithm of the model to train. Examples: DQN, DDQN, A2C, A3C", default = "DQN" )
 parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.", default="Breakout-v0")
-parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 14400})
+parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = {"time_total_s": 36000, "training_iteration": int(1e7)})
 parser.add_argument("--mem", help = "Maximum memory to be used, supposedly by a single agent process. Default: 2e9 (4 Gigabytes)", default=2e9)
 parser.add_argument("--gpus", type=int, help = "GPUS to use. Default:1", default=1)
 parser.add_argument("--w", type=int, help = "Number of workers", default = 1)
 parser.add_argument("--folder", type=str, help = "Folder in which results will be stored. By default, they will end up in folder custom_experiments_v2.", default = "custom_experiments_v2")
 parser.add_argument("--all", type=bool, help = "If set to True it will execute all algorithms that we have as input, therefore the training time will be the stop condition times the number of algorithms that we execute.", default = False)
 
+global default_config
 
 def run_all_algos():
     
@@ -53,36 +57,40 @@ def run_all_algos():
             "run": algo,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 7200}, #Default: 2 horas (7200 s)
-            "config": dict({
-                "num_gpus": args.gpus,
-                "num_workers": args.w,
-                "sample_batch_size": 50,
-                "train_batch_size": 500,
-                #"lr_schedule": [0, 0.0005],
-                })
+            #"config": dict({
+            #    "num_gpus": args.gpus,
+            #    "num_workers": args.w,
+            #    "sample_batch_size": 50,
+            #    "train_batch_size": 500,
+            #    "lr_schedule": [0, 0.0005],
+            #    })
+            "config": get_config(algo)
             }
         })
     
     pass
   
 def run_single_algo():
+    algo = args.run
     
     run_experiments({
         args.folder: {
-            "run": args.run,
+            "run": algo,
             "env": args.env,
             "stop": {"training_iteration": 600000, "time_total_s": 10800},
-            "config": dict({
-                "num_gpus": args.gpus,
-                "num_workers": args.w,
+            "config": get_config(algo)
+            #"config": dict({
+            #    "num_gpus": args.gpus,
+            #    "num_workers": args.w,
                 #"sample_batch_size": 50,
                 #"train_batch_size": 500,
                 #"lr_schedule": [0, 0.0005],
 
-            }),
+            #}),
         },
     })
     
+ 
 if __name__ == "__main__":
 
     args = parser.parse_args()

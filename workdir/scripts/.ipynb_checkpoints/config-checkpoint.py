@@ -9,6 +9,7 @@ COMMON_CONFIG= {
     # === Debugging ===
     # Whether to write episode stats and videos to the agent log dir
     "monitor": False,
+    #"monitor": True,
     # Set the ray.rllib.* log level for the agent process and its evaluators
     "log_level": "INFO",
     # Callbacks that will be run during various phases of training. These all
@@ -49,14 +50,14 @@ COMMON_CONFIG= {
 
     # === Resources ===
     # Number of actors used for parallelism
-    "num_workers": 4,
+    "num_workers": 2,
     # Number of GPUs to allocate to the driver. Note that not all algorithms
     # can take advantage of driver GPUs. This can be fraction (e.g., 0.3 GPUs).
-    "num_gpus": 1,
+    "num_gpus": 0.2,
     # Number of CPUs to allocate per worker.
     "num_cpus_per_worker": 1,
     # Number of GPUs to allocate per worker. This can be fractional.
-    "num_gpus_per_worker": 0.25,
+    "num_gpus_per_worker": 0.2,
     # Any custom resources to allocate per worker.
     "custom_resources_per_worker": {},
     # Number of CPUs to allocate for the driver. Note: this only takes effect
@@ -107,10 +108,10 @@ COMMON_CONFIG= {
     # If using num_envs_per_worker > 1, whether to create those new envs in
     # remote processes instead of in the same worker. This adds overheads, but
     # can make sense if your envs are very CPU intensive (e.g., for StarCraft).
-    "remote_worker_envs": False,
+    #"remote_worker_envs": False,
     # Similar to remote_worker_envs, but runs the envs asynchronously in the
     # background for greater efficiency. Conflicts with remote_worker_envs.
-    "async_remote_worker_envs": False,
+    #"async_remote_worker_envs": False,
 
     # === Offline Datasets ===
     # __sphinx_doc_input_begin__
@@ -129,16 +130,16 @@ COMMON_CONFIG= {
     #  - "is": the step-wise importance sampling estimator.
     #  - "simulation": run the environment in the background, but use
     #    this data for evaluation only and not for learning.
-    "input_evaluation": ["is", "wis"],
+    #"input_evaluation": ["is", "wis"],
     # Whether to run postprocess_trajectory() on the trajectory fragments from
     # offline inputs. Note that postprocessing will be done using the *current*
     # policy, not the *behaviour* policy, which is typically undesirable for
     # on-policy algorithms.
-    "postprocess_inputs": False,
+    #"postprocess_inputs": False,
     # If positive, input batches will be shuffled via a sliding window buffer
     # of this number of batches. Use this if the input data is not in random
     # enough order. Input is delayed until the shuffle buffer is filled.
-    "shuffle_buffer_size": 0,
+    #"shuffle_buffer_size": 0,
     # __sphinx_doc_input_end__
     # __sphinx_doc_output_begin__
     # Specify where experiences should be saved:
@@ -192,9 +193,9 @@ DQN_CONFIG = with_common_config({
     # The evaluation stats will be reported under the "evaluation" metric key.
     # Note that evaluation is currently not parallelized, and that for Ape-X
     # metrics are already only reported for the lowest epsilon workers.
-    "evaluation_interval": None,
+    #"evaluation_interval": None,
     # Number of episodes to run per evaluation period.
-    "evaluation_num_episodes": 10,
+    #"evaluation_num_episodes": 10,
 
     # === Exploration ===
     # Max num timesteps for annealing schedules. Exploration is annealed from
@@ -211,24 +212,24 @@ DQN_CONFIG = with_common_config({
     # Update the target network every `target_network_update_freq` steps.
     "target_network_update_freq": 500,
     # Use softmax for sampling actions.
-    "soft_q": False,
+    #"soft_q": False,
     # Softmax temperature. Q values are divided by this value prior to softmax.
     # Softmax approaches argmax as the temperature drops to zero.
-    "softmax_temp": 1.0,
+    #"softmax_temp": 1.0,
     # If True parameter space noise will be used for exploration
     # See https://blog.openai.com/better-exploration-with-parameter-noise/
-    "parameter_noise": False,
+    #"parameter_noise": False,
 
     # === Replay buffer ===
     # Size of the replay buffer. Note that if async_updates is set, then
     # each worker will have a replay buffer of this size.
     "buffer_size": 50000,
     # If True prioritized replay buffer will be used.
-    "prioritized_replay": True,
+    #"prioritized_replay": True,
     # Alpha parameter for prioritized replay buffer.
-    "prioritized_replay_alpha": 0.6,
+    #"prioritized_replay_alpha": 0.6,
     # Beta parameter for sampling from prioritized replay buffer.
-    "prioritized_replay_beta": 0.4,
+    #"prioritized_replay_beta": 0.4,
     # Fraction of entire training period over which the beta parameter is
     # annealed
     "beta_annealing_fraction": 0.2,
@@ -284,7 +285,7 @@ APEX_CONFIG = merge_dicts(
             }),
         "n_step": 3,
         "num_gpus": 1,
-        "num_workers": 32,
+        "num_workers": 4,
         "buffer_size": 2000000,
         "learning_starts": 50000,
         "train_batch_size": 512,
@@ -336,7 +337,7 @@ IMPALA_CONFIG = with_common_config({
     # saved total will be (replay_buffer_num_slots * sample_batch_size).
     "replay_buffer_num_slots": 0,
     # max queue size for train batches feeding into the learner
-    "learner_queue_size": 16,
+    #"learner_queue_size": 16,
     # level of queuing for sampling.
     "max_sample_requests_in_flight_per_worker": 2,
     # max number of workers to broadcast one set of weights to
@@ -416,7 +417,7 @@ PPO_CONFIG = with_common_config({
     # scale of the rewards. If your expected V is large, increase this.
     "vf_clip_param": 10.0,
     # If specified, clip the global norm of gradients by this amount
-    "grad_clip": None,
+    #"grad_clip": None,
     # Target value for KL divergence
     "kl_target": 0.01,
     # Whether to rollout "complete_episodes" or "truncate_episodes"
@@ -439,12 +440,20 @@ ES_CONFIG = with_common_config({
     "train_batch_size": 10000,
     "eval_prob": 0.003,
     "return_proc_mode": "centered_rank",
-    "num_workers": 10,
+    "num_workers": 4,
     "stepsize": 0.01,
     "observation_filter": "MeanStdFilter",
     "noise_size": 250000000,
     "report_length": 10,
 })
+
+DEFAULT_CONFIG = dict({
+    "num_gpus": 1,
+    "num_workers": 4,
+    "sample_batch_size": 50,
+    "train_batch_size": 500,
+    #"lr_schedule": [0, 0.0005],
+    })
 
 #Este metodo parseará el algoritmo que vayamos a usar y recuperará el bloque de configuración pertinente
 def get_config(algorithm):
@@ -452,6 +461,7 @@ def get_config(algorithm):
         "DQN":DQN_CONFIG,
         "APEX": APEX_CONFIG,
         "IMPALA": IMPALA_CONFIG,
+        #"IMPALA": DEFAULT_CONFIG,
         "A3C": A3C_CONFIG,
         "A2C": A3C_CONFIG,
         "PPO": PPO_CONFIG,
@@ -460,4 +470,3 @@ def get_config(algorithm):
     
     return switcher.get(algorithm, COMMON_CONFIG) #Devuelve o el valor del diccionario o COMMON_CONFIG 
         
-   

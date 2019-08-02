@@ -32,7 +32,7 @@ from ray.tune import run_experiments
 
 #from config import get_config
 
-from aux_training import on_episode_start, on_episode_step, on_episode_end, on_train_resultbash Anaconda3-5.0.1-Linux-x86_64.sh
+from aux_training import on_episode_start, on_episode_step, on_episode_end, on_train_result
 
 
 
@@ -42,7 +42,7 @@ parser.add_argument("--run", type=str, help = "The algorithm of the model to tra
 parser.add_argument("--env", type=str, help = "OpenAI environment to train the model on.", default="Breakout-v0")
 parser.add_argument("--stop", help = "Stop conditions Examples: time_total_s: xxx, training_iteration: xxxx, episode_reward_mean: xxx. If not specified, the algorithm will train for 1 hour.", default = { "training_iteration": int(3e7)})
 parser.add_argument("--mem", help = "Maximum memory to be used, supposedly by a single agent process. Default: 2e9 (2 Gigabytes)", default=2e9)
-#parser.add_argument("--gpus", type=int, help = "GPUS to use. Default:1", default=1)
+parser.add_argument("--gpus", type=int, help = "GPUS to use. Default:1", default=1)
 parser.add_argument("--w", type=int, help = "Number of workers", default = 1)
 parser.add_argument("--folder", type=str, help = "Folder in which results will be stored. By default, they will end up in folder custom_experiments_v2.", default = "testing")
 parser.add_argument("--all", type=bool, help = "If set to True it will execute all algorithms that we have as input, therefore the training time will be the stop condition times the number of algorithms that we execute.", default = False)
@@ -51,7 +51,7 @@ global default_config
 
 def run_all_algos():
     
-    algos = ["A3C", "A2C", "IMPALA", "DQN", "ES"] #, PPO]
+    algos = ["A2C", "IMPALA", "DQN", "ES"] #, PPO]
     
     
     for algo in algos:
@@ -65,8 +65,8 @@ def run_all_algos():
                 "num_workers": args.w,
                 "sample_batch_size": 50,
                 "train_batch_size": 500,
-                "lr_schedule": [0, 0.0005],
-                "log_level": "DEBUG",
+                #"lr_schedule": [0, 0.0005],
+                #"log_level": "DEBUG",
                 })
             #"config": get_config(algo)
             }
@@ -88,8 +88,8 @@ def run_single_algo():
                 "num_workers": args.w,
                 "sample_batch_size": 50,
                 "train_batch_size": 500,
-                "lr_schedule": [0, 0.0005],
-                "log_level": "DEBUG",
+                #"lr_schedule": [0, 0.0005],
+                #"log_level": "DEBUG",
 
             }),
         },

@@ -25,3 +25,6 @@
 [submodule "workdir/Submodules/lab"]
 	path = workdir/Submodules/lab
 	url = https://github.com/deepmind/lab
+[submodule "workdir/Submodules/ViZDoom"]
+	path = workdir/Submodules/ViZDoom
+	url = https://github.com/mwydmuch/ViZDoom

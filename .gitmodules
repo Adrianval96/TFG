@@ -28,3 +28,6 @@
 [submodule "workdir/Submodules/ViZDoom"]
 	path = workdir/Submodules/ViZDoom
 	url = https://github.com/mwydmuch/ViZDoom
+[submodule "workdir/Submodules/DRQN-tensorflow"]
+	path = workdir/Submodules/DRQN-tensorflow
+	url = https://github.com/marctuscher/DRQN-tensorflow

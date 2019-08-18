@@ -11,6 +11,8 @@ import bcolz
 
 import math
 
+
+######### CODIGO DE JAVI #################
 def convert_size(size_bytes):
    if size_bytes == 0:
        return "0B"
@@ -203,22 +205,22 @@ class DRQN():
                            self.fW, self.fb)
 
 class ExperienceReplay():
-    def __init__(self, buffer_size):
+    def __init__(self, capacity):
 
         # buffer for holding the transistion
         self.buffer = []
         self.size = None
 
         # size of the buffer
-        self.buffer_size = buffer_size
+        self.capacity = capacity
 
     # we remove the old transistion if buffer size has reached it's limit. Think off the buffer as a queue when new
     # one comes, old one goes off
 
     def appendToBuffer(self, memory_tuplet):
         memory_tuplet = (bcolz.carray(memory_tuplet[0]), memory_tuplet[1], memory_tuplet[2])
-        if len(self.buffer) > self.buffer_size:
-            for i in range(len(self.buffer) - self.buffer_size):
+        if len(self.buffer) > self.capacity:
+            for i in range(len(self.buffer) - self.capacity):
                 self.buffer.remove(self.buffer[0])
         self.buffer.append(memory_tuplet)
         size = convert_size(sys.getsizeof(self.buffer))
@@ -237,219 +239,82 @@ class ExperienceReplay():
             memories.append(self.buffer[memory_index])
         return memories
 
-def train(num_episodes, episode_length, learning_rate, scenario = "deathmatch.cfg", map_path = 'map02', render = False):
+####################FIN DE CODIGO DE JAVI########################
 
-    # discount parameter for Q-value computation
-    discount_factor = .99
+####################CODIGO LEARNING TENSORFLOW SIN MODIFICAR ####################
+class ReplayMemory():
+    def __init__(self, capacity):
+        channels = 1
+        state_shape = (capacity, resolution[0], resolution[1], channels)
+        self.s1 = np.zeros(state_shape, dtype=np.float32)
+        self.s2 = np.zeros(state_shape, dtype=np.float32)
+        self.a = np.zeros(capacity, dtype=np.int32)
+        self.r = np.zeros(capacity, dtype=np.float32)
+        self.isterminal = np.zeros(capacity, dtype=np.float32)
 
-    # frequency for updating the experience in the buffer
-    update_frequency = 5
-    store_frequency = 50
+        self.capacity = capacity
+        self.size = 0
+        self.pos = 0
 
-    # for printing the output
-    print_frequency = 1000
+    def add_transition(self, s1, action, s2, isterminal, reward):
+        self.s1[self.pos, :, :, 0] = s1
+        self.a[self.pos] = action
+        if not isterminal:
+            self.s2[self.pos, :, :, 0] = s2
+        self.isterminal[self.pos] = isterminal
+        self.r[self.pos] = reward
 
-    # initialize variables for storing total rewards and total loss
-    total_reward = 0
-    total_loss = 0
-    old_q_value = 0
+        self.pos = (self.pos + 1) % self.capacity
+        self.size = min(self.size + 1, self.capacity)
 
-    # initialize lists for storing the episodic rewards and losses
-    rewards = []
-    losses = []
-
-    # okay, now let us get to the action!
-
-    # first, we initialize our doomgame environment
-    game = DoomGame()
-
-    # specify the path where our scenario file is located
-    game.set_doom_scenario_path(scenario)
-
-    # specify the path of map file
-    game.set_doom_map(map_path)
-
-    # then we set screen resolution and screen format
-    game.set_screen_resolution(ScreenResolution.RES_256X160)
-    game.set_screen_format(ScreenFormat.RGB24)
-
-    # we can add particles and effetcs we needed by simply setting them to true or false
-    game.set_render_hud(False)
-    game.set_render_minimal_hud(False)
-    game.set_render_crosshair(False)
-    game.set_render_weapon(True)
-    game.set_render_decals(False)
-    game.set_render_particles(False)
-    game.set_render_effects_sprites(False)
-    game.set_render_messages(False)
-    game.set_render_corpses(False)
-    game.set_render_screen_flashes(True)
-
-    # now we will specify buttons that should be available to the agent
-    game.add_available_button(Button.MOVE_LEFT)
-    game.add_available_button(Button.MOVE_RIGHT)
-    game.add_available_button(Button.TURN_LEFT)
-    game.add_available_button(Button.TURN_RIGHT)
-    game.add_available_button(Button.MOVE_FORWARD)
-    game.add_available_button(Button.MOVE_BACKWARD)
-    game.add_available_button(Button.ATTACK)
+    def get_sample(self, sample_size):
+        i = sample(range(0, self.size), sample_size)
+        return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
 
 
-    # okay,now we will add one more button called delta. The above button will only work
-    # like a keyboard keys and will have only boolean values.
+def create_network(session, available_actions_count):
+    # Create the input variables
+    s1_ = tf.placeholder(tf.float32, [None] + list(resolution) + [1], name="State")
+    a_ = tf.placeholder(tf.int32, [None], name="Action")
+    target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
-    # so we use delta button which emulates a mouse device which will have positive and negative values
-    # and it will be useful in environment for exploring
+    # Add 2 convolutional layers with ReLu activation
+    conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=8, kernel_size=[6, 6], stride=[3, 3],
+                                            activation_fn=tf.nn.relu,
+                                            weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
+                                            biases_initializer=tf.constant_initializer(0.1))
+    conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=8, kernel_size=[3, 3], stride=[2, 2],
+                                            activation_fn=tf.nn.relu,
+                                            weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
+                                            biases_initializer=tf.constant_initializer(0.1))
+    conv2_flat = tf.contrib.layers.flatten(conv2)
+    fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=128, activation_fn=tf.nn.relu,
+                                            weights_initializer=tf.contrib.layers.xavier_initializer(),
+                                            biases_initializer=tf.constant_initializer(0.1))
 
-    game.add_available_button(Button.TURN_LEFT_RIGHT_DELTA, 90)
-    game.add_available_button(Button.LOOK_UP_DOWN_DELTA, 90)
+    q = tf.contrib.layers.fully_connected(fc1, num_outputs=available_actions_count, activation_fn=None,
+                                          weights_initializer=tf.contrib.layers.xavier_initializer(),
+                                          biases_initializer=tf.constant_initializer(0.1))
+    best_a = tf.argmax(q, 1)
 
-    # initialize an array for actions
-    actions = np.zeros((game.get_available_buttons_size(), game.get_available_buttons_size()))
-    count = 0
-    for i in actions:
-        i[count] = 1
-        count += 1
-    actions = actions.astype(int).tolist()
+    loss = tf.losses.mean_squared_error(q, target_q_)
 
+    optimizer = tf.train.RMSPropOptimizer(learning_rate)
+    # Update the parameters according to the computed gradient using RMSProp.
+    train_step = optimizer.minimize(loss)
 
-    # then we add the game variables, ammo, health, and killcount
-    game.add_available_game_variable(GameVariable.AMMO0)
-    game.add_available_game_variable(GameVariable.HEALTH)
-    game.add_available_game_variable(GameVariable.KILLCOUNT)
+    def function_learn(s1, target_q):
+        feed_dict = {s1_: s1, target_q_: target_q}
+        l, _ = session.run([loss, train_step], feed_dict=feed_dict)
+        return l
 
-    # we set episode_timeout to terminate the episode after some time step
-    # we also set episode_start_time which is useful for skipping intial events
+    def function_get_q_values(state):
+        return session.run(q, feed_dict={s1_: state})
 
-    game.set_episode_timeout(6 * episode_length)
-    game.set_episode_start_time(10)
-    game.set_window_visible(render)
+    def function_get_best_action(state):
+        return session.run(best_a, feed_dict={s1_: state})
 
-    # we can also enable sound by setting set_sound_enable to true
-    game.set_sound_enabled(False)
+    def function_simple_get_best_action(state):
+        return function_get_best_action(state.reshape([1, resolution[0], resolution[1], 1]))[0]
 
-    # we set living reward to 0 which the agent for each move it does even though the move is not useful
-    game.set_living_reward(0)
-
-    # doom has different modes such as player, spectator, asynchronous player and asynchronous spectator
-
-    # in spectator mode humans will play and agent will learn from it.
-    # in player mode, agent actually plays the game, so we use player mode.
-
-    game.set_mode(Mode.PLAYER)
-
-    # okay, So now we, initialize the game environment
-    game.init()
-
-    # now, let us create instance to our DRQN class and create our both actor and target DRQN networks
-    actionDRQN = DRQN((160, 256, 3), game.get_available_buttons_size() - 2, learning_rate)
-    targetDRQN = DRQN((160, 256, 3), game.get_available_buttons_size() - 2, learning_rate)
-
-    # we will also create instance to the ExperienceReplay class with the buffer size of 1000
-    experiences = ExperienceReplay(1000)
-
-    # for storing the models
-    saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
-
-
-    # now let us start the training process
-    # we initialize variables for sampling and storing transistions from the experience buffer
-    sample = 5
-    store = 50
-
-    # start the tensorflow session
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth=True
-    #sess = tf.Session(config=config)
-    #with tf.Session() as sess:
-    with tf.Session(config=config) as sess:
-
-        # Create a summary writer, add the 'graph' to the event file.
-        writer = tf.summary.FileWriter("logs", sess.graph)
-
-        # initialize all tensorflow variables
-
-        sess.run(tf.global_variables_initializer())
-
-        for episode in tqdm.trange(num_episodes, desc="Episode"):
-
-            # start the new episode
-            game.new_episode()
-
-            # play the episode till it reaches the episode length
-            for frame in tqdm.trange(episode_length, desc="Frame"):
-
-                # get the game state
-                state = game.get_state()
-                s = state.screen_buffer
-
-                # select the action
-                a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s})[0]
-                action = actions[a]
-
-                # perform the action and store the reward
-                reward = game.make_action(action)
-                print("Action = ", action)
-
-                # update total rewad
-                total_reward += reward
-                tf.summary.scalar('reward', reward)
-
-
-                # if the episode is over then break
-                if game.is_episode_finished():
-                    break
-
-                # store transistion to our experience buffer
-                if (frame % store) == 0:
-                    experiences.appendToBuffer((s, action, reward))
-
-                # sample experience form the experience buffer
-                if (frame % sample) == 0:
-                    memory = experiences.sample(1)
-                    mem_frame = memory[0][0]
-                    mem_reward = memory[0][2]
-
-
-                    # now, train the network
-                    Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame})
-                    Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: mem_frame})
-
-                    # set learning rate
-                    learning_rate = actionDRQN.learning_rate.eval()
-
-                    # calculate Q value
-                    Qtarget = old_q_value + learning_rate * (mem_reward + discount_factor * Q2 - old_q_value)
-
-                    # update old Q value
-                    old_q_value = Qtarget
-
-                    # compute Loss
-                    loss = actionDRQN.loss.eval(feed_dict = {actionDRQN.target_vector: Qtarget, actionDRQN.input: mem_frame})
-                    tf.summary.scalar('loss', loss)
-
-                    # update total loss
-                    total_loss += loss
-
-                    # update both networks
-                    actionDRQN.update.run(feed_dict = {actionDRQN.target_vector: Qtarget, actionDRQN.input: mem_frame})
-                    targetDRQN.update.run(feed_dict = {targetDRQN.target_vector: Qtarget, targetDRQN.input: mem_frame})
-
-            rewards.append((episode, total_reward))
-            tf.summary.scalar('total_reward', total_reward)
-            losses.append((episode, total_loss))
-            tf.summary.scalar('total_loss', total_loss)
-
-            if episode % 100 == 0:
-                saver.save(sess, "./doom_model")
-
-
-            #print("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
-            tqdm.tqdm.write("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
-
-
-            total_reward = 0
-            total_loss = 0
-
-
-train(num_episodes=10000, episode_length=300, learning_rate=0.01, render=False)
+    return function_learn, function_get_q_values, function_simple_get_best_action

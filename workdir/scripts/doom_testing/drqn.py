@@ -205,22 +205,22 @@ class DRQN():
                            self.fW, self.fb)
 
 class ExperienceReplay():
-    def __init__(self, buffer_size):
+    def __init__(self, capacity):
 
         # buffer for holding the transistion
         self.buffer = []
         self.size = None
 
         # size of the buffer
-        self.buffer_size = buffer_size
+        self.capacity = capacity
 
     # we remove the old transistion if buffer size has reached it's limit. Think off the buffer as a queue when new
     # one comes, old one goes off
 
     def appendToBuffer(self, memory_tuplet):
         memory_tuplet = (bcolz.carray(memory_tuplet[0]), memory_tuplet[1], memory_tuplet[2])
-        if len(self.buffer) > self.buffer_size:
-            for i in range(len(self.buffer) - self.buffer_size):
+        if len(self.buffer) > self.capacity:
+            for i in range(len(self.buffer) - self.capacity):
                 self.buffer.remove(self.buffer[0])
         self.buffer.append(memory_tuplet)
         size = convert_size(sys.getsizeof(self.buffer))

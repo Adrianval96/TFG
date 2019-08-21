@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import math
-from vizdoom import *
+#from vizdoom import *
 import timeit
 import math
 import os

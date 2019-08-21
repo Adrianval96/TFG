@@ -6,15 +6,7 @@ import numpy as np
 import tensorflow as tf
 
 from time import time, sleep
-
 from tqdm import trange
-
-
-#from DRQN-tensorflow import src.agent.BaseAgent
-#from DRQN-tensorflow import src.replay_memory.DRQNReplayMemory
-#from DRQN-tensorflow import src.networks.drqn.DRQN
-
-##GYM
 
 import gym
 from gym import spaces
@@ -27,7 +19,7 @@ from drqn_v2 import *
 
 
 discount_factor = .99
-learning_rate = 0.00025
+learning_rate = 0.0005
 update_frequency = 5
 store_frequency = 50
 
@@ -40,15 +32,14 @@ print_frequency = 1000
 
 
 # Training regime
-test_episodes_per_epoch = 100
+test_episodes_per_epoch = 10
 
 
 rewards = []
 losses = []
 
-######### LEARNING_TENSORFLOW WITH VIZDOOM CODE ##########
 frame_repeat = 12
-resolution = (30, 45)
+#resolution = (30, 45)
 episodes_to_watch = 10
 save_model = True
 load_model = False
@@ -67,6 +58,8 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
     total_loss = 0
     old_q_value = 0
 
+    last_frame = None
+
     #experiences = ExperienceReplay(1000)
 
     # for storing the models
@@ -76,9 +69,12 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
     for epoch in range(epochs):
         print("\nEpoch %d\n-------" % (epoch + 1))
         train_episodes_finished = 0
+
+        #Las train scores no sirven, hace falta crear estructura de datos
+        # compartida por todas las const_eps_epochs para recoger la avg score, max y min
         train_scores = []
 
-        print("Training...")
+        #print("Training...")
         state = env.reset()
         sess.run(tf.global_variables_initializer())
 
@@ -86,17 +82,22 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
             #perform_learning_step(epoch)
             #STATE contiene la imagen del juego
-            s = state
+            s_old = state
             #print("----------INPUT---------" + str(actionDRQN.input))
             #Probablemente hay un problema con la seleccion de la accion porque siempre pilla la misma
-            a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s})[0]
+            a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
             #print("a: " + str(a))
             action = actions[a]
-            print("\nAction = ", action)
+            #print("\nAction = ", action)
             state, reward, done, info = env.step(action)
-            print("Step reward:" + str(reward))
+            if reward != 0:
+                print("Step reward:" + str(reward))
             #total_reward += reward
             tf.summary.scalar('reward', reward)
+
+            #if(s_old == state).all():
+                #print("-----------LOS ESTADOS SON IGUALES-----------------")
+            #print(state)
 
             if done:
             #if done or learning_step == episode_length:
@@ -108,15 +109,34 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 #print(score)
                 break
             if (learning_step % store) == 0:
-                experiences.appendToBuffer((s, action, reward))
-
+                #experiences.appendToBuffer((s_old, action, reward))
+                experiences.add_transition(s_old, a, state, done, reward)
+                #experiences.add_transition(s_old, action, state, done, reward)
             if (learning_step % sample) == 0:
-                memory = experiences.sample(1)
-                mem_frame = memory[0][0]
-                mem_reward = memory[0][2]
+                memory = experiences.get_sample(1)
+
+                #print("Memory: " + str(memory[1]))
+                #print("Memory: " + str(memory[0]))
+                i = memory[5]
+                #mem_frame = memory[0][i]
+                mem_frame = memory[0].reshape(240, 320, 3)
+
+                #if (mem_frame == last_frame).all():
+                #    print("---------------------------------")
+                #    print("OJOCUIDAO QUE LOS FRAMES SON IGUALES")
+                #    print("---------------------------------")
+
+                mem_output = memory[2]
+                mem_reward = memory[4]
+
+                #print("_------------------------------------------------_")
+                #print(mem_frame)
+                #print("_------------------------------------------------_")
 
                 # network training
+
                 Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame})
+                #Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame, actionDRQN.output: mem_output})
                 Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: mem_frame})
 
                 # set learning rate
@@ -136,6 +156,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 actionDRQN.update.run(feed_dict = {actionDRQN.target_vector: Qtarget, actionDRQN.input: mem_frame})
                 targetDRQN.update.run(feed_dict = {targetDRQN.target_vector: Qtarget, targetDRQN.input: mem_frame})
 
+                last_frame = mem_frame
         total_reward = score
         rewards.append((epoch, total_reward))
         tf.summary.scalar('total_reward', total_reward)
@@ -144,7 +165,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
         if epoch % 100 == 0:
             saver.save(sess, "./doom_model")
-        print("%d training episodes played." % train_episodes_finished)
+        print("\n%d training episodes played." % train_episodes_finished)
 
         #tqdm.tqdm.write("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
 
@@ -161,7 +182,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
         done = False
         while not done:
 
-            a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s})[0]
+            a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
             #print("---------------------------------------------------------------")
             #print("Action directly from prediction: " + str(a))
             action = actions[a]
@@ -194,7 +215,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser("Mcneto's attempt to get a DRQN network working with vizdoom.")
+    parser = argparse.ArgumentParser("Mcneto's_old attempt to get a DRQN network working with vizdoom.")
     #parser.add_argument(dest="config",
     #                    default=DEFAULT_CONFIG,
     #                    nargs="?",
@@ -219,21 +240,17 @@ if __name__ == "__main__":
         count += 1
     actions = actions.astype(int).tolist()
 
-    experiences = ExperienceReplay(1000) ### CODIGO DE JAVI ###
-    #experiences = ReplayMemory(capacity=1000) ### Ejemplo vizdoom ###
+    #experiences = ExperienceReplay(1000) ### CODIGO DE JAVI ###
+    experiences = ReplayMemory(capacity=1000) ### Ejemplo vizdoom ###
 
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
 
     actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
     targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
-    #actionDRQN = DRQN((30, 45, 3), env.game.get_available_buttons_size() - 2, learning_rate)
-    #targetDRQN = DRQN((30, 45, 3), env.game.get_available_buttons_size() - 2, learning_rate)
 
-    ### CODE DRQN ATARI ###
-    #net = DRQN(self.env_wrapper.action_space.n, config)
-    #net.build()
-    #net.add_summary(["average_reward", "average_loss", "average_q", "ep_max_reward", "ep_min_reward", "ep_num_game", "learning_rate"], ["ep_rewards", "ep_actions"])
+    #actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
+    #targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
 
     saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
 
@@ -247,19 +264,11 @@ if __name__ == "__main__":
         print("------------Starting the training--------------")
 
         time_start = time()
-        #if not skip_learning:
 
-
-
-        ##TODO
-        #args = parser.parse_args()
-        #ray.init()
-        #ModelCatalog.register_custom_model("myDoomEnv", DoomEnv) # Registers Doom Model (NOT ENVIRONMENT APPARENTLY)
-        #run_single_algo()
         gymTrain(epochs, episode_length, learning_rate, render=False)
 
         print("======================================")
-        print("Training finished. It's time to watch!")
+        print("Training finished. It's_old time to watch!")
         # Reinitialize the game with window visible
         env.game.set_window_visible(True)
         env.game.set_mode(vzd.Mode.ASYNC_PLAYER)
@@ -271,7 +280,7 @@ if __name__ == "__main__":
             while not done:
                 state, reward, done, info = env.step(action)
                 print("---------------------------------------------------------------")
-                a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s})[0]
+                a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
 
                 action = actions[a]
                 # Instead of make_action(a, frame_repeat) in order to make the animation smooth

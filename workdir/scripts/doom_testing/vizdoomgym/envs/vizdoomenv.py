@@ -23,7 +23,7 @@ class VizdoomEnv(gym.Env):
 
         # init game
         self.game = DoomGame()
-        self.game.set_screen_resolution(ScreenResolution.RES_640X480)
+        self.game.set_screen_resolution(ScreenResolution.RES_320X240)
         scenarios_dir = os.path.join(os.path.dirname(__file__), 'scenarios')
         self.game.load_config(os.path.join(scenarios_dir, CONFIGS[level][0]))
         #print("-----------------MEOW-----------------")
@@ -42,12 +42,15 @@ class VizdoomEnv(gym.Env):
 
     def step(self, action):
         # convert action to vizdoom action space (one hot)
-        act = np.zeros(self.action_space.n)
-        act[action] = 1
-        act = np.uint8(act)
-        act = act.tolist()
+        #act = np.zeros(self.action_space.n)
+        #act[action] = 1
+        #act = np.uint8(act)
+        #act = act.tolist()
 
-        reward = self.game.make_action(act)
+        #print("act: " + str(act) + "action: " + str(action))
+
+        reward = self.game.make_action(action)
+        #print("\nReward: " + str(reward))
         state = self.game.get_state()
         done = self.game.is_episode_finished()
         if not done:

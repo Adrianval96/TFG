@@ -9,10 +9,12 @@ import sys
 import tqdm
 import bcolz
 
+from random import sample, randint, random
+
 import math
 
+resolution = (240, 320)
 
-######### CODIGO DE JAVI #################
 def convert_size(size_bytes):
    if size_bytes == 0:
        return "0B"
@@ -43,13 +45,10 @@ class DRQN():
         # first, we initialize all the hyperparameters
 
         self.tfcast_type = tf.float32
-
         # shape of our input which would be (length, width, channels)
         self.input_shape = input_shape
-
         # number of actions in the environment
         self.num_actions = num_actions
-
         # learning rate for the neural network
         self.learning_rate = inital_learning_rate
 
@@ -101,12 +100,10 @@ class DRQN():
         self.features2 = tf.Variable(initial_value = np.random.rand(self.filter_size, self.filter_size, self.num_filters[0], self.num_filters[1]),
                                      dtype = self.tfcast_type)
 
-
         self.features3 = tf.Variable(initial_value = np.random.rand(self.filter_size, self.filter_size, self.num_filters[1], self.num_filters[2]),
                                      dtype = self.tfcast_type)
 
         # initialize variables for RNN
-        # recall how RNN works from chapter 7
 
         self.h = tf.Variable(initial_value = np.zeros((1, self.cell_size)), dtype = self.tfcast_type)
 
@@ -239,12 +236,9 @@ class ExperienceReplay():
             memories.append(self.buffer[memory_index])
         return memories
 
-####################FIN DE CODIGO DE JAVI########################
-
-####################CODIGO LEARNING TENSORFLOW SIN MODIFICAR ####################
 class ReplayMemory():
     def __init__(self, capacity):
-        channels = 1
+        channels = 3
         state_shape = (capacity, resolution[0], resolution[1], channels)
         self.s1 = np.zeros(state_shape, dtype=np.float32)
         self.s2 = np.zeros(state_shape, dtype=np.float32)
@@ -256,20 +250,36 @@ class ReplayMemory():
         self.size = 0
         self.pos = 0
 
+        self.memoryUsed = None
+
     def add_transition(self, s1, action, s2, isterminal, reward):
-        self.s1[self.pos, :, :, 0] = s1
+        #print(s1.shape)
+        #print(self.s1.shape)
+        self.s1[self.pos, :, :, :] = s1
+        #self.s1[self.pos, :, :, 0] = s1
+        #print(str(action))
         self.a[self.pos] = action
+        #self.a[self.pos] = action
         if not isterminal:
-            self.s2[self.pos, :, :, 0] = s2
+            self.s2[self.pos, :, :, :] = s2
+            #self.s2[self.pos, :, :, 0] = s2
         self.isterminal[self.pos] = isterminal
         self.r[self.pos] = reward
+
 
         self.pos = (self.pos + 1) % self.capacity
         self.size = min(self.size + 1, self.capacity)
 
+        #memoryUsed = convert_size(sys.getsizeof(self.))
+        #if self.memoryUsed != memoryUsed:
+        #    self.memoryUsed = memoryUsed
+        #    tqdm.tqdm.write("Experience Replay size: {}".format(memoryUsed))
+
+
     def get_sample(self, sample_size):
         i = sample(range(0, self.size), sample_size)
-        return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
+        #print("----------------------------_" + str(self.s1[i]))
+        return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i], i
 
 
 def create_network(session, available_actions_count):

@@ -215,7 +215,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser("Mcneto's_old attempt to get a DRQN network working with vizdoom.")
+    parser = argparse.ArgumentParser("Mcneto's attempt to get a DRQN network working with vizdoom.")
     #parser.add_argument(dest="config",
     #                    default=DEFAULT_CONFIG,
     #                    nargs="?",

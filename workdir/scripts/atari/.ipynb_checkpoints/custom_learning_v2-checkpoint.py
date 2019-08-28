@@ -51,14 +51,14 @@ global default_config
 
 def run_all_algos():
     
-    algos = ["A3C", "A2C", "IMPALA", "DQN", "ES", "PPO"]
+    algos = ["IMPALA", "DQN", "ES", "PPO"]
     
     
     for algo in algos:
         run_experiments({args.folder: {
             "run": algo,
             "env": args.env,
-            "stop": {"training_iteration": int(3e6), "time_total_s": 72000, "episode_reward_mean": 300},
+            "stop": {"training_iteration": int(3e6), "time_total_s": 72000, "episode_reward_mean": 99},
             #"stop": {"training_iteration": 1500000, "time_total_s": 10800}, #Default: 2 horas (7200 s)
             "config": dict({
                 "num_gpus": args.gpus,

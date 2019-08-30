@@ -55,10 +55,12 @@ class DRQN():
         # now we will define the hyperparameters of the convolutional neural network
 
         # filter size
-        self.filter_size = 5
+        self.filter_size = 20
+        #self.filter_size = 5
 
         # number of filters
-        self.num_filters = [16, 32, 64]
+        self.num_filters = [64, 32, 16]
+        #self.num_filters = [16, 32, 64]
 
         # stride size
         self.stride = 2
@@ -73,9 +75,6 @@ class DRQN():
 
         # number of neurons
         self.cell_size = 100
-
-        # number of hidden layers
-        self.hidden_layer = 50
 
         # drop out probability
         self.dropout_probability = [0.3, 0.2]
@@ -107,13 +106,6 @@ class DRQN():
 
         self.h = tf.Variable(initial_value = np.zeros((1, self.cell_size)), dtype = self.tfcast_type)
 
-        # hidden to hidden weight matrix
-        self.rW = tf.Variable(initial_value = np.random.uniform(
-                                            low = -np.sqrt(6. / (self.convolution_shape + self.cell_size)),
-                                            high = np.sqrt(6. / (self.convolution_shape + self.cell_size)),
-                                            size = (self.convolution_shape, self.cell_size)),
-                              dtype = self.tfcast_type)
-
         # input to hidden weight matrix
         self.rU = tf.Variable(initial_value = np.random.uniform(
                                             low = -np.sqrt(6. / (2 * self.cell_size)),
@@ -121,7 +113,16 @@ class DRQN():
                                             size = (self.cell_size, self.cell_size)),
                               dtype = self.tfcast_type)
 
-        # hiddent to output weight matrix
+
+        # hidden to hidden weight matrix
+        self.rW = tf.Variable(initial_value = np.random.uniform(
+                                            low = -np.sqrt(6. / (self.convolution_shape + self.cell_size)),
+                                            high = np.sqrt(6. / (self.convolution_shape + self.cell_size)),
+                                            size = (self.convolution_shape, self.cell_size)),
+                              dtype = self.tfcast_type)
+
+
+        # hidden to output weight matrix
 
         self.rV = tf.Variable(initial_value = np.random.uniform(
                                             low = -np.sqrt(6. / (2 * self.cell_size)),
@@ -174,7 +175,7 @@ class DRQN():
         # add dropout and reshape the input
         self.drop1 = tf.nn.dropout(self.pool3, self.dropout_probability[0])
         self.reshaped_input = tf.reshape(self.drop1, shape = [1, -1])
-
+        #print(self.reshaped_input)
 
         # now we build recurrent neural network which takes the input from the last layer of convolutional network
         self.h = tf.tanh(tf.matmul(self.reshaped_input, self.rW) + tf.matmul(self.h, self.rU) + self.rb)

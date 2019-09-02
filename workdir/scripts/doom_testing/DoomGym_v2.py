@@ -5,12 +5,14 @@ from time import sleep
 import numpy as np
 import tensorflow as tf
 
-from time import time, sleep
+import time
+#from time import time, sleep
 from tqdm import trange
 
 import gym
 from gym import spaces
 
+from vizdoom import *
 import vizdoomgym
 # importa script drqn a modificar
 from drqn_v2 import *
@@ -64,33 +66,46 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
     # for storing the models
     #saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
+    train_episodes_finished = 0
 
     #for episode in tqdm.trange(epochs, desc="Episode"):
     for epoch in range(epochs):
         print("\nEpoch %d\n-------" % (epoch + 1))
-        train_episodes_finished = 0
-
+        train_scores = []
         #Las train scores no sirven, hace falta crear estructura de datos
         # compartida por todas las const_eps_epochs para recoger la avg score, max y min
-        train_scores = []
+
 
         #print("Training...")
         state = env.reset()
+        #print("-----STATE SHAPE DESPUES DE INICIALIZAR")
+        #print(state.shape)
         sess.run(tf.global_variables_initializer())
 
+        repeated = 0
+
         for learning_step in trange(episode_length, leave=False):
+
 
             #perform_learning_step(epoch)
             #STATE contiene la imagen del juego
             s_old = state
-            #print("----------INPUT---------" + str(actionDRQN.input))
-            #Probablemente hay un problema con la seleccion de la accion porque siempre pilla la misma
-            a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
+            start = time.time()
+            ##Implementation of frame repeat
+            if repeated == frame_repeat or repeated == 0:
+                a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
+                print("\nSelecting the action took {:.2f} s".format((time.time() - start)))
+                repeated = 1
+                curr_action = a
+            else:
+                a = curr_action
+                repeated += 1
+
             #print("a: " + str(a))
             action = actions[a]
             #print("\nAction = ", action)
             state, reward, done, info = env.step(action)
-            if reward != 0:
+            if reward > 0:
                 print("Step reward:" + str(reward))
             #total_reward += reward
             tf.summary.scalar('reward', reward)
@@ -101,6 +116,7 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
 
             if done:
             #if done or learning_step == episode_length:
+                #print("Episode finished")
                 score = env.game.get_total_reward()
                 train_scores.append(score)
                 state = env.reset()
@@ -108,23 +124,18 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 #total_reward += score
                 #print(score)
                 break
-            if (learning_step % store) == 0:
+            if (learning_step % store) == 0 or reward > 0:
                 #experiences.appendToBuffer((s_old, action, reward))
                 experiences.add_transition(s_old, a, state, done, reward)
                 #experiences.add_transition(s_old, action, state, done, reward)
             if (learning_step % sample) == 0:
+                #print("-----Training from sample-----------")
+
+                start = time.time()
                 memory = experiences.get_sample(1)
+                #print("Get sample operation took {:.2f} s".format((time.time()-start)))
 
-                #print("Memory: " + str(memory[1]))
-                #print("Memory: " + str(memory[0]))
-                i = memory[5]
-                #mem_frame = memory[0][i]
-                mem_frame = memory[0].reshape(240, 320, 3)
-
-                #if (mem_frame == last_frame).all():
-                #    print("---------------------------------")
-                #    print("OJOCUIDAO QUE LOS FRAMES SON IGUALES")
-                #    print("---------------------------------")
+                mem_frame = memory[0].reshape(160, 256, 3)
 
                 mem_output = memory[2]
                 mem_reward = memory[4]
@@ -151,13 +162,19 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 tf.summary.scalar('loss', loss)
 
                 total_loss += loss
-
+                t_calc = time.time()-start
+                #print("\nCalculate losses and Q updates took {:.2f} s".format((t_calc)))
                 # Update networks
+                ##HERE'S THE OPERATION THAT TAKES MOST OF THE TIME
                 actionDRQN.update.run(feed_dict = {actionDRQN.target_vector: Qtarget, actionDRQN.input: mem_frame})
+                #t_action = time.time() - start + t_calc
+                #print("Update actionDRQN took {:.2f} s".format((t_action)))
                 targetDRQN.update.run(feed_dict = {targetDRQN.target_vector: Qtarget, targetDRQN.input: mem_frame})
 
+                #print("Update networks took {:.2f} s".format((time.time() - start + t_calc)))
                 last_frame = mem_frame
         total_reward = score
+        print("TOTAL REWARD: " + str(total_reward))
         rewards.append((epoch, total_reward))
         tf.summary.scalar('total_reward', total_reward)
         losses.append((epoch, total_loss))
@@ -168,11 +185,15 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
         print("\n%d training episodes played." % train_episodes_finished)
 
         #tqdm.tqdm.write("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
+        print(str(train_scores))
+        if (not 'scores' in dir()):
+            scores = np.array(train_scores)
+        else:
+            scores = np.append(scores,train_scores)
+        #print(str(train_scores))
 
-        train_scores = np.array(train_scores)
-
-        print("Results: mean: %.1f±%.1f," % (train_scores.mean(), train_scores.std()), \
-              "min: %.1f," % train_scores.min(), "max: %.1f," % train_scores.max())
+        print("Results: mean: %.1f±%.1f," % (scores.mean(), scores.std()), \
+              "min: %.1f," % scores.min(), "max: %.1f," % scores.max())
 
     print("\nTesting...")
     test_episode = []
@@ -231,6 +252,8 @@ if __name__ == "__main__":
     env = gym.make(args.scenario)
     #env = gym.make('VizdoomHealthGathering-v0')
 
+    #env.game.set_screen_resolution(ScreenResolution.RES_256X160)
+
     n = env.game.get_available_buttons_size()
     actions = np.zeros((env.game.get_available_buttons_size(), env.game.get_available_buttons_size()))
     count = 0
@@ -246,24 +269,27 @@ if __name__ == "__main__":
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
 
-    actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
-    targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
-
     #actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
     #targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
 
+    actionDRQN = DRQN((160, 256, 3), env.game.get_available_buttons_size(), learning_rate)
+    targetDRQN = DRQN((160, 256, 3), env.game.get_available_buttons_size(), learning_rate)
+
     saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
 
-    sample = 5
-    store = 50
+    #ORIGINAL VALUES
+    #sample = 5
+    #store = 50
 
+    sample = 25
+    store = 10
     with tf.Session(config=config) as sess:
 
         writer = tf.summary.FileWriter("logs", sess.graph)
 
         print("------------Starting the training--------------")
 
-        time_start = time()
+        time_start = time.time()
 
         gymTrain(epochs, episode_length, learning_rate, render=False)
 

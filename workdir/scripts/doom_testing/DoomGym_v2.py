@@ -47,6 +47,7 @@ save_model = True
 load_model = False
 skip_learning = False
 
+
 # Configuration file path
 DEFAULT_MODEL_SAVEFILE = "/tmp/model"
 DEFAULT_CONFIG = "../../scenarios/simpler_basic.cfg"
@@ -55,6 +56,10 @@ DEFAULT_CONFIG = "../../scenarios/simpler_basic.cfg"
 
 #def gymTrain(epochs, learning_rate, render = False):
 def gymTrain(epochs, episode_length, learning_rate, render = False):
+
+    pre_train_steps = 5000
+    total_steps = 0
+    learning_phase = False
 
     total_reward = 0
     total_loss = 0
@@ -82,37 +87,40 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
         #print(state.shape)
         sess.run(tf.global_variables_initializer())
 
-        repeated = 0
+        repeated = frame_repeat
 
         for learning_step in trange(episode_length, leave=False):
 
+            if total_steps >= pre_train_steps and not learning_phase:
+                learning_phase = True
+                print("----------BEGINNING TRAINING----------")
 
             #perform_learning_step(epoch)
             #STATE contiene la imagen del juego
             s_old = state
             start = time.time()
             ##Implementation of frame repeat
-            if repeated == frame_repeat or repeated == 0:
+            if not learning_phase:
+                a = env.action_space.sample()
+            elif repeated == frame_repeat:
+                ## PROBLEM HERE
                 a = actionDRQN.prediction.eval(feed_dict = {actionDRQN.input: s_old})[0]
                 print("\nSelecting the action took {:.2f} s".format((time.time() - start)))
                 repeated = 1
-                curr_action = a
+                #curr_action = a
             else:
-                a = curr_action
+                #a = curr_action
                 repeated += 1
 
             #print("a: " + str(a))
             action = actions[a]
             #print("\nAction = ", action)
+            #start = time.time()
             state, reward, done, info = env.step(action)
-            if reward > 0:
-                print("Step reward:" + str(reward))
-            #total_reward += reward
+            #print("\nA timestep took {:.2f} s".format((time.time() - start)))
+            #if reward > 0:
+            #    print("Step reward:" + str(reward))
             tf.summary.scalar('reward', reward)
-
-            #if(s_old == state).all():
-                #print("-----------LOS ESTADOS SON IGUALES-----------------")
-            #print(state)
 
             if done:
             #if done or learning_step == episode_length:
@@ -121,33 +129,44 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 train_scores.append(score)
                 state = env.reset()
                 train_episodes_finished += 1
-                #total_reward += score
-                #print(score)
                 break
-            if (learning_step % store) == 0 or reward > 0:
-                #experiences.appendToBuffer((s_old, action, reward))
-                experiences.add_transition(s_old, a, state, done, reward)
-                #experiences.add_transition(s_old, action, state, done, reward)
-            if (learning_step % sample) == 0:
+            if (learning_step % store) == 0: #or reward > 0:
+                experience = np.array([s_old, a, state, done, reward])
+                #print("STORING EXPERIENCE")
+                experiences.add(np.reshape(experience,[1,5]))
+                #experiences.add_transition(s_old, a, state, done, reward)
+            if (learning_step % sample) == 0 and learning_phase:
+                #THIS WHOLE STEP TAKES A LOT OF TIME AS THE EXECUTION GOES ON
                 #print("-----Training from sample-----------")
 
                 start = time.time()
-                memory = experiences.get_sample(1)
+                #memory = experiences.get_sample(1)
+                trainBatch = experiences.sample(1)
+                #print(trainBatch.shape)
+
+                mem_frame = trainBatch[0,0]
+                mem_output = trainBatch[0,2]
+                mem_reward = trainBatch[0,4]
+                #print("MEM_FRAME: " + str(mem_frame))
+                #print("MEM_OUTPUT: " + str(mem_output))
+                #print("MEM_REWARD: " + str(mem_reward))
+                #print("RESTO: " + str(trainBatch[0,1]) + str(trainBatch[0,3]))
+                #mem_frame =
+                #print(memory[0].shape)
                 #print("Get sample operation took {:.2f} s".format((time.time()-start)))
+                #mem_frame = memory[0]#.reshape(160, 256, 3)
 
-                mem_frame = memory[0].reshape(160, 256, 3)
-
-                mem_output = memory[2]
-                mem_reward = memory[4]
+                #mem_output = memory[2]
+                #mem_reward = memory[4]
 
                 #print("_------------------------------------------------_")
                 #print(mem_frame)
                 #print("_------------------------------------------------_")
 
                 # network training
-
+                #Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: np.vstack(trainBatch[:, 3])})
+                #Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: np.vstack(trainBatch[:, 3])})
                 Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame})
-                #Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame, actionDRQN.output: mem_output})
                 Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: mem_frame})
 
                 # set learning rate
@@ -171,30 +190,34 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 #print("Update actionDRQN took {:.2f} s".format((t_action)))
                 targetDRQN.update.run(feed_dict = {targetDRQN.target_vector: Qtarget, targetDRQN.input: mem_frame})
 
-                #print("Update networks took {:.2f} s".format((time.time() - start + t_calc)))
+                print("Update networks took {:.2f} s".format((time.time() - start + t_calc)))
                 last_frame = mem_frame
-        total_reward = score
-        print("TOTAL REWARD: " + str(total_reward))
-        rewards.append((epoch, total_reward))
-        tf.summary.scalar('total_reward', total_reward)
-        losses.append((epoch, total_loss))
-        tf.summary.scalar('total_loss', total_loss)
 
-        if epoch % 100 == 0:
-            saver.save(sess, "./doom_model")
-        print("\n%d training episodes played." % train_episodes_finished)
+        if learning_phase:
+            total_reward = score
+            print("TOTAL REWARD: " + str(total_reward))
+            rewards.append((epoch, total_reward))
+            tf.summary.scalar('total_reward', total_reward)
+            losses.append((epoch, total_loss))
+            tf.summary.scalar('total_loss', total_loss)
 
-        #tqdm.tqdm.write("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
-        print(str(train_scores))
-        if (not 'scores' in dir()):
-            scores = np.array(train_scores)
-        else:
-            scores = np.append(scores,train_scores)
-        #print(str(train_scores))
+            if epoch % 100 == 0:
+                saver.save(sess, "./doom_model")
+            print("\n%d training episodes played." % train_episodes_finished)
 
-        print("Results: mean: %.1f±%.1f," % (scores.mean(), scores.std()), \
-              "min: %.1f," % scores.min(), "max: %.1f," % scores.max())
+            #tqdm.tqdm.write("Episode %d - Reward = %.3f, Loss = %.3f." % (episode, total_reward, total_loss))
+            #print(str(train_scores))
+            if (not 'scores' in dir()):
+                scores = np.array(train_scores)
+            else:
+                scores = np.append(scores,train_scores)
+            #print(str(train_scores))
 
+            print("Results: mean: %.1f±%.1f," % (scores.mean(), scores.std()), \
+                  "min: %.1f," % scores.min(), "max: %.1f," % scores.max())
+
+        total_steps += learning_step
+        print("TOTAL STEPS: " + str(total_steps))
     print("\nTesting...")
     test_episode = []
     test_scores = []
@@ -264,8 +287,8 @@ if __name__ == "__main__":
     actions = actions.astype(int).tolist()
 
     #experiences = ExperienceReplay(1000) ### CODIGO DE JAVI ###
-    experiences = ReplayMemory(capacity=1000) ### Ejemplo vizdoom ###
-
+    #experiences = ReplayMemory(capacity=500) ### Ejemplo vizdoom ###
+    experiences = experience_buffer(buffer_size=5000)
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
 

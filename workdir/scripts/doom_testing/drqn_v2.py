@@ -78,7 +78,7 @@ class DRQN():
         # now we define the hyperparameters of our recurrent neural network and the final feed forward layer
 
         # number of neurons
-        self.cell_size = 100
+        self.cell_size = 50
 
         # drop out probability
         self.dropout_probability = [0.3, 0.2]
@@ -207,6 +207,27 @@ class DRQN():
         self.parameters = (self.features1, self.features2, self.features3,
                            self.rW, self.rU, self.rV, self.rb, self.rc,
                            self.fW, self.fb)
+
+
+class experience_buffer():
+    def __init__(self, buffer_size = 50000):
+        self.buffer = []
+        self.buffer_size = buffer_size
+
+    def add(self,experience):
+        if len(self.buffer) + len(experience) >= self.buffer_size:
+            self.buffer[0:(len(experience)+len(self.buffer))-self.buffer_size] = []
+        self.buffer.extend(experience)
+
+    def sample(self,size):
+        selected = np.array(sample(self.buffer, size))
+        #print("SAMPLE: " + str(selected))
+        #print("SAMPLE SHAPE: " + str(selected.shape))
+        #print("--------------------------------------")
+        #print(str(selected[0],))
+        return np.reshape(selected, [size, 5])
+
+
 
 
 class ReplayMemory():

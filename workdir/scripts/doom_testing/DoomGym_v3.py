@@ -36,6 +36,8 @@ print_frequency = 1000
 # Training regime
 test_episodes_per_epoch = 10
 
+resolution = (160, 256, 3)
+
 
 rewards = []
 losses = []
@@ -295,8 +297,8 @@ if __name__ == "__main__":
     #actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
     #targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
 
-    actionDRQN = DRQN((160, 256, 3), env.game.get_available_buttons_size(), learning_rate)
-    targetDRQN = DRQN((160, 256, 3), env.game.get_available_buttons_size(), learning_rate)
+    actionDRQN = DRQN(resolution, env.game.get_available_buttons_size(), learning_rate)
+    targetDRQN = DRQN(resolution, env.game.get_available_buttons_size(), learning_rate)
 
     saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
 

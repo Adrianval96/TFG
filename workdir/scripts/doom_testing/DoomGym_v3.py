@@ -22,8 +22,8 @@ from drqn_v2 import *
 
 discount_factor = .99
 learning_rate = 0.0005
-update_frequency = 5
-store_frequency = 50
+update_frequency = 200
+store_frequency = 15
 
 #How much an episode lasts. has to be changed for each scenario
 #TODO
@@ -113,15 +113,14 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
             else:
                 #a = curr_action
                 repeated += 1
-
             #print("a: " + str(a))
             action = actions[a]
             #print("\nAction = ", action)
             #start = time.time()
             state, reward, done, info = env.step(action)
             #print("\nA timestep took {:.2f} s".format((time.time() - start)))
-            #if reward > 0:
-            #    print("Step reward:" + str(reward))
+            if reward > 0:
+                print("Step reward:" + str(reward))
             tf.summary.scalar('reward', reward)
 
             if done:
@@ -132,26 +131,27 @@ def gymTrain(epochs, episode_length, learning_rate, render = False):
                 state = env.reset()
                 train_episodes_finished += 1
                 break
-            if (learning_step % store) == 0: #or reward > 0:
+            if (learning_step % store_frequency) == 0 or reward > 0:
                 experience = np.array([s_old, a, state, done, reward])
                 #print("STORING EXPERIENCE")
                 experiences.add(np.reshape(experience,[1,5]))
                 #experiences.add_transition(s_old, a, state, done, reward)
-            if (learning_step % sample) == 0 and learning_phase:
+            if (learning_step % update_frequency) == 0 and learning_phase:
                 #THIS WHOLE STEP TAKES A LOT OF TIME AS THE EXECUTION GOES ON
                 #print("-----Training from sample-----------")
 
                 start = time.time()
                 #memory = experiences.get_sample(1)
-                trainBatch = experiences.sample(1)
+                trainBatch = experiences.sample(10)
                 #print(trainBatch.shape)
 
-                mem_frame = trainBatch[0,0]
-                mem_output = trainBatch[0,2]
-                mem_reward = trainBatch[0,4]
+                for i in range (0, len(trainBatch) - 1):
+                    mem_frame = trainBatch[i,0]
+                    mem_output = trainBatch[i,2]
+                    mem_reward = trainBatch[i,4]
 
-                Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame})
-                Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: mem_frame})
+                    Q1 = actionDRQN.output.eval(feed_dict = {actionDRQN.input: mem_frame})
+                    Q2 = targetDRQN.output.eval(feed_dict = {targetDRQN.input: mem_frame})
 
                 # set learning rate
                 learning_rate = actionDRQN.learning_rate.eval()
@@ -258,7 +258,7 @@ if __name__ == "__main__":
     # TODO INPUT AS PARAMETER
     env = gym.make(args.scenario)
     #env = gym.make('VizdoomHealthGathering-v0')
-    
+
     env.game.set_window_visible(False)
 
     #env.game.set_screen_resolution(ScreenResolution.RES_256X160)
@@ -281,8 +281,8 @@ if __name__ == "__main__":
     #actionDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
     #targetDRQN = DRQN((240, 320, 3), env.game.get_available_buttons_size(), learning_rate)
 
-    actionDRQN = DRQN(resolution, env.game.get_available_buttons_size() - 2, learning_rate)
-    targetDRQN = DRQN(resolution, env.game.get_available_buttons_size() - 2, learning_rate)
+    actionDRQN = DRQN(resolution, env.game.get_available_buttons_size(), learning_rate)
+    targetDRQN = DRQN(resolution, env.game.get_available_buttons_size(), learning_rate)
 
     saver = tf.train.Saver({v.name: v for v in actionDRQN.parameters}, max_to_keep = 1)
 

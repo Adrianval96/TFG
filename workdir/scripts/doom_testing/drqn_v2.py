@@ -71,7 +71,7 @@ class DRQN():
         # shape of our convolutional layer
         self.convolution_shape = get_input_shape(input_shape[0], self.filter_size, self.stride) * get_input_shape(input_shape[1], self.filter_size, self.stride) * self.num_filters[2]
 
-        # now we define the hyperparameters of our recurrent neural network and the final feed forward layer
+        # now we define the hyperparameters nof our recurrent neural network and the final feed forward layer
 
         # number of neurons
         self.cell_size = 100

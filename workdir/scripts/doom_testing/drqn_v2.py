@@ -13,7 +13,8 @@ from random import sample, randint, random
 
 import math
 
-resolution = (240, 320)
+resolution = (160, 256)
+#resolution = (240, 320)
 
 def convert_size(size_bytes):
    if size_bytes == 0:
@@ -37,6 +38,9 @@ def get_input_shape(Image,Filter,Stride):
 
     o3 = math.ceil((layer3  / Stride))
 
+    #print("---------------INPUT SHAPE-----------------")
+    #print(str(o3))
+
     return int(o3)
 
 class DRQN():
@@ -55,12 +59,12 @@ class DRQN():
         # now we will define the hyperparameters of the convolutional neural network
 
         # filter size
-        self.filter_size = 20
-        #self.filter_size = 5
+        #self.filter_size = 20
+        self.filter_size = 5
 
         # number of filters
-        self.num_filters = [64, 32, 16]
-        #self.num_filters = [16, 32, 64]
+        #self.num_filters = [64, 32, 16]
+        self.num_filters = [16, 32, 64]
 
         # stride size
         self.stride = 2
@@ -74,7 +78,7 @@ class DRQN():
         # now we define the hyperparameters nof our recurrent neural network and the final feed forward layer
 
         # number of neurons
-        self.cell_size = 100
+        self.cell_size = 50
 
         # drop out probability
         self.dropout_probability = [0.3, 0.2]
@@ -88,7 +92,9 @@ class DRQN():
 
         # we initialize the placeholder for input whose shape would be (length, width, channel)
         self.input = tf.placeholder(shape = (self.input_shape[0], self.input_shape[1], self.input_shape[2]), dtype = self.tfcast_type)
-
+        #print("-----------------------------------------------")
+        #print(tf.shape(input))
+        #print("-----------------------------------------------")
         # we will also initialize the shape of the target vector whose shape is equal to the number of actions
         self.target_vector = tf.placeholder(shape = (self.num_actions, 1), dtype = self.tfcast_type)
 
@@ -202,40 +208,27 @@ class DRQN():
                            self.rW, self.rU, self.rV, self.rb, self.rc,
                            self.fW, self.fb)
 
-class ExperienceReplay():
-    def __init__(self, capacity):
 
-        # buffer for holding the transistion
+class experience_buffer():
+    def __init__(self, buffer_size = 50000):
         self.buffer = []
-        self.size = None
+        self.buffer_size = buffer_size
 
-        # size of the buffer
-        self.capacity = capacity
+    def add(self,experience):
+        if len(self.buffer) + len(experience) >= self.buffer_size:
+            self.buffer[0:(len(experience)+len(self.buffer))-self.buffer_size] = []
+        self.buffer.extend(experience)
 
-    # we remove the old transistion if buffer size has reached it's limit. Think off the buffer as a queue when new
-    # one comes, old one goes off
-
-    def appendToBuffer(self, memory_tuplet):
-        memory_tuplet = (bcolz.carray(memory_tuplet[0]), memory_tuplet[1], memory_tuplet[2])
-        if len(self.buffer) > self.capacity:
-            for i in range(len(self.buffer) - self.capacity):
-                self.buffer.remove(self.buffer[0])
-        self.buffer.append(memory_tuplet)
-        size = convert_size(sys.getsizeof(self.buffer))
-        if self.size != size:
-            self.size = size
-            tqdm.tqdm.write("Experience Replay size: {}".format(size))
+    def sample(self,size):
+        selected = np.array(sample(self.buffer, size))
+        #print("SAMPLE: " + str(selected))
+        #print("SAMPLE SHAPE: " + str(selected.shape))
+        #print("--------------------------------------")
+        #print(str(selected[0],))
+        return np.reshape(selected, [size, 5])
 
 
-    # define a function called sample for sampling some random n number of transistions
 
-    def sample(self, n):
-        memories = []
-
-        for i in range(n):
-            memory_index = np.random.randint(0, len(self.buffer))
-            memories.append(self.buffer[memory_index])
-        return memories
 
 class ReplayMemory():
     def __init__(self, capacity):
@@ -254,8 +247,10 @@ class ReplayMemory():
         self.memoryUsed = None
 
     def add_transition(self, s1, action, s2, isterminal, reward):
+        #print("-------------------------SHAPES IN ADD TRANSITION--------------------------")
         #print(s1.shape)
         #print(self.s1.shape)
+        #print("-------------------------SHAPES IN ADD TRANSITION--------------------------")
         self.s1[self.pos, :, :, :] = s1
         #self.s1[self.pos, :, :, 0] = s1
         #print(str(action))
@@ -281,51 +276,3 @@ class ReplayMemory():
         i = sample(range(0, self.size), sample_size)
         #print("----------------------------_" + str(self.s1[i]))
         return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i], i
-
-
-def create_network(session, available_actions_count):
-    # Create the input variables
-    s1_ = tf.placeholder(tf.float32, [None] + list(resolution) + [1], name="State")
-    a_ = tf.placeholder(tf.int32, [None], name="Action")
-    target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
-
-    # Add 2 convolutional layers with ReLu activation
-    conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=8, kernel_size=[6, 6], stride=[3, 3],
-                                            activation_fn=tf.nn.relu,
-                                            weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
-                                            biases_initializer=tf.constant_initializer(0.1))
-    conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=8, kernel_size=[3, 3], stride=[2, 2],
-                                            activation_fn=tf.nn.relu,
-                                            weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
-                                            biases_initializer=tf.constant_initializer(0.1))
-    conv2_flat = tf.contrib.layers.flatten(conv2)
-    fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=128, activation_fn=tf.nn.relu,
-                                            weights_initializer=tf.contrib.layers.xavier_initializer(),
-                                            biases_initializer=tf.constant_initializer(0.1))
-
-    q = tf.contrib.layers.fully_connected(fc1, num_outputs=available_actions_count, activation_fn=None,
-                                          weights_initializer=tf.contrib.layers.xavier_initializer(),
-                                          biases_initializer=tf.constant_initializer(0.1))
-    best_a = tf.argmax(q, 1)
-
-    loss = tf.losses.mean_squared_error(q, target_q_)
-
-    optimizer = tf.train.RMSPropOptimizer(learning_rate)
-    # Update the parameters according to the computed gradient using RMSProp.
-    train_step = optimizer.minimize(loss)
-
-    def function_learn(s1, target_q):
-        feed_dict = {s1_: s1, target_q_: target_q}
-        l, _ = session.run([loss, train_step], feed_dict=feed_dict)
-        return l
-
-    def function_get_q_values(state):
-        return session.run(q, feed_dict={s1_: state})
-
-    def function_get_best_action(state):
-        return session.run(best_a, feed_dict={s1_: state})
-
-    def function_simple_get_best_action(state):
-        return function_get_best_action(state.reshape([1, resolution[0], resolution[1], 1]))[0]
-
-    return function_learn, function_get_q_values, function_simple_get_best_action
